@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up | Climbers Connect</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/signup.css">
+        <!-- Favicon -->
+        <link rel="icon" href="./assets/favicon.jpg">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="signup--text-container">
+            <header class="signup--header">
+                <a href="/">
+                    Logo
+                </a>
+                <h2 class="login--redirect">
+                    Already a user?
+                    <a class="login--link" href="/login">Login now</a>
+                </h2>
+            </header>
+            <div class="signup--form-container">
+                <h1 class="signup--title">Sign Up with Climbers Connect</h1>
+                <hr>
+                <form action="/signup" method="POST">
+                    <ul class="signup--list">
+                        <li class="signup--li">
+                            <h3 class="signup--li-heading">UserName:</h3>
+                            <input class="signup--input" type="text" name="userName">
+                        </li>
+                        <li class="signup--li">
+                            <h3 class="signup--li-heading">Email:</h3>
+                            <input class="signup--input" type="email" name="email">
+                        </li>
+                        <li class="signup--li">
+                            <h3 class="signup--li-heading">
+                                Password
+                                <span class="min-char-length">(8 character min.)</span>
+                                :
+                            </h3>
+                            <input class="signup--input" type="password" name="password">
+                        </li>
+                        <li class="signup--li">
+                            <h3 class="signup--li-heading">Confirm Password:</h3>
+                            <input class="signup--input" type="password" name="confirmPassword">
+                        </li>
+                        <li class="signup--li">
+                            <input class="signup--btn" type="submit" value="Signup">
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
