@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const Post = require('../models/Post')
+const { Climb, PartnerSearch } = require('../models/Post')
 const cloudinary = require("../middleware/cloudinary");
 
 module.exports = {

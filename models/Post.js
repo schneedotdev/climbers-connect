@@ -1,29 +1,29 @@
 const mongoose = require('mongoose')
 
-const PostSchema = new mongoose.Schema({
-    title: {
+const ClimbSchema = new mongoose.Schema({
+    name: {
         type: String,
         required: true,
+    },
+    grade: {
+        type: String,
+        required: true
     },
     image: {
         type: String,
-        require: true,
+        required: true,
     },
     cloudinaryId: {
         type: String,
-        require: true,
-    },
-    caption: {
-        type: String,
         required: true,
     },
-    likes: {
+    rating: {
         type: Number,
-        required: true,
+        required: true
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: "User",
     },
     createdAt: {
         type: Date,
@@ -31,4 +31,34 @@ const PostSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('Post', PostSchema)
+const PartnerSearchSchema = new mongoose.Schema({
+    area: {
+        type: String,
+        required: true
+    },
+    text: {
+        type: String,
+        required: true,
+        trim: true,
+        maxLength: 1000,
+    },
+    date: {
+        type: Date,
+        required: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+})
+
+const PostSchema = {
+    Climb: mongoose.model('Climb', ClimbSchema),
+    PartnerSearch: mongoose.model('PartnerSearch', PartnerSearchSchema)
+}
+
+module.exports = PostSchema
