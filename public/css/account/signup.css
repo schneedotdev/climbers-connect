@@ -1,0 +1,158 @@
+/* 
+============== Base Styles ==============
+*/
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.signup--btn:hover {
+	cursor: pointer;
+}
+
+/* 
+============== Layout Styles ==============
+*/
+
+body {
+	display: flex;
+	flex-direction: row-reverse;
+	color: #0d0c22;
+}
+
+hr {
+	width: 50rem;
+	border: .05rem solid #e0e0e0;
+}
+
+.signup--li-heading {
+	margin-top: 2rem;
+	margin-bottom: 0.5rem;
+}
+
+.signup--btn {
+	margin-top: 3.5rem;
+}
+
+.signup--btn,
+.signup--input {
+	border-radius: 0.5rem;
+}
+
+/* 
+============== Additional Styles ==============
+*/
+
+.signup--text-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.signup--form-container {
+	margin-block: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.signup--header {
+	padding: 2.5rem;
+	width: 100%;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.login--redirect {
+	font-size: 1.3rem;
+	font-weight: 300;
+}
+
+.login--link {
+	font-weight: 400;
+	font-size: 1.3rem;
+	color: #28966b;
+	text-decoration: none;
+}
+
+.login--link:hover {
+	color: #184f42;
+}
+
+.min-char-len {
+	font-size: 1.5rem;
+	font-weight: 200;
+}
+
+.signup--li-heading {
+	font-size: 1.5rem;
+	font-weight: 400;
+}
+
+.signup--input,
+.signup--btn,
+.signup--title {
+	min-width: 50rem;
+}
+
+.signup--title {
+	font-size: 2.2rem;
+	font-weight: 600;
+	text-align: left;
+}
+
+.signup--input {
+	border: none;
+	background: #f3f3f4;
+	padding: .8rem;
+	padding-left: 1.5rem;
+	font-size: 1.2rem;
+}
+
+.signup--btn {
+	font-size: 1.5rem;
+	background: #28966b;
+	color: white;
+
+	padding: 1rem;
+
+	border: none;
+	box-shadow: 0 0.35rem #257866;
+	position: relative;
+	margin-bottom: 2rem;
+}
+
+.signup--btn:hover {
+	cursor: pointer;
+	top: -0.35rem;
+	box-shadow: 0 .7rem #257866;
+}
+
+/* 
+============== Media Queries ==============
+*/
+
+@media all and (max-width: 1125px) {
+	.signup--image {
+		display: none;
+	}
+}
+
+@media all and (max-width: 600px) {
+
+	.signup--input,
+	.signup--btn,
+	.signup--title {
+		min-width: 35rem;
+	}
+
+	hr {
+		width: 35rem;
+	}
+}

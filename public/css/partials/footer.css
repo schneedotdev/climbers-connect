@@ -1,0 +1,122 @@
+/* 
+============== Base Styles ==============
+*/
+
+:root {
+    --white: #fff;
+    --light-gray: #f6f7f9;
+    --dark-blue: #111419;
+    --dark-gray: #4F5D5F;
+    --gray-blue: #68819C;
+    --light-blue: #81AEE5;
+    --purple: #A0A1F5;
+    --dark-purple: #383970;
+}
+
+.footer--link {
+    color: var(--light-gray);
+    font-weight: 200;
+}
+
+.footer--link:hover {
+    color: var(--purple);
+}
+
+.footer--margin-left {
+    margin-left: 7rem;
+}
+
+.li--margin-top {
+    margin-top: .75rem;
+}
+
+/* 
+============== Layout Styles ==============
+*/
+
+html {
+    font-family: 'Raleway', sans-serif;
+}
+
+hr {
+    width: 100%;
+    border: .05rem solid #e0e0e0;
+    margin-block: 4rem;
+}
+
+/* 
+============== Additional Styles ==============
+*/
+
+.footer {
+    color: white;
+    padding: 5rem 10rem;
+
+    background: hsla(216, 19%, 10%, 1);
+    background: radial-gradient(circle, hsla(216, 19%, 10%, 1) 0%, hsla(218, 19%, 8%, 1) 100%, hsla(230, 66%, 60%, 1) 100%);
+    background: -moz-radial-gradient(circle, hsla(216, 19%, 10%, 1) 0%, hsla(218, 19%, 8%, 1) 100%, hsla(230, 66%, 60%, 1) 100%);
+    background: -webkit-radial-gradient(circle, hsla(216, 19%, 10%, 1) 0%, hsla(218, 19%, 8%, 1) 100%, hsla(230, 66%, 60%, 1) 100%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: .1rem solid var(--light-blue);
+}
+
+.footer--logo-img {
+    width: 3.2rem;
+    height: 3.2rem;
+}
+
+.footer--logo-text {
+    margin-top: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.footer--slogan {
+    display: block;
+    font-weight: 100;
+    margin-top: .5rem;
+    font-style: italic;
+}
+
+.footer--author {
+    margin-top: 2rem;
+    font-weight: 100;
+}
+
+.footer--text-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer--icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer--icons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer--icon {
+    width: 2.5rem;
+}
+
+.footer--right-container {
+    display: flex;
+}
+
+.footer--list-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer--list-title {
+    font-weight: 600;
+}
