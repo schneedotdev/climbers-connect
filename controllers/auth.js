@@ -6,7 +6,7 @@ exports.getLogin = (req, res) => {
   if (req.user) {
     return res.redirect('/post')
   }
-  res.render('login', {
+  res.render('account/login', {
     title: 'Login'
   })
 }
@@ -31,7 +31,7 @@ exports.postLogin = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) { return next(err) }
       req.flash('success', { msg: 'Success! You are logged in.' })
-      res.redirect(req.session.returnTo || '/post')
+      res.redirect(req.session.returnTo || '/profile')
     })
   })(req, res, next)
 }
@@ -47,7 +47,7 @@ exports.getSignup = (req, res) => {
   if (req.user) {
     return res.redirect('/post')
   }
-  res.render('signup', {
+  res.render('account/signup', {
     title: 'Create Account'
   })
 }
@@ -88,7 +88,7 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           return next(err)
         }
-        res.redirect('/post')
+        res.redirect('/profile')
       })
     })
   })

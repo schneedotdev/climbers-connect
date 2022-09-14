@@ -8,7 +8,7 @@ const flash = require('express-flash')
 const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
-const postRoutes = require('./routes/post')
+const postRoutes = require('./routes/posts')
 
 require('dotenv').config({ path: './config/.env' })
 
@@ -44,6 +44,7 @@ app.use(flash())
 app.use('/', mainRoutes)
 app.use('/posts', postRoutes)
 
-app.listen(process.env.PORT || 2121, () => {
-  console.log('Server is running, you better catch it!')
-})    
+const PORT = process.env.PORT || 4000
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}, you better catch it!`)
+})

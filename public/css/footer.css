@@ -1,0 +1,45 @@
+/* 
+============== Base Styles ==============
+*/
+
+:root {
+    --white: #fff;
+    --dark-blue: #111419;
+    /* --footer-blue: #232831; */
+    --dark-gray: #4F5D5F;
+    --gray-blue: #68819C;
+    --light-blue: #81AEE5;
+    --purple: #A0A1F5;
+    --dark-purple: #383970;
+}
+
+/* 
+============== Layout Styles ==============
+*/
+
+html {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* 
+============== Additional Styles ==============
+*/
+
+.footer {
+    color: white;
+    height: 5rem;
+    padding: 5rem 10rem;
+    background: var(--dark-blue);
+    display: flex;
+    align-items: center;
+}
+
+.logo--img {
+    width: 3rem;
+    height: 3rem;
+}
+
+.logo--text {
+    font-size: 1rem;
+    font-weight: 400;
+}
