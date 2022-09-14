@@ -59,7 +59,7 @@ html {
     font-weight: 300;
 }
 
-.logo--text {
+.header--logo-text {
     font-weight: 700;
 }
 
@@ -73,7 +73,7 @@ html {
     color: var(--purple);
 }
 
-.logo--img {
+.header--logo-img {
     width: 1.5rem;
     margin-right: 0.5rem;
 }

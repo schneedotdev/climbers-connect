@@ -21,25 +21,59 @@ html {
     font-family: 'Raleway', sans-serif;
 }
 
+hr {
+    width: 100%;
+    border: .05rem solid #e0e0e0;
+    margin-block: 4rem;
+}
+
 /* 
 ============== Additional Styles ==============
 */
 
 .footer {
     color: white;
-    height: 5rem;
     padding: 5rem 10rem;
     background: var(--dark-blue);
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
 
-.logo--img {
-    width: 3rem;
-    height: 3rem;
+.footer--logo-img {
+    width: 3.2rem;
+    height: 3.2rem;
 }
 
-.logo--text {
-    font-size: 1rem;
-    font-weight: 400;
+.footer--logo-text {
+    margin-top: 0.75rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.footer--author {
+    margin-top: 2rem;
+    font-weight: 100;
+}
+
+.footer--text-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer--icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer--icons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer--icon {
+    width: 2.75rem;
 }
