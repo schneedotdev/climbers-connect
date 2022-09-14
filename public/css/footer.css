@@ -34,10 +34,17 @@ hr {
 .footer {
     color: white;
     padding: 5rem 10rem;
-    background: var(--dark-blue);
+    /* background: var(--dark-blue); */
+
+    background: hsla(216, 19%, 10%, 1);
+    background: radial-gradient(circle, hsla(216, 19%, 10%, 1) 0%, hsla(218, 19%, 8%, 1) 100%, hsla(230, 66%, 60%, 1) 100%);
+    background: -moz-radial-gradient(circle, hsla(216, 19%, 10%, 1) 0%, hsla(218, 19%, 8%, 1) 100%, hsla(230, 66%, 60%, 1) 100%);
+    background: -webkit-radial-gradient(circle, hsla(216, 19%, 10%, 1) 0%, hsla(218, 19%, 8%, 1) 100%, hsla(230, 66%, 60%, 1) 100%);
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-top: .1rem solid var(--light-blue);
 }
 
 .footer--logo-img {
@@ -75,5 +82,5 @@ hr {
 }
 
 .footer--icon {
-    width: 2.75rem;
+    width: 2.5rem;
 }
