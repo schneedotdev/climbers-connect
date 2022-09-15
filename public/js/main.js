@@ -1,5 +1,5 @@
-document.addEventListener('keydown', () => {
-    window.location = '/login';
+['keydown', 'click', 'touchstart'].forEach(event => {
+    document.addEventListener(event, () => window.location = '/login')
 })
 
 var string = "Climbers Connect";
