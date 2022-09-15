@@ -16,47 +16,59 @@
         <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100&display=swap" rel="stylesheet">
     </head>
     <body>
+        <img class="signup--background-img" src="assets/login.jpg" alt="picture of person standing in front of mountain">
         <div class="signup--text-container">
-            <header class="signup--header">
-                <a href="/">
-                    Logo
-                </a>
-                <h2 class="login--redirect">
-                    Already a user?
-                    <a class="login--link" href="/login">Login now</a>
-                </h2>
-            </header>
-            <div class="signup--form-container">
-                <h1 class="signup--title">Sign Up with Climbers Connect</h1>
-                <hr>
-                <form action="/signup" method="POST">
-                    <ul class="signup--list">
-                        <li class="signup--li">
-                            <h3 class="signup--li-heading">UserName:</h3>
-                            <input class="signup--input" type="text" name="userName">
-                        </li>
-                        <li class="signup--li">
-                            <h3 class="signup--li-heading">Email:</h3>
-                            <input class="signup--input" type="email" name="email">
-                        </li>
-                        <li class="signup--li">
-                            <h3 class="signup--li-heading">
-                                Password
-                                <span class="min-char-length">(8 character min.)</span>
-                                :
-                            </h3>
-                            <input class="signup--input" type="password" name="password">
-                        </li>
-                        <li class="signup--li">
-                            <h3 class="signup--li-heading">Confirm Password:</h3>
-                            <input class="signup--input" type="password" name="confirmPassword">
-                        </li>
-                        <li class="signup--li">
-                            <input class="signup--btn" type="submit" value="Signup">
-                        </li>
-                    </ul>
-                </form>
-            </div>
+          <header class="signup--header">
+              <a class="header--link" href="/">
+                  <h2 class="signup--header-title">Climbers Connect</h2>
+              </a>
+              <a class="header--link" href="/login">
+                  <h2 class="header--login-text">Sign In</h2>
+              </a>
+          </header>
+            
+          <% if (locals.messages.errors) { %>
+              <% messages.errors.forEach( el => { %>
+                  <div class="alert alert-danger"><%= el.msg %></div>
+              <% }) %>    
+          <% } %>
+          <% if (locals.messages.info) { %>
+              <% messages.info.forEach( el => { %>
+                  <div class="alert alert-danger"><%= el.msg %></div>
+              <% }) %>    
+          <% } %>
+
+          <div class="signup--form-container">
+            <h1 class="signup--title">Climber Signup</h1>
+            <p class="signup--p">Welcome, please enter your information</p>
+            <form action="/signup" method="POST">
+                <ul class="signup--list">
+                    <li class="signup--li">
+                        <h3 class="signup--li-heading">UserName</h3>
+                        <input class="signup--input" type="text" name="userName" placeholder="Username">
+                    </li>
+                    <li class="signup--li">
+                        <h3 class="signup--li-heading">Email</h3>
+                        <input class="signup--input" type="email" name="email" placeholder="Email">
+                    </li>
+                    <li class="signup--li">
+                        <h3 class="signup--li-heading">Password (8 character min.)</h3>
+                        <input class="signup--input" type="password" name="password" placeholder="Password">
+                    </li>
+                    <li class="signup--li">
+                        <h3 class="signup--li-heading">Confirm Password:</h3>
+                        <input class="signup--input" type="password" name="confirmPassword" placeholder="Confirm Password">
+                    </li>
+                    <li class="signup--li">
+                        <input class="signup--btn" type="submit" value="Signup">
+                    </li>
+                </ul>
+            </form>
+
+            <p class="not-a-user">Already a user? <a class="redirect" href="/login">Log in now</a></p>
+          </div>
         </div>
+
+        <h3 class="footer--author">&copy;Copyright Brian Schnee. All rights reserved.</h3>
     </body>
 </html>
