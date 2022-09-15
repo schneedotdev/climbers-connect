@@ -1,0 +1,78 @@
+/* 
+============== Base Styles ==============
+*/
+
+:root {
+    --white: #fff;
+    --dark-blue: #111419;
+    --medium-gray: rgb(227, 228, 229);
+    --dark-gray: #4F5D5F;
+    --gray-blue: #68819C;
+    --light-blue: #81AEE5;
+    --purple: #A0A1F5;
+    --dark-purple: #383970;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    color: var(--white);
+    background: linear-gradient(270deg, #1e232a, #111419);
+}
+
+/* 
+============== Layout Styles ==============
+*/
+
+.index--container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+============== Additional Styles ==============
+*/
+
+
+.index--logo {
+    width: 6rem;
+}
+
+.index--text {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-left: 1rem;
+}
+
+.index--p {
+    color: var(--dark-gray);
+    position: absolute;
+    transform: translate(-50%);
+    left: 50%;
+    bottom: 2rem;
+    text-align: center;
+    font-weight: 200;
+    font-style: italic;
+    animation: 2s blink infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        color: var(--medium-gray);
+    }
+
+    50% {
+        color: var(--dark-gray);
+    }
+}

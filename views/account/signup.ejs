@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign Up | Climbers Connect</title>
+        <title><%= title %> | Climbers Connect</title>
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/css/reset.css">
         <link rel="stylesheet" href="/css/account/signup.css">
@@ -18,25 +18,25 @@
     <body>
         <img class="signup--background-img" src="assets/login.png" alt="picture of person standing in front of mountain">
         <div class="signup--text-container">
-          <header class="signup--header">
-              <a class="header--link" href="/">
-                  <h2 class="signup--header-title">Climbers Connect</h2>
-              </a>
-              <a class="header--link" href="/login">
-                  <h2 class="header--login-text">Sign In</h2>
-              </a>
-          </header>
+            <header class="signup--header">
+                <a class="header--link" href="/">
+                    <h2 class="signup--header-title">Climbers Connect</h2>
+                </a>
+                <a class="header--link" href="/login">
+                    <h2 class="header--login-text">Sign In</h2>
+                </a>
+            </header>
             
-          <% if (locals.messages.errors) { %>
-              <% messages.errors.forEach( el => { %>
-                  <div class="alert alert-danger"><%= el.msg %></div>
-              <% }) %>    
-          <% } %>
-          <% if (locals.messages.info) { %>
-              <% messages.info.forEach( el => { %>
-                  <div class="alert alert-danger"><%= el.msg %></div>
-              <% }) %>    
-          <% } %>
+            <% if (locals.messages.errors) { %>
+                <% messages.errors.forEach( el => { %>
+                    <div class="alert alert-danger"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
+            <% if (locals.messages.info) { %>
+                <% messages.info.forEach( el => { %>
+                    <div class="alert alert-info"><%= el.msg %></div>
+                <% }) %>    
+            <% } %>
 
           <div class="signup--form-container">
             <h1 class="signup--title">Climber Signup</h1>
@@ -45,7 +45,7 @@
                 <ul class="signup--list">
                     <li class="signup--li">
                         <h3 class="signup--li-heading">UserName</h3>
-                        <input class="signup--input" type="text" name="userName" placeholder="Username">
+                        <input class="signup--input" type="text" name="username" placeholder="Username">
                     </li>
                     <li class="signup--li">
                         <h3 class="signup--li-heading">Email</h3>

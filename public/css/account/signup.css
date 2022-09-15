@@ -34,6 +34,25 @@ body {
 	color: var(--purple);
 }
 
+.alert,
+.alert-danger {
+	font-size: 1rem;
+	margin-block: .25rem;
+	padding: .75rem .5rem;
+	border-radius: 1rem;
+	color: var(--white);
+}
+
+.alert {
+	background: rgb(239, 213, 95);
+	border: .1rem solid rgb(239, 179, 68);
+}
+
+.alert-danger {
+	background: rgb(239, 95, 95);
+	border: .1rem solid rgb(239, 68, 68);
+}
+
 /* 
 ============== Layout Styles ==============
 */
@@ -44,7 +63,6 @@ body {
 	height: 100vh;
 	object-fit: cover;
 	z-index: -1000;
-	opacity: 1;
 }
 
 /* 
