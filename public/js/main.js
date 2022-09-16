@@ -8,7 +8,7 @@ var timer;
 
 function frameLooper() {
     if (array.length > 0) {
-        document.getElementById("text").innerHTML += array.shift();
+        document.getElementById("text").innerText += array.shift();
     } else {
         clearTimeout(timer);
     }
