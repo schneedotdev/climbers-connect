@@ -4,7 +4,7 @@ const User = require('../models/User')
 
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect('/post')
+    return res.redirect(`/user/${req.user.username}`)
   }
   res.render('account/login', {
     title: 'Login'
@@ -31,7 +31,7 @@ exports.postLogin = (req, res, next) => {
     req.logIn(user, (err) => {
       if (err) { return next(err) }
       req.flash('success', { msg: 'Success! You are logged in.' })
-      res.redirect(req.session.returnTo || '/profile')
+      res.redirect(req.session.returnTo || `/user/${user.username}`)
     })
   })(req, res, next)
 }
@@ -39,13 +39,13 @@ exports.postLogin = (req, res, next) => {
 exports.logout = (req, res) => {
   req.session.destroy((err) => {
     req.user = null
-    res.redirect('/')
+    res.redirect('/login')
   })
 }
 
 exports.getSignup = (req, res) => {
   if (req.user) {
-    return res.redirect('/post')
+    return res.redirect(`/user/${req.user.username}`)
   }
   res.render('account/signup', {
     title: 'Sign Up'
@@ -75,6 +75,9 @@ exports.postSignup = (req, res, next) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
+    posts: [],
+    followers: [],
+    following: []
   })
 
   User.findOne(
@@ -97,7 +100,7 @@ exports.postSignup = (req, res, next) => {
           if (err) {
             return next(err)
           }
-          res.redirect("/profile")
+          res.redirect(`/user/${user.username}`)
         })
       })
     }

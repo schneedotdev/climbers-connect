@@ -11,10 +11,10 @@
         <link rel="icon" href="assets/mountain.png">
     
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/partials/header.css">
-        <link rel="stylesheet" href="css/partials/footer.css">
-        <link rel="stylesheet" href="css/profile.css">
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/partials/header.css">
+        <link rel="stylesheet" href="/css/partials/footer.css">
+        <link rel="stylesheet" href="/css/profile.css">
         
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,9 +24,46 @@
     <body>
         <%- include('partials/header') -%>
 
-        <main>
-            <h1>Content</h1>
-        </main>
+        <div class="profile--content">
+            <header class="profile--header-container">
+                <div class="profile--pic-wrapper">
+                    <img class="profile--pic" src="/assets/headshot-nobg.png">
+                    <a class="edit--profile-link" href="#">
+                        <h3 class="edit--profile">Edit Profile</h3>
+                    </a>
+                </div>
+            </header>
+            <div class="profile--info-container">
+                <section class="profile--username-location">
+                    <h2 class="profile--username">@<%= user.username %></h2>
+                    <h6 class="profile--location">New York</h6>
+                </section>
+                <section class="profile--info-posts">
+                    <h5 class="profile--posts-number"><%= user.posts.length %></h5>
+                    <h4 class="profile--posts-title">Posts</h4>
+                </section>
+                <section class="profile--info-posts-two">
+                    <h5 class="profile--posts-number"><%= user.followers.length %></h5>
+                    <h4 class="profile--posts-title">Followers</h4>
+                </section>
+                <section class="profile--info-posts-three">
+                    <h5 class="profile--posts-number"><%= user.following.length %></h5>
+                    <h4 class="profile--posts-title">Following</h4>
+                </section>
+            </div>
+            <main class="profile--about-posts">
+                <section class="profile--about">
+                    <ul>
+                        <li>
+                            <h3 class="profile--about-text">About</h3>
+                        </li>
+                    </ul>
+                </section>
+                <section class="profile--posts">
+                    <h3>Posts</h3>
+                </section>
+            </main>
+        </div>
         
         <%- include('partials/footer') -%>
     </body>

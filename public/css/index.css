@@ -5,7 +5,7 @@
 :root {
     --white: #fff;
     --dark-blue: #111419;
-    --medium-gray: rgb(227, 228, 229);
+    --light-gray: rgb(227, 228, 229);
     --dark-gray: #4F5D5F;
     --gray-blue: #68819C;
     --light-blue: #81AEE5;
@@ -69,7 +69,7 @@ body {
 
     0%,
     100% {
-        color: var(--medium-gray);
+        color: var(--light-gray);
     }
 
     50% {

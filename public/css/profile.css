@@ -5,11 +5,18 @@
 :root {
     --white: #fff;
     --dark-blue: #111419;
+    --lighter-gray: rgb(248, 248, 248);
+    --light-gray: rgb(227, 228, 229);
+    --medium-gray: #959a9b;
     --dark-gray: #4F5D5F;
     --gray-blue: #68819C;
     --light-blue: #81AEE5;
     --purple: #A0A1F5;
     --dark-purple: #383970;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 /* 
@@ -20,14 +27,128 @@ html {
     font-family: 'Raleway', sans-serif;
 }
 
-main {
+.profile--content {
     min-height: 90vh;
-}
-
-h1 {
-    text-align: center;
 }
 
 /* 
 ============== Additional Styles ==============
 */
+.profile--header-container {
+    width: 100%;
+    height: 12rem;
+    background: url('../assets/profile.jpg') 50% 40% no-repeat;
+    background-size: cover;
+    object-fit: cover;
+}
+
+
+.profile--pic-wrapper {
+    width: 10rem;
+    height: 10rem;
+    display: inline-block;
+    margin: 5rem 0 0 10rem;
+    background: var(--white);
+    border: .1rem solid var(--white);
+    border-radius: .5rem;
+    /* filter: drop-shadow(0 0 0.1rem var(--medium-gray)); */
+}
+
+.profile--pic {
+    padding: .2rem;
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.edit--profile-link {
+    color: black;
+}
+
+.edit--profile-link:hover .edit--profile {
+    color: white;
+    background: black;
+}
+
+.edit--profile {
+    margin-top: .7rem;
+    padding: .5rem 2rem .5rem 2rem;
+    border: .1rem solid black;
+    text-align: center;
+    border-radius: .5rem;
+}
+
+.profile--info-container {
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    background: var(--lighter-gray);
+    padding-inline: 10rem;
+}
+
+.profile--username-location {
+    margin-left: 14rem;
+}
+
+.profile--username {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-bottom: .25rem;
+}
+
+.profile--location {
+    margin-left: 1.1rem;
+    color: var(--dark-gray);
+}
+
+.profile--info-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+}
+
+.profile--info-posts-two,
+.profile--info-posts-three {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+.profile--posts-number {
+    font-size: 1.7rem;
+    font-weight: 600;
+    margin-bottom: .25rem;
+}
+
+.profile--posts-title {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--dark-gray);
+}
+
+.profile--about-posts {
+    display: flex;
+    padding: 1.5rem 10rem;
+}
+
+.profile--about {
+    width: 23rem;
+    height: 30rem;
+    background: var(--lighter-gray);
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.profile--about-text {
+    font-weight: 400;
+}
+
+.profile--posts {
+    /* background: red; */
+    margin-left: 1.5rem;
+    width: 65%;
+    border-radius: .5rem;
+    padding: .9rem;
+    border: .1rem solid var(--lighter-gray);
+}

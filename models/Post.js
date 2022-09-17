@@ -19,7 +19,9 @@ const ClimbSchema = new mongoose.Schema({
     },
     rating: {
         type: Number,
-        required: true
+        required: true,
+        min: 0,
+        max: 10
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,

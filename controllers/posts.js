@@ -4,10 +4,15 @@ const cloudinary = require("../middleware/cloudinary")
 
 module.exports = {
   getProfile: async (req, res) => {
-    const climbs = Climb.find({ user: req.user.id })
-    const partnerSearches = PartnerSearch.find({ user: req.user.id })
+    const user = await User.findOne({ username: req.params.username })
 
-    res.render('profile', { climbs, partnerSearches })
+    // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
+    if (!user) return res.sendStatus(404);
+
+    const climbs = await Climb.find({ user: req.user.id })
+    const partnerSearches = await PartnerSearch.find({ user: req.user.id })
+
+    res.render('profile', { user, climbs, partnerSearches })
   },
   createClimb: async (req, res) => {
     try {
