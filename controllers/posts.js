@@ -25,11 +25,11 @@ module.exports = {
   },
   follow: async (req, res) => {
     console.log('followUser')
-    res.rediect('/getProfile')
+    res.redirect('/getProfile')
   },
   unfollow: async (req, res) => {
     console.log('unfollowUser')
-    res.rediect('/getProfile')
+    res.redirect('/getProfile')
   },
   createClimb: async (req, res) => {
     try {
