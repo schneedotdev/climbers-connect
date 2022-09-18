@@ -12,7 +12,16 @@ module.exports = {
     const climbs = await Climb.find({ user: req.user.id })
     const partnerSearches = await PartnerSearch.find({ user: req.user.id })
 
-    res.render('profile', { user, climbs, partnerSearches })
+    // check to see if the current user is requesting their own profile
+    const isCurrentUser = req.user.username === req.params.username
+
+    let following = false;
+    if (!isCurrentUser) {
+      // check to see if the user is following the account they are requesting
+      following = req.user.following.some(person => person === req.params.username)
+    }
+
+    res.render('profile', { user, climbs, partnerSearches, isCurrentUser, following })
   },
   createClimb: async (req, res) => {
     try {

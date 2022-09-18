@@ -11,6 +11,7 @@
     --dark-gray: #4F5D5F;
     --gray-blue: #68819C;
     --light-blue: #81AEE5;
+    --medium-blue: #274469;
     --purple: #A0A1F5;
     --dark-purple: #383970;
 }
@@ -71,7 +72,8 @@ html {
 }
 
 .edit--profile,
-.follow--profile {
+.follow--profile,
+.following--profile {
     text-align: center;
     margin-top: .7rem;
     padding: .5rem 2rem .5rem 2rem;
@@ -88,13 +90,24 @@ html {
     border: .1rem solid var(--purple);
 }
 
-.follow--profile-link {
+.follow--profile-link,
+.following--profile-link {
     color: var(--white);
 }
 
 .follow--profile-link:hover .follow--profile {
     background: var(--dark-purple);
-    border-color: var(--dark-purple)
+    border-color: var(--dark-purple);
+}
+
+.following--profile {
+    background: var(--light-blue);
+    border: .1rem solid var(--light-blue);
+}
+
+.following--profile-link:hover .following--profile {
+    background: var(--medium-blue);
+    border: .1rem solid var(--medium-blue);
 }
 
 .profile--info-container {
@@ -194,6 +207,6 @@ html {
     border-radius: .5rem;
 }
 
-.margin-left {
+.li--margin-left {
     margin-left: auto;
 }
