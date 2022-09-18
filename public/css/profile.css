@@ -129,7 +129,7 @@ html {
 }
 
 .profile--location {
-    margin-left: 1.1rem;
+    /* margin-left: 1.1rem; */
     color: var(--dark-gray);
 }
 
@@ -173,8 +173,9 @@ html {
     padding: 1rem;
 }
 
-.profile--about-text {
-    font-weight: 400;
+.profile--about-text,
+.profile--posts-text {
+    font-weight: 500;
 }
 
 .margin-top {

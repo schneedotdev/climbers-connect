@@ -36,7 +36,7 @@
                             <h3 class="edit--profile">Edit Profile</h3>
                         </a>
                     <% } else { %>
-                        <% if(!following) { %>
+                        <% if(following) { %>
                             <a class="following--profile-link" href="#">
                                 <h3 class="following--profile">Following</h3>
                             </a>
@@ -81,7 +81,7 @@
                     </ul>
                 </section>
                 <section class="profile--posts">
-                    <h3>Posts</h3>
+                    <h3 class="profile--posts-text">Posts</h3>
                     <ul class="profile--posts-list">
                         <li>
                             <img class="profile--post" src="/assets/profile.jpg">

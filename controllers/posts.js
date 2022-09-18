@@ -23,6 +23,14 @@ module.exports = {
 
     res.render('profile', { user, climbs, partnerSearches, isCurrentUser, following })
   },
+  follow: async (req, res) => {
+    console.log('followUser')
+    res.rediect('/getProfile')
+  },
+  unfollow: async (req, res) => {
+    console.log('unfollowUser')
+    res.rediect('/getProfile')
+  },
   createClimb: async (req, res) => {
     try {
       // Upload image to cloudinary
