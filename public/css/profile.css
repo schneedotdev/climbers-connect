@@ -154,7 +154,7 @@ html {
 
 .profile--about {
     width: 23rem;
-    height: 30rem;
+    height: 20rem;
     background: var(--lighter-gray);
     border-radius: .5rem;
     padding: 1rem;
@@ -164,6 +164,11 @@ html {
     font-weight: 400;
 }
 
+.margin-top {
+    margin-top: 1rem;
+    font-weight: 300;
+}
+
 .profile--posts {
     /* background: red; */
     margin-left: 1.5rem;
@@ -171,4 +176,24 @@ html {
     border-radius: .5rem;
     padding: .9rem;
     border: .1rem solid var(--lighter-gray);
+}
+
+.profile--posts-list {
+    width: 100%;
+    display: flex;
+    padding-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.profile--posts-list li {
+    width: 49%;
+}
+
+.profile--post {
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.margin-left {
+    margin-left: auto;
 }
