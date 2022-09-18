@@ -62,50 +62,49 @@ html {
     border-radius: .5rem;
 }
 
-.edit--profile-link {
-    color: black;
-}
-
-.edit--profile-link:hover .edit--profile {
-    color: white;
-    background: black;
-}
-
-.edit--profile,
-.follow--profile,
-.following--profile {
+.follow--profile-button,
+.following--profile-button,
+.edit--profile-button {
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
     text-align: center;
     margin-top: .7rem;
-    padding: .5rem 2rem .5rem 2rem;
+    padding: .5rem 0;
     border-radius: .5rem;
 }
 
-
-.edit--profile {
-    border: .1rem solid black;
+.following--profile-button,
+.follow--profile-button {
+    color: var(--white);
 }
 
-.follow--profile {
+.edit--profile-button {
+    color: var(--dark-blue);
+    border: .1rem solid var(--dark-blue);
+}
+
+.edit--profile-button:hover {
+    color: var(--white);
+    background: var(--dark-blue);
+}
+
+.follow--profile-button {
     background: var(--purple);
     border: .1rem solid var(--purple);
 }
 
-.follow--profile-link,
-.following--profile-link {
-    color: var(--white);
-}
-
-.follow--profile-link:hover .follow--profile {
+.follow--profile-button:hover {
     background: var(--dark-purple);
-    border-color: var(--dark-purple);
+    border: .1rem solid var(--dark-purple);
 }
 
-.following--profile {
+.following--profile-button {
     background: var(--light-blue);
     border: .1rem solid var(--light-blue);
 }
 
-.following--profile-link:hover .following--profile {
+.following--profile-button:hover {
     background: var(--medium-blue);
     border: .1rem solid var(--medium-blue);
 }

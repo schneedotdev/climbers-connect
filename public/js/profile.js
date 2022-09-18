@@ -1,9 +1,9 @@
-const followingLink = document.querySelector('.following--profile-link')
+const followingBtn = document.querySelector('.following--profile-button')
 
-followingLink.addEventListener('mouseover', () => {
-    document.querySelector('.following--profile').innerText = 'Unfollow'
+followingBtn.addEventListener('mouseover', () => {
+    followingBtn.innerText = 'Unfollow'
 })
 
-followingLink.addEventListener('mouseout', () => {
-    document.querySelector('.following--profile').innerText = 'Following'
+followingBtn.addEventListener('mouseout', () => {
+    followingBtn.innerText = 'Following'
 })
