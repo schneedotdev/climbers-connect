@@ -28,9 +28,15 @@
             <header class="profile--header-container">
                 <div class="profile--pic-wrapper">
                     <img class="profile--pic" src="/assets/headshot-nobg.png">
-                    <a class="edit--profile-link" href="#">
-                        <h3 class="edit--profile">Edit Profile</h3>
-                    </a>
+                    <% if (true) { %>
+                        <a class="follow--profile-link" href="#">
+                            <h3 class="follow--profile">Follow</h3>
+                        </a>
+                    <% } else { %>
+                        <a class="edit--profile-link" href="#">
+                            <h3 class="edit--profile">Edit Profile</h3>
+                        </a>
+                    <% } %>
                 </div>
             </header>
             <div class="profile--info-container">

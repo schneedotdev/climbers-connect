@@ -36,10 +36,11 @@ html {
 */
 .profile--header-container {
     width: 100%;
-    height: 12rem;
+    height: 14rem;
     background: url('../assets/profile.jpg') 50% 40% no-repeat;
     background-size: cover;
     object-fit: cover;
+    padding-top: 2rem;
 }
 
 
@@ -69,12 +70,31 @@ html {
     background: black;
 }
 
-.edit--profile {
+.edit--profile,
+.follow--profile {
+    text-align: center;
     margin-top: .7rem;
     padding: .5rem 2rem .5rem 2rem;
-    border: .1rem solid black;
-    text-align: center;
     border-radius: .5rem;
+}
+
+
+.edit--profile {
+    border: .1rem solid black;
+}
+
+.follow--profile {
+    background: var(--purple);
+    border: .1rem solid var(--purple);
+}
+
+.follow--profile-link {
+    color: var(--white);
+}
+
+.follow--profile-link:hover .follow--profile {
+    background: var(--dark-purple);
+    border-color: var(--dark-purple)
 }
 
 .profile--info-container {
