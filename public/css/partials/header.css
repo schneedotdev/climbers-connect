@@ -63,6 +63,20 @@ html {
     font-weight: 700;
 }
 
+.header--li-button {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--white);
+    background: transparent;
+    border: none;
+}
+
+.header--li-button:hover {
+    color: var(--purple);
+    cursor: pointer;
+}
+
 .header--li-link {
     display: flex;
     align-items: center;

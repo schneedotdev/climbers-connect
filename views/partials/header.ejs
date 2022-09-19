@@ -18,9 +18,13 @@
                 </a>
             </li>
             <li class="header--li margin-left">
-                <a class="header--li-link" href="/user/<%= user.username %>">
+                <form action="/user/<%= user.username %>" method="get">
+                    <button class="header--li-button">My Profile</button>
+                    <input type="hidden" name="myProfileBtn" value="true">
+                </form>
+                <!-- <a class="header--li-link" href="/user/<%= user.username %>">
                     <h2>My Profile</h2>
-                </a>
+                </a> -->
             </li>
             <li class="header--li margin-left">
                 <a class="header--li-link" href="/logout">

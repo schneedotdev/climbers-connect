@@ -4,6 +4,10 @@ const cloudinary = require("../middleware/cloudinary")
 
 module.exports = {
   getProfile: async (req, res) => {
+    if (req.query.myProfileBtn) {
+      res.redirect(`/user/${req.user.username}`)
+    }
+
     const user = await User.findOne({ username: req.params.username })
 
     // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
