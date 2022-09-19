@@ -18,18 +18,50 @@ module.exports = {
     let following = false;
     if (!isCurrentUser) {
       // check to see if the user is following the account they are requesting
-      following = req.user.following.some(person => person === req.params.username)
+      following = req.user.following.some(userId => userId.toString() === user._id.toString())
     }
 
     res.render('profile', { user, climbs, partnerSearches, isCurrentUser, following })
   },
   follow: async (req, res) => {
-    console.log('followUser')
-    res.redirect('/getProfile')
+    try {
+      const currentUser = await User.findOne({ _id: req.user._id })
+      const userToFollow = await User.findOne({ username: req.params.username })
+
+      if (!currentUser.following.includes(userToFollow._id)) {
+        currentUser.following.push(userToFollow._id)
+        userToFollow.followers.push(currentUser._id)
+
+        currentUser.save()
+        userToFollow.save()
+      }
+
+      res.redirect(`/user/${req.params.username}`)
+    } catch (err) {
+      console.error(err)
+    }
   },
   unfollow: async (req, res) => {
-    console.log('unfollowUser')
-    res.redirect('/getProfile')
+    try {
+      const currentUser = await User.findOne({ _id: req.user._id })
+      const userToFollow = await User.findOne({ username: req.params.username })
+
+      if (currentUser.following.includes(userToFollow._id)) {
+        const currentUserArr = currentUser.following
+        const userToFollowArr = userToFollow.followers
+
+
+        currentUserArr.splice(currentUserArr.indexOf(userToFollow._id), 1)
+        userToFollowArr.splice(userToFollowArr.indexOf(currentUser._id), 1)
+
+        currentUser.save()
+        userToFollow.save()
+      }
+
+      res.redirect(`/user/${req.params.username}`)
+    } catch (err) {
+      console.error(err)
+    }
   },
   createClimb: async (req, res) => {
     try {
