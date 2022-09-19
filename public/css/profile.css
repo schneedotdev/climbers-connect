@@ -61,9 +61,25 @@ html {
     border-radius: .5rem;
 }
 
+.edit--profile-text {
+    text-align: center;
+    margin-top: .7rem;
+    padding: .5rem 2rem .5rem 2rem;
+    border: .1rem solid black;
+    border-radius: .5rem;
+}
+
+.edit--profile-link {
+    color: black;
+}
+
+.edit--profile-link:hover .edit--profile-text {
+    color: white;
+    background: black;
+}
+
 .follow--profile-button,
-.following--profile-button,
-.edit--profile-button {
+.following--profile-button {
     width: 100%;
     font-family: 'Raleway', sans-serif;
     font-size: 1rem;
@@ -76,16 +92,6 @@ html {
 .following--profile-button,
 .follow--profile-button {
     color: var(--white);
-}
-
-.edit--profile-button {
-    color: var(--dark-blue);
-    border: .1rem solid var(--dark-blue);
-}
-
-.edit--profile-button:hover {
-    color: var(--white);
-    background: var(--dark-blue);
 }
 
 .follow--profile-button {

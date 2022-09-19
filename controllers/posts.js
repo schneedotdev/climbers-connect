@@ -67,6 +67,10 @@ module.exports = {
       console.error(err)
     }
   },
+  edit: async (req, res) => {
+    console.log('edit')
+    res.render('edit')
+  },
   createClimb: async (req, res) => {
     try {
       // Upload image to cloudinary

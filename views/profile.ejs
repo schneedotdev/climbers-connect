@@ -32,16 +32,16 @@
                 <div class="profile--pic-wrapper">
                     <img class="profile--pic" src="/assets/headshot-nobg.png">
                     <% if (isCurrentUser) { %>
-                        <form class="" action="/user/editProfile/<%= user.username %>?_method=PUT" method="POST">
-                            <button class="edit--profile-button" type="submit">Edit Profile</button>
-                        </form>
+                        <a class="edit--profile-link" href="/user/edit/<%= user.username %>">
+                            <h3 class="edit--profile-text">Edit Profile</h3>
+                        </a>
                     <% } else { %>
                         <% if(following) { %>
-                            <form class="" action="/user/unfollow/<%= user.username %>?_method=PUT" method="POST">
+                            <form action="/user/unfollow/<%= user.username %>?_method=PUT" method="POST">
                                 <button class="following--profile-button" type="submit">Following</button>
                             </form>
                         <% } else { %> 
-                            <form class="" action="/user/follow/<%= user.username %>?_method=PUT" method="POST">
+                            <form action="/user/follow/<%= user.username %>?_method=PUT" method="POST">
                                 <button class="follow--profile-button" type="submit">Follow</button>
                             </form>
                         <% } %>
