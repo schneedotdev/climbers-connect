@@ -22,7 +22,7 @@
     <div class="profile--info-container">
         <section class="profile--username-location">
             <h2 class="profile--username">@<%= user.username %></h2>
-            <h6 class="profile--location">New York</h6>
+            <h6 class="profile--location"><%= user.profile.location %></h6>
         </section>
         <section class="profile--info-posts">
             <h5 class="profile--posts-number"><%= user.profile.posts.length %></h5>
@@ -49,13 +49,7 @@
                     <% } %>
                 </li>
                 <li>
-                    <p class="margin-top">Full-Stack Software Engineer at #100devs</p>
-                </li>
-                <li class="margin-top">
-                    <p>👨‍💻 I like to create web applications and help people with coding</p>
-                </li>
-                <li>
-                    <p class="margin-top">🎓 A.S. in Computer Science</p>
+                    <p class="margin-top"><%= user.profile.about %></p>
                 </li>
             </ul>
         </section>
@@ -63,16 +57,16 @@
             <h3 class="profile--posts-text">Posts</h3>
             <ul class="profile--posts-list">
                 <li>
-                    <img class="profile--post" src="/assets/profile.jpg">
+                    <img class="profile--post" src="/assets/profile-backgrounds/background2.jpg">
                 </li>
                 <li class="li--margin-left">
                     <img class="profile--post" src="/assets/login.png">
                 </li>
                 <li class="margin-top">
-                    <img class="profile--post" src="/assets/profile.jpg">
+                    <img class="profile--post" src="/assets/profile-backgrounds/background3.jpg">
                 </li>
                 <li class="li--margin-left margin-top">
-                    <img class="profile--post" src="/assets/login.png">
+                    <img class="profile--post" src="/assets/profile-backgrounds/background4.jpg">
                 </li>
             </ul>
         </section>

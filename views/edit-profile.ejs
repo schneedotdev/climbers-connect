@@ -79,13 +79,13 @@
                             <hr class="basic--info-hr">
 
                             <label for="edit--name">Name</label>
-                            <input type="text" id="edit--name" name="name" maxLength="30">
+                            <input type="text" id="edit--name" name="name" maxLength="30" value="<%= user.profile.name %>">
 
                             <label for="edit--location">Location</label>
-                            <input type="text" id="edit--location" name="location" maxLength="30">
+                            <input type="text" id="edit--location" name="location" maxLength="30" value="<%= user.profile.location %>">
 
                             <label for="edit--about">About</label>
-                            <textarea id="edit--about" name="about" maxlength="350"></textarea>
+                            <textarea id="edit--about" name="about" maxlength="350"><%= user.profile.about %></textarea>
 
                             <label>Background Image</label>
                             <ul class="bg--preview-list">

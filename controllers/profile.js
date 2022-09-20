@@ -40,13 +40,14 @@ module.exports = {
         try {
             if (req.params.username !== req.user.username) return res.redirect(`/user/${req.user.username}`)
 
-            console.log(req.body)
+            const user = await User.findOne({ _id: req.user._id })
+            const { name, location, about } = req.body;
 
-            const user = User.find({ _id: req.user._id })
+            if (name) user.profile.name = name.trim()
+            if (location) user.profile.location = location.trim()
+            if (about) user.profile.about = about.trim()
 
-            if (req.body.location) user.profile.location = req.body.location
-            if (req.body.name) user.profile.location = req.body.name
-            if (req.body.about) user.profile.about = req.body.about
+            await user.save()
 
             res.redirect(`/user/${req.user.username}`)
         } catch (err) {
@@ -63,8 +64,8 @@ module.exports = {
                 currentUser.profile.following.push(userToFollow._id)
                 userToFollow.profile.followers.push(currentUser._id)
 
-                currentUser.save()
-                userToFollow.save()
+                await currentUser.save()
+                await userToFollow.save()
             }
 
             res.redirect(`/user/${req.params.username}`)
@@ -81,12 +82,11 @@ module.exports = {
                 const currentUserArr = currentUser.profile.following
                 const userToFollowArr = userToFollow.profile.followers
 
-
                 currentUserArr.splice(currentUserArr.indexOf(userToFollow._id), 1)
                 userToFollowArr.splice(userToFollowArr.indexOf(currentUser._id), 1)
 
-                currentUser.save()
-                userToFollow.save()
+                await currentUser.save()
+                await userToFollow.save()
             }
 
             res.redirect(`/user/${req.params.username}`)

@@ -17,6 +17,10 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   profile: {
+    name: {
+      type: String,
+      required: true,
+    },
     about: {
       type: String,
       default: "I really love rocks! Checkout the climbs I've sent!"

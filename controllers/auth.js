@@ -75,9 +75,12 @@ exports.postSignup = (req, res, next) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    posts: [],
-    followers: [],
-    following: []
+    profile: {
+      name: req.body.username,
+      posts: [],
+      followers: [],
+      following: [],
+    }
   })
 
   User.findOne(
