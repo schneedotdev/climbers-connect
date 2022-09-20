@@ -1,0 +1,230 @@
+/* 
+============== Base Styles ==============
+*/
+
+:root {
+    --white: #fff;
+    --dark-blue: #111419;
+    --lighter-gray: rgb(248, 248, 248);
+    --form-gray: #e0e0e0;
+    --light-gray: rgb(227, 228, 229);
+    --medium-gray: #959a9b;
+    --dark-gray: #4F5D5F;
+    --gray-blue: #68819C;
+    --light-blue: #81AEE5;
+    --medium-blue: #274469;
+    --purple: #A0A1F5;
+    --dark-purple: #383970;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+hr {
+    margin: 0;
+    border-color: var(--form-gray);
+    color: var(--dark-blue);
+}
+
+.drop-shadow {
+    filter: drop-shadow(0 0 .75rem var(--light-gray));
+}
+
+/* 
+============== Layout Styles ==============
+*/
+
+html {
+    font-family: 'Raleway', sans-serif;
+}
+
+/* 
+============== Additional Styles ==============
+*/
+
+.edit--title {
+    margin: 2rem 10rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.edit--title-hr {
+    width: 100%;
+}
+
+.edit--options-list {
+    margin: 0 10rem;
+}
+
+.edit--options-profile {
+    display: inline-block;
+    font-weight: 500;
+    color: var(--purple);
+    padding-bottom: 1rem;
+    border-bottom: .2rem solid var(--purple);
+}
+
+.edit--containers-wrapper {
+    margin: 2rem 10rem;
+    display: flex;
+}
+
+.edit--container-left,
+.edit--container-right {
+    color: var(--dark-blue);
+    padding: 2rem 4rem;
+}
+
+.edit--container-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 30rem;
+    width: 35%;
+    border-right: .05rem solid var(--form-gray);
+}
+
+.edit--profile-pic {
+    margin-top: 2rem;
+    width: 7rem;
+    height: 7rem;
+    border: .2rem solid var(--form-gray);
+    border-radius: 50%;
+}
+
+.edit--username {
+    color: var(--light-blue);
+    font-weight: 300;
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+}
+
+.edit--left-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.left--list-li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left--list-number {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.left--list-title {
+    margin-top: .2rem;
+    font-size: .8rem;
+    font-weight: 300;
+    color: var(--dark-gray);
+}
+
+#file-upload {
+    display: none;
+}
+
+.custom-file-upload {
+    margin-top: 2rem;
+    color: var(--white);
+    background: var(--light-blue);
+    border: .1rem solid var(--light-blue);
+    display: inline-block;
+    padding: .6rem 1.5rem;
+    border-radius: .5rem;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+.edit--container-right {
+    height: 30rem;
+    width: 65%;
+}
+
+.edit--container-left-title {
+    padding-top: .6rem;
+}
+
+.edit--container-left-title,
+.basic--info-title {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.basic--info-container {
+    display: flex;
+    align-items: center;
+}
+
+.cancel--link,
+.save--btn {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.cancel--link {
+    margin-left: auto;
+    color: var(--purple);
+}
+
+.save--btn {
+    margin-left: 1rem;
+    background: var(--purple);
+    cursor: pointer;
+    color: var(--white);
+}
+
+.cancel--link,
+.save--btn {
+    padding: .5rem 1rem;
+    border: .1rem solid var(--purple);
+    border-radius: .5rem;
+}
+
+.save--btn:hover,
+.cancel--link:hover {
+    color: var(--white);
+    background: var(--dark-purple);
+    border-color: var(--dark-purple);
+}
+
+.basic--info-hr {
+    margin-top: 1rem;
+}
+
+
+
+
+
+
+
+
+
+.bg--preview-list {
+    margin: 2rem 10rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bg--preview-li {
+    width: 24%;
+}
+
+.bg--preview-img {
+    border-radius: 1rem;
+    width: 100%;
+}

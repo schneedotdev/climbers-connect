@@ -181,6 +181,20 @@ html {
     font-weight: 500;
 }
 
+.li--flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit--icon {
+    color: transparent;
+}
+
+.profile--about:hover .edit--icon {
+    color: var(--dark-blue);
+}
+
 .margin-top {
     margin-top: 1rem;
     font-weight: 300;

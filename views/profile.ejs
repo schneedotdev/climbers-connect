@@ -23,85 +23,16 @@
 
         <!-- Scripts -->
         <script src="/js/profile.js" defer></script>
+        <script
+			src="https://kit.fontawesome.com/b89dd87408.js"
+			crossorigin="anonymous"
+			defer
+		></script>
     </head>
     <body>
         <%- include('partials/header') -%>
 
-        <div class="profile--content">
-            <header class="profile--header-container">
-                <div class="profile--pic-wrapper">
-                    <img class="profile--pic" src="/assets/headshot-nobg.png">
-                    <% if (isCurrentUser) { %>
-                        <a class="edit--profile-link" href="/user/edit/<%= user.username %>">
-                            <h3 class="edit--profile-text">Edit Profile</h3>
-                        </a>
-                    <% } else { %>
-                        <% if(following) { %>
-                            <form action="/user/unfollow/<%= user.username %>?_method=PUT" method="POST">
-                                <button class="following--profile-button" type="submit">Following</button>
-                            </form>
-                        <% } else { %> 
-                            <form action="/user/follow/<%= user.username %>?_method=PUT" method="POST">
-                                <button class="follow--profile-button" type="submit">Follow</button>
-                            </form>
-                        <% } %>
-                    <% } %>
-                </div>
-            </header>
-            <div class="profile--info-container">
-                <section class="profile--username-location">
-                    <h2 class="profile--username">@<%= user.username %></h2>
-                    <h6 class="profile--location">New York</h6>
-                </section>
-                <section class="profile--info-posts">
-                    <h5 class="profile--posts-number"><%= user.posts.length %></h5>
-                    <h4 class="profile--posts-title">Posts</h4>
-                </section>
-                <section class="profile--info-posts-two">
-                    <h5 class="profile--posts-number"><%= user.followers.length %></h5>
-                    <h4 class="profile--posts-title">Followers</h4>
-                </section>
-                <section class="profile--info-posts-three">
-                    <h5 class="profile--posts-number"><%= user.following.length %></h5>
-                    <h4 class="profile--posts-title">Following</h4>
-                </section>
-            </div>
-            <main class="profile--about-posts">
-                <section class="profile--about">
-                    <ul>
-                        <li>
-                            <h3 class="profile--about-text">About</h3>
-                        </li>
-                        <li>
-                            <p class="margin-top">Full-Stack Software Engineer at #100devs</p>
-                        </li>
-                        <li class="margin-top">
-                            <p>👨‍💻 I like to create web applications and help people with coding</p>
-                        </li>
-                        <li>
-                            <p class="margin-top">🎓 A.S. in Computer Science</p>
-                        </li>
-                    </ul>
-                </section>
-                <section class="profile--posts">
-                    <h3 class="profile--posts-text">Posts</h3>
-                    <ul class="profile--posts-list">
-                        <li>
-                            <img class="profile--post" src="/assets/profile.jpg">
-                        </li>
-                        <li class="li--margin-left">
-                            <img class="profile--post" src="/assets/login.png">
-                        </li>
-                        <li class="margin-top">
-                            <img class="profile--post" src="/assets/profile.jpg">
-                        </li>
-                        <li class="li--margin-left margin-top">
-                            <img class="profile--post" src="/assets/login.png">
-                        </li>
-                    </ul>
-                </section>
-            </main>
-        </div>
+        <%- include('partials/profile-content') -%>
         
         <%- include('partials/footer') -%>
     </body>

@@ -68,8 +68,14 @@ module.exports = {
     }
   },
   edit: async (req, res) => {
-    console.log('edit')
-    res.render('edit')
+    try {
+      const isCurrentUser = req.user.username === req.params.username
+      if (!isCurrentUser) return res.redirect(`user/${req.params.username}`)
+
+      res.render('edit-profile', { user: req.user })
+    } catch (err) {
+      console.error(err)
+    }
   },
   createClimb: async (req, res) => {
     try {

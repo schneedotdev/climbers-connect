@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Edit Profile | Climbers Connect</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="/assets/mountain.png">
+    
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/partials/header.css">
+        <link rel="stylesheet" href="/css/partials/footer.css">
+        <link rel="stylesheet" href="/css/edit-profile.css">
+        
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100&display=swap" rel="stylesheet"> 
+
+        <!-- Scripts -->
+        <script src="/js/profile.js" defer></script>
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+
+        <main>
+            <h1 class="edit--title">Edit Profile</h1>
+            <ul class="edit--options-list">
+                <li class="edit--options-li">
+                    <h2 class="edit--options-profile">Profile</h2>
+                </li>
+            </ul>
+            <hr class="edit--title-hr">
+
+
+            <section class="edit--containers-wrapper">
+                <section class="edit--container-left">
+                    <h2 class="edit--container-left-title">Profile</h2>
+                    <div class="drop-shadow">
+                        <img class="edit--profile-pic" src="/assets/headshot-nobg.png">
+                    </div>
+                    <h3 class="edit--username">@<%= user.username %></h3>
+
+                    <ul class="edit--left-list">
+                        <li class="left--list-li">
+                            <span class="left--list-number"><%= user.followers.length %></span>
+                            <h5 class="left--list-title">Followers</h5>
+                        </li>
+                        <li class="left--list-li">
+                            <span class="left--list-number"><%= user.posts.length %></span>
+                            <h5 class="left--list-title">Posts</h5>
+                        </li>
+                        <li class="left--list-li">
+                            <span class="left--list-number"><%= user.following.length %></span>
+                            <h5 class="left--list-title">Following</h5>
+                        </li>
+                    </ul>
+
+                    <label for="file-upload" class="custom-file-upload">
+                        Upload New Avatar
+                    </label>
+                    <input id="file-upload" type="file"/>
+                </section>
+    
+                <section class="edit--container-right">
+                    <div class="basic--info-container">
+                        <h2 class="basic--info-title">Basic Info</h2>
+                        <a class="cancel--link" href="">
+                            <h3 class="cancel--text">Cancel</h3>
+                        </a>
+                        <form action="/user/<%= user.username %>?_method=put" method="POST">
+                            <button type="submit" class="save--btn">Save</button>
+                        </form>
+                    </div>
+                    <hr class="basic--info-hr">
+                </section>
+            </section>
+
+            <!-- <ul class="bg--preview-list">
+                <li class="bg--preview-li">
+                    <img class="bg--preview-img" src="/assets/profile.jpg">
+                </li>
+                <li class="bg--preview-li">
+                    <img class="bg--preview-img" src="/assets/profile.jpg">
+                </li>
+                <li class="bg--preview-li">
+                    <img class="bg--preview-img" src="/assets/profile.jpg">
+                </li>
+                <li class="bg--preview-li">
+                    <img class="bg--preview-img" src="/assets/profile.jpg">
+                </li>
+            </ul> -->
+        </main>
+        
+        <%- include('partials/footer') -%>
+    </body>
+</html>
