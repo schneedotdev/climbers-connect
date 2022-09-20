@@ -20,9 +20,9 @@
         </div>
     </header>
     <div class="profile--info-container">
-        <section class="profile--username-location">
-            <h2 class="profile--username">@<%= user.username %></h2>
-            <h6 class="profile--location"><%= user.profile.location %></h6>
+        <section class="profile--username-name">
+            <h2 class="profile--name"><%= user.profile.name %></h2>
+            <h6 class="profile--username">@<%= user.username %></h6>
         </section>
         <section class="profile--info-posts">
             <h5 class="profile--posts-number"><%= user.profile.posts.length %></h5>
@@ -51,10 +51,21 @@
                 <li>
                     <p class="margin-top"><%= user.profile.about %></p>
                 </li>
+                <li>
+                    <p class="margin-top"><i class="fa-solid fa-house home-icon"></i><%= user.profile.location %></p>
+                </li>
+                <li>
+                    <p class="margin-top"><i class="fa-brands fa-twitter twitter-icon"></i>BrianSchneeDev</p>
+                </li>
             </ul>
         </section>
         <section class="profile--posts">
-            <h3 class="profile--posts-text">Posts</h3>
+            <div class="posts--heading-container">
+                <h3 class="profile--posts-text">Posts</h3>
+                <a class="create--post" href="/post/create">
+                    <h2 class="create--post-text">Create</h2>
+                </a>
+            </div>
             <ul class="profile--posts-list">
                 <li>
                     <img class="profile--post" src="/assets/profile-backgrounds/background2.jpg">

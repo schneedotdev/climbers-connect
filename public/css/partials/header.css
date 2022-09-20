@@ -104,5 +104,5 @@ html {
 
 .last--link:hover {
     color: var(--white);
-    background: var(--dark-purple);
+    background: var(--purple);
 }

@@ -7,6 +7,7 @@
     --dark-blue: #111419;
     --lighter-gray: rgb(248, 248, 248);
     --light-gray: rgb(227, 228, 229);
+    --medium-light-gray: #babebf;
     --medium-gray: #959a9b;
     --dark-gray: #4F5D5F;
     --gray-blue: #68819C;
@@ -122,18 +123,24 @@ html {
     padding-inline: 10rem;
 }
 
-.profile--username-location {
+.profile--username-name {
     margin-left: 14rem;
 }
 
-.profile--username {
+.profile--name {
     font-size: 1.3rem;
     font-weight: 400;
     margin-bottom: .25rem;
 }
 
-.profile--location {
+.profile--username {
     color: var(--dark-gray);
+}
+
+.home-icon,
+.twitter-icon {
+    color: var(--medium-light-gray);
+    margin-right: .5rem;
 }
 
 .profile--info-posts {
@@ -157,10 +164,34 @@ html {
     margin-bottom: .25rem;
 }
 
+.posts--heading-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .profile--posts-title {
     font-size: 1rem;
     font-weight: 400;
     color: var(--dark-gray);
+}
+
+.create--post {
+    color: var(--white);
+    background: var(--purple);
+    border-radius: .5rem;
+    border: .1rem solid var(--purple);
+}
+
+.create--post:hover {
+    color: var(--white);
+    background: var(--dark-purple);
+    border-color: var(--dark-purple);
+}
+
+.create--post-text {
+    padding: .5rem 1rem;
+    font-size: .9rem;
 }
 
 .profile--about-posts {
