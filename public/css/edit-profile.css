@@ -32,13 +32,20 @@
     filter: drop-shadow(0 0 .75rem var(--light-gray));
 }
 
+html,
+textarea,
+input {
+    font-family: 'Raleway', sans-serif;
+}
+
+textarea {
+    font-size: .9rem;
+}
+
 /* 
 ============== Layout Styles ==============
 */
 
-html {
-    font-family: 'Raleway', sans-serif;
-}
 
 /* 
 ============== Additional Styles ==============
@@ -81,7 +88,6 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 30rem;
     width: 35%;
     border-right: .05rem solid var(--form-gray);
 }
@@ -148,7 +154,6 @@ html {
 }
 
 .edit--container-right {
-    height: 30rem;
     width: 65%;
 }
 
@@ -232,12 +237,6 @@ label {
     box-shadow: 0 0 0.3rem var(--purple);
     -moz-box-shadow: 0 0 0.3rem var(--purple);
     -webkit-box-shadow: 0 0 0.3rem var(--purple);
-}
-
-#edit--name::placeholder,
-#edit--location::placeholder,
-#edit--about::placeholder {
-    font-family: 'Raleway', sans-serif;
     font-weight: 300;
 }
 
@@ -248,22 +247,18 @@ label {
     max-height: 6.3rem;
 }
 
-
-
-
-
-
 .bg--preview-list {
-    margin: 2rem 10rem;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .bg--preview-li {
-    width: 24%;
+    margin-top: 1rem;
+    width: 48.5%;
 }
 
 .bg--preview-img {
-    border-radius: 1rem;
+    border-radius: .5rem;
     width: 100%;
 }

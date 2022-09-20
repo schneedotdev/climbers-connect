@@ -3,5 +3,5 @@ module.exports = {
         res.render('index.ejs', {
             title: 'Home'
         })
-    }
+    },
 }

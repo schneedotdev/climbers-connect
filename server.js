@@ -10,6 +10,7 @@ const logger = require('morgan')
 const connectDB = require('./config/database')
 const mainRoutes = require('./routes/main')
 const postRoutes = require('./routes/posts')
+const profileRoutes = require('./routes/profile')
 
 require('dotenv').config({ path: './config/.env' })
 
@@ -47,6 +48,7 @@ app.use(flash())
 
 app.use('/', mainRoutes)
 app.use('/posts', postRoutes)
+app.use('/user', profileRoutes)
 
 const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
