@@ -68,7 +68,7 @@
     
                 <section class="edit--container-right">
                     <div class="basic--info-container">
-                        <h2 class="basic--info-title">Basic Info</h2>
+                        <h2 class="basic--info-title">Personal Info</h2>
                         <a class="cancel--link" href="">
                             <h3 class="cancel--text">Cancel</h3>
                         </a>
@@ -76,7 +76,18 @@
                             <button type="submit" class="save--btn">Save</button>
                         </form>
                     </div>
-                    <hr class="basic--info-hr">
+                    <div class="form--info-container">
+                        <hr class="basic--info-hr">
+
+                        <label for="edit--name">Name</label>
+                        <input type="text" id="edit--name" maxLength="30">
+
+                        <label for="edit--location">Location</label>
+                        <input type="text" id="edit--location" maxLength="30">
+
+                        <label for="edit--about">About</label>
+                        <textarea id="edit--about" maxlength="350"></textarea>
+                    </div>
                 </section>
             </section>
 

@@ -21,7 +21,8 @@
     box-sizing: border-box;
 }
 
-hr {
+.edit--title-hr,
+.basic--info-hr {
     margin: 0;
     border-color: var(--form-gray);
     color: var(--dark-blue);
@@ -94,7 +95,7 @@ html {
 }
 
 .edit--username {
-    color: var(--light-blue);
+    color: var(--medium-blue);
     font-weight: 300;
     font-size: 1.1rem;
     margin-top: 1.5rem;
@@ -131,7 +132,7 @@ html {
 }
 
 .custom-file-upload {
-    margin-top: 2rem;
+    margin-top: 3rem;
     color: var(--white);
     background: var(--light-blue);
     border: .1rem solid var(--light-blue);
@@ -141,14 +142,10 @@ html {
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
-
+.custom-file-upload:hover {
+    background: var(--medium-blue);
+    border-color: var(--medium-blue);
+}
 
 .edit--container-right {
     height: 30rem;
@@ -203,11 +200,53 @@ html {
 }
 
 .basic--info-hr {
+    margin-block: 1rem 1rem;
+}
+
+.form--info-container {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 1rem;
+    font-weight: 400;
+}
+
+#edit--location,
+#edit--about,
+#edit--name {
+    padding: .5rem;
+    width: 100%;
+    background: var(--white);
+    border: .1rem solid var(--form-gray);
+    border-radius: .5rem;
     margin-top: 1rem;
 }
 
+#edit--name:focus,
+#edit--location:focus,
+#edit--about:focus {
+    outline: none;
+    border-color: var(--purple);
+    box-shadow: 0 0 0.3rem var(--purple);
+    -moz-box-shadow: 0 0 0.3rem var(--purple);
+    -webkit-box-shadow: 0 0 0.3rem var(--purple);
+}
 
+#edit--name::placeholder,
+#edit--location::placeholder,
+#edit--about::placeholder {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+}
 
+#edit--about {
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 6.3rem;
+    max-height: 6.3rem;
+}
 
 
 
