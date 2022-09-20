@@ -21,7 +21,7 @@ module.exports = {
         let following = false;
         if (!isCurrentUser) {
             // check to see if the user is following the account they are requesting
-            following = req.user.following.some(userId => userId.toString() === user._id.toString())
+            following = req.user.profile.following.some(userId => userId.toString() === user._id.toString())
         }
 
         res.render('profile', { user, climbs, partnerSearches, isCurrentUser, following })
@@ -40,9 +40,13 @@ module.exports = {
         try {
             if (req.params.username !== req.user.username) return res.redirect(`/user/${req.user.username}`)
 
+            console.log(req.body)
+
             const user = User.find({ _id: req.user._id })
 
-            console.log(req.body)
+            if (req.body.location) user.profile.location = req.body.location
+            if (req.body.name) user.profile.location = req.body.name
+            if (req.body.about) user.profile.about = req.body.about
 
             res.redirect(`/user/${req.user.username}`)
         } catch (err) {
@@ -55,9 +59,9 @@ module.exports = {
             const currentUser = await User.findOne({ _id: req.user._id })
             const userToFollow = await User.findOne({ username: req.params.username })
 
-            if (!currentUser.following.includes(userToFollow._id)) {
-                currentUser.following.push(userToFollow._id)
-                userToFollow.followers.push(currentUser._id)
+            if (!currentUser.profile.following.includes(userToFollow._id)) {
+                currentUser.profile.following.push(userToFollow._id)
+                userToFollow.profile.followers.push(currentUser._id)
 
                 currentUser.save()
                 userToFollow.save()
@@ -73,9 +77,9 @@ module.exports = {
             const currentUser = await User.findOne({ _id: req.user._id })
             const userToFollow = await User.findOne({ username: req.params.username })
 
-            if (currentUser.following.includes(userToFollow._id)) {
-                const currentUserArr = currentUser.following
-                const userToFollowArr = userToFollow.followers
+            if (currentUser.profile.following.includes(userToFollow._id)) {
+                const currentUserArr = currentUser.profile.following
+                const userToFollowArr = userToFollow.profile.followers
 
 
                 currentUserArr.splice(currentUserArr.indexOf(userToFollow._id), 1)

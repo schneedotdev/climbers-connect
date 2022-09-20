@@ -16,18 +16,28 @@ const UserSchema = new mongoose.Schema({
     unique: true,
     required: true,
   },
-  posts: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Post'
-  }],
-  followers: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }],
-  following: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  }]
+  profile: {
+    about: {
+      type: String,
+      default: "I really love rocks! Checkout the climbs I've sent!"
+    },
+    location: {
+      type: String,
+      default: "The Mountains"
+    },
+    posts: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Post'
+    }],
+    followers: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }],
+    following: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }]
+  }
 })
 
 // Password hash middleware.

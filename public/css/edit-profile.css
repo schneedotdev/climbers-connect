@@ -40,6 +40,7 @@ input {
 
 textarea {
     font-size: .9rem;
+    resize: none;
 }
 
 /* 
@@ -223,7 +224,7 @@ label {
 #edit--name {
     padding: .5rem;
     width: 100%;
-    background: var(--white);
+    background: var(--lighter-gray);
     border: .1rem solid var(--form-gray);
     border-radius: .5rem;
     margin-top: 1rem;
