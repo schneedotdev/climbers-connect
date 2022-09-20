@@ -178,20 +178,26 @@ html {
 
 .create--post {
     color: var(--white);
-    background: var(--purple);
+    background: var(--light-blue);
     border-radius: .5rem;
-    border: .1rem solid var(--purple);
+    border: .1rem solid var(--light-blue);
 }
 
 .create--post:hover {
     color: var(--white);
-    background: var(--dark-purple);
-    border-color: var(--dark-purple);
+    background: var(--medium-blue);
+    border-color: var(--medium-blue);
 }
 
 .create--post-text {
     padding: .5rem 1rem;
-    font-size: .9rem;
+    font-size: 1rem;
+}
+
+.create-icon {
+    font-size: 1rem;
+    margin-left: .3rem;
+    color: var(--white);
 }
 
 .profile--about-posts {
