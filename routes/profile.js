@@ -10,6 +10,6 @@ router.put('/unfollow/:username', ensureAuth, profileController.unfollow)
 router.get('/edit/:username', ensureAuth, profileController.getEditProfile)
 router.put('/update/:username', ensureAuth, profileController.updateProfile)
 router.put('/updateAvatar/:username', upload.single("file"), ensureAuth, profileController.updateAvatar)
-
+router.delete('/deleteAvatar/:username', ensureAuth, profileController.deleteAvatar)
 
 module.exports = router
