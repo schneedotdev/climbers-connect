@@ -31,6 +31,7 @@ module.exports = {
       await cloudinary.uploader.destroy(post.cloudinaryId)
       // Delete post from db
       await Climb.remove({ _id: req.params.id })
+
       console.log("Deleted Climb Post")
       res.redirect("/profile")
     } catch (err) {

@@ -43,6 +43,7 @@ module.exports = {
             }
         } catch (err) {
             console.error(err)
+            res.redirect(`/user/${req.user.username}`)
         }
     },
     updateProfile: async (req, res) => {
@@ -62,6 +63,7 @@ module.exports = {
             res.redirect(`/user/${req.user.username}`)
         } catch (err) {
             console.error(err)
+            res.redirect(`/user/edit/${req.user.username}`)
         }
     },
     updateAvatar: async (req, res) => {
@@ -80,6 +82,20 @@ module.exports = {
             res.redirect(`/user/${req.user.username}`)
         } catch (err) {
             console.error(err)
+            res.redirect(`/user/edit/${req.user.username}`)
+        }
+    },
+    deleteAvatar: async (req, res) => {
+        try {
+            const user = await User.findOne({ username: req.user.username })
+
+            // Delete image from cloudinary
+            await cloudinary.uploader.destroy(user.profile.avatar.id)
+
+            res.redirect("/")
+        } catch (err) {
+            console.error(err)
+            res.redirect(`/user/edit/${req.user.username}`)
         }
     },
     follow: async (req, res) => {
@@ -98,6 +114,7 @@ module.exports = {
             res.redirect(`/user/${req.params.username}`)
         } catch (err) {
             console.error(err)
+            res.redirect(`/user/${req.user.username}`)
         }
     },
     unfollow: async (req, res) => {
@@ -119,6 +136,7 @@ module.exports = {
             res.redirect(`/user/${req.params.username}`)
         } catch (err) {
             console.error(err)
+            res.redirect(`/user/${req.user.username}`)
         }
     },
 }
