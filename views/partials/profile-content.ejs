@@ -1,7 +1,12 @@
 <div class="profile--content">
     <header class="profile--header-container">
         <div class="profile--pic-wrapper">
-            <img class="profile--pic" src="/assets/headshot-nobg.png">
+            <% if(url) { %>
+                <img class="profile--pic" src="<%= url %>">
+            <% } else { %>
+                <img class="profile--pic" src="/assets/headshot-nobg.png">
+            <% } %>
+
             <% if (isCurrentUser) { %>
                 <a class="edit--profile-link" href="/user/edit/<%= user.username %>">
                     <h3 class="edit--profile-text">Edit Profile</h3>
@@ -49,14 +54,19 @@
                     <% } %>
                 </li>
                 <li>
-                    <p class="margin-top"><%= user.profile.about %></p>
+                    <p class="about--margin-top"><%= user.profile.about %></p>
                 </li>
                 <li>
-                    <p class="margin-top"><i class="fa-solid fa-house home-icon"></i><%= user.profile.location %></p>
+                    <span class="about--margin-top profile--location-span"><i class="fa-solid fa-house home-icon"></i><%= user.profile.location %></span>
                 </li>
-                <li>
-                    <p class="margin-top"><i class="fa-brands fa-twitter twitter-icon"></i>BrianSchneeDev</p>
-                </li>
+                <% if(twitter) { %>
+                    <li>
+                        <i class="fa-brands fa-twitter twitter-icon"></i>
+                        <a class="profile--twitter-link" href="https://twitter.com/<%= twitter %>" target="_blank">
+                            <span class="about--margin-top profile--twitter-span"><%= user.profile.twitter %></span>
+                        </a>
+                    </li>
+                <% } %>
             </ul>
         </section>
         <section class="profile--posts">

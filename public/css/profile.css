@@ -59,6 +59,8 @@ html {
 .profile--pic {
     padding: .2rem;
     width: 100%;
+    min-width: 100%;
+    min-height: 100%;
     border-radius: .5rem;
 }
 
@@ -143,6 +145,15 @@ html {
     margin-right: .5rem;
 }
 
+.profile--twitter-link {
+    color: var(--dark-blue);
+}
+
+.profile--twitter-span,
+.profile--location-span {
+    display: inline-block;
+}
+
 .profile--info-posts {
     display: flex;
     flex-direction: column;
@@ -190,7 +201,7 @@ html {
 }
 
 .create--post-text {
-    padding: .5rem 1rem;
+    padding: .5rem .75rem;
     font-size: 1rem;
 }
 
@@ -232,6 +243,7 @@ html {
     color: var(--dark-blue);
 }
 
+.about--margin-top,
 .margin-top {
     margin-top: 1rem;
     font-weight: 300;

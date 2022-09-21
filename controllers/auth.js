@@ -77,6 +77,10 @@ exports.postSignup = (req, res, next) => {
     password: req.body.password,
     profile: {
       name: req.body.username,
+      avatar: {
+        url: '',
+        id: ''
+      },
       posts: [],
       followers: [],
       following: [],

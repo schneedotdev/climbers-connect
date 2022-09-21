@@ -209,7 +209,7 @@ textarea {
     margin-block: 1rem 1rem;
 }
 
-.form--info-container {
+.info--form-container {
     display: flex;
     flex-direction: column;
 }
@@ -219,6 +219,7 @@ label {
     font-weight: 400;
 }
 
+#edit--twitter,
 #edit--location,
 #edit--about,
 #edit--name {
@@ -230,6 +231,7 @@ label {
     margin-top: 1rem;
 }
 
+#edit--twitter:focus,
 #edit--name:focus,
 #edit--location:focus,
 #edit--about:focus {
