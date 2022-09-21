@@ -70,29 +70,23 @@ module.exports = {
         try {
             if (req.params.username === req.user.username) {
                 // Upload image to cloudinary
-                const result = await cloudinary.uploader.upload(req.file.path)
-                const user = await User.findOne({ _id: req.user._id })
+                const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
 
-                user.profile.avatar.url = result.secure_url
-                user.profile.avatar.id = result.public_id
 
-                await user.save()
+                if (secure_url && public_id) {
+                    const user = await User.findOne({ _id: req.user._id })
+                    const prevAvatarId = user.profile.avatar.id
+
+                    user.profile.avatar.url = secure_url
+                    user.profile.avatar.id = public_id
+
+                    // Delete previous avatar from cloudinary
+                    await cloudinary.uploader.destroy(prevAvatarId);
+                    await user.save()
+                }
             }
 
             res.redirect(`/user/${req.user.username}`)
-        } catch (err) {
-            console.error(err)
-            res.redirect(`/user/edit/${req.user.username}`)
-        }
-    },
-    deleteAvatar: async (req, res) => {
-        try {
-            const user = await User.findOne({ username: req.user.username })
-
-            // Delete image from cloudinary
-            await cloudinary.uploader.destroy(user.profile.avatar.id)
-
-            res.redirect("/")
         } catch (err) {
             console.error(err)
             res.redirect(`/user/edit/${req.user.username}`)
