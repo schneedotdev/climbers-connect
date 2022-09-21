@@ -10,12 +10,14 @@ const ClimbSchema = new mongoose.Schema({
         required: true
     },
     image: {
-        type: String,
-        required: true,
-    },
-    cloudinaryId: {
-        type: String,
-        required: true,
+        url: {
+            type: String,
+            required: true
+        },
+        id: {
+            type: String,
+            required: true
+        }
     },
     rating: {
         type: Number,

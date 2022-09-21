@@ -4,33 +4,37 @@ const cloudinary = require("../middleware/cloudinary")
 
 module.exports = {
     getProfile: async (req, res) => {
-        if (req.query.myProfileBtn) {
-            res.redirect(`/user/${req.user.username}`)
-        } else {
-            const user = await User.findOne({ username: req.params.username }).lean()
-
-            // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
-            if (user) {
-                const climbs = await Climb.find({ user: req.user.id })
-                const partnerSearches = await PartnerSearch.find({ user: req.user.id })
-
-                // check to see if the current user is requesting their own profile
-                const isCurrentUser = req.user.username === req.params.username
-
-                let following = false;
-                if (!isCurrentUser) {
-                    // check to see if the user is following the account they are requesting
-                    following = req.user.profile.following.some(userId => userId.toString() === user._id.toString())
-                }
-
-                const { twitter, avatar: { url } } = user.profile
-
-                res.render('profile', { user, climbs, partnerSearches, isCurrentUser, following, twitter, url })
+        try {
+            if (req.query.myProfileBtn) {
+                res.redirect(`/user/${req.user.username}`)
             } else {
-                res.sendStatus(404)
-            }
-        }
+                const user = await User.findOne({ username: req.params.username }).lean()
 
+                // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
+                if (user) {
+                    const climbs = await Climb.find({ user: req.user.id })
+                    const partnerSearches = await PartnerSearch.find({ user: req.user.id })
+
+                    // check to see if the current user is requesting their own profile
+                    const isCurrentUser = req.user.username === req.params.username
+
+                    let following = false;
+                    if (!isCurrentUser) {
+                        // check to see if the user is following the account they are requesting
+                        following = req.user.profile.following.some(userId => userId.toString() === user._id.toString())
+                    }
+
+                    const { twitter, avatar: { url } } = user.profile
+
+                    res.render('profile', { user, climbs, partnerSearches, isCurrentUser, following, twitter, url })
+                } else {
+                    throw 'User does not exist'
+                }
+            }
+        } catch (err) {
+            console.err(error)
+            res.sendStatus(404)
+        }
     },
     getEditProfile: async (req, res) => {
         try {
@@ -39,7 +43,7 @@ module.exports = {
             if (isCurrentUser) {
                 res.render('edit-profile', { user: req.user })
             } else {
-                res.redirect(`user/${req.params.username}`)
+                throw 'Attempting to retreieve edit profile page of an account that doesnt belong to user'
             }
         } catch (err) {
             console.error(err)
@@ -58,9 +62,10 @@ module.exports = {
                 if (twitter) user.profile.twitter = twitter.trim().replaceAll(' ', '')
 
                 await user.save()
+                res.redirect(`/user/${req.user.username}`)
+            } else {
+                throw 'Attempting to update profile of an account that doesnt belong to user'
             }
-
-            res.redirect(`/user/${req.user.username}`)
         } catch (err) {
             console.error(err)
             res.redirect(`/user/edit/${req.user.username}`)
@@ -72,21 +77,23 @@ module.exports = {
                 // Upload image to cloudinary
                 const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
 
-
+                // check to see if a new url and id were provided
                 if (secure_url && public_id) {
                     const user = await User.findOne({ _id: req.user._id })
-                    const prevAvatarId = user.profile.avatar.id
 
+                    // Delete previous avatar from cloudinary
+                    await cloudinary.uploader.destroy(user.profile.avatar.id)
+
+                    // assign new url and id
                     user.profile.avatar.url = secure_url
                     user.profile.avatar.id = public_id
 
-                    // Delete previous avatar from cloudinary
-                    await cloudinary.uploader.destroy(prevAvatarId);
                     await user.save()
                 }
+                res.redirect(`/user/edit/${req.user.username}`)
+            } else {
+                throw 'Attempting to update avatar of an account that doesnt belong to user'
             }
-
-            res.redirect(`/user/${req.user.username}`)
         } catch (err) {
             console.error(err)
             res.redirect(`/user/edit/${req.user.username}`)
