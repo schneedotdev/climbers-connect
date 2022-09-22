@@ -4,7 +4,7 @@
 
 :root {
     --white: #fff;
-    --dark-blue-low-opacity: rgba(17, 20, 25, 0.392);
+    --dark-blue-low-opacity: rgba(17, 20, 25, 0.475);
     --dark-blue: #111419;
     --lighter-gray: rgb(248, 248, 248);
     --light-gray: rgb(227, 228, 229);
@@ -201,12 +201,8 @@ html {
     color: var(--white);
     background: var(--medium-blue);
     border-color: var(--medium-blue);
+    cursor: pointer;
 }
-
-/* .create--post-text {
-    padding: .5rem .75rem;
-    font-size: 1rem;
-} */
 
 .create-icon {
     font-size: 1rem;

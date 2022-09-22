@@ -18,3 +18,68 @@
     background: var(--dark-blue);
     border-radius: 1rem;
 }
+
+.close--icon {
+    position: relative;
+    top: 1.5rem;
+    left: 93%;
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.close--icon:hover {
+    cursor: pointer;
+}
+
+.choose--post-type {
+    /* width: 100%; */
+    display: flex;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.choose--post {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.choose--post:hover {
+    cursor: pointer;
+}
+
+.post--climb-title,
+.post--partner-title {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.post--climb-title {
+    color: var(--purple);
+}
+
+.post--partner-title {
+    color: var(--white);
+}
+
+.post--climb-hr,
+.post--partner-hr {
+    margin-block: 1rem;
+}
+
+.post--climb-hr {
+    border: .15rem solid var(--purple);
+}
+
+.post--partner-hr {
+    border: .15rem solid var(--white);
+}
+
+.purple {
+    color: var(--purple)
+}
+
+.light-blue {
+    color: var(--light-blue)
+}
