@@ -4,6 +4,7 @@
 
 :root {
     --white: #fff;
+    --dark-blue-low-opacity: rgba(17, 20, 25, 0.392);
     --dark-blue: #111419;
     --lighter-gray: rgb(248, 248, 248);
     --light-gray: rgb(227, 228, 229);
@@ -192,6 +193,8 @@ html {
     background: var(--light-blue);
     border-radius: .5rem;
     border: .1rem solid var(--light-blue);
+    padding: .5rem .75rem;
+    font-size: 1rem;
 }
 
 .create--post:hover {
@@ -200,10 +203,10 @@ html {
     border-color: var(--medium-blue);
 }
 
-.create--post-text {
+/* .create--post-text {
     padding: .5rem .75rem;
     font-size: 1rem;
-}
+} */
 
 .create-icon {
     font-size: 1rem;
