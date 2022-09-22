@@ -1,28 +1,35 @@
 .create--post-wrapper {
     display: none;
-    position: fixed;
+    position: absolute;
     z-index: 1000;
     width: 100vw;
-    height: 100vh;
+    height: 100vmax;
+    /* overflow-y: scroll; */
     background: var(--dark-blue-low-opacity)
 }
 
 .create--post-container {
     position: absolute;
-    z-index: 1000;
+    z-index: 1001;
     top: 5rem;
     left: 50%;
     transform: translate(-50%);
     width: 35rem;
-    height: 40rem;
     background: var(--dark-blue);
     border-radius: 1rem;
 }
 
+.create--post-title {
+    color: var(--white);
+    margin-top: 1rem;
+    font-weight: 300;
+    text-align: center;
+}
+
 .close--icon {
-    position: relative;
-    top: 1.5rem;
-    left: 93%;
+    position: absolute;
+    top: 1rem;
+    left: 94%;
     color: var(--white);
     font-size: 1.2rem;
 }
@@ -32,10 +39,9 @@
 }
 
 .choose--post-type {
-    /* width: 100%; */
     display: flex;
     align-items: center;
-    margin-top: 4rem;
+    margin-top: 2rem;
 }
 
 .choose--post {
@@ -53,33 +59,63 @@
 .post--partner-title {
     font-size: 1.1rem;
     font-weight: 400;
+    padding-top: 1rem;
 }
 
-.post--climb-title {
-    color: var(--purple);
+.climb-post {
+    background: var(--purple);
 }
 
+.post--climb-title,
 .post--partner-title {
     color: var(--white);
 }
 
 .post--climb-hr,
 .post--partner-hr {
-    margin-block: 1rem;
+    margin-block: 1rem 0;
 }
 
-.post--climb-hr {
+.post--climb-hr,
+.post--partner-hr {
     border: .15rem solid var(--purple);
 }
 
-.post--partner-hr {
-    border: .15rem solid var(--white);
+/* Forms */
+
+.climb--form,
+.connect--form {
+    width: 70%;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
 }
 
-.purple {
-    color: var(--purple)
+.climb--form {
+    display: flex;
 }
 
-.light-blue {
-    color: var(--light-blue)
+.climb--label {
+    color: var(--white);
+    font-size: 1rem;
+    margin-block: 1rem;
+}
+
+.climb--input {
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
+.climb-input-file {
+    color: var(--white);
+    padding: 0;
+}
+
+.connect--form {
+    display: none;
+}
+
+.form1-img {
+    margin-block: 2rem;
+    border-radius: .5rem;
 }

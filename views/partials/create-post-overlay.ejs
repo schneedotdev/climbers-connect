@@ -1,18 +1,45 @@
 <div class="create--post-wrapper">
     <div class="create--post-container">
+        <h2 class="create--post-title">Create Post</h2>
         <i class="close--icon fa-solid fa-x"></i>
         <section class="create--form-container">
             <div class="choose--post-type">
                 <div class="choose--post climb-post">
                     <h2 class="post--climb-title">Climb</h2>
-                    <hr class="post--climb-hr purple">
+                    <hr class="post--climb-hr">
                 </div>
                 <div class="choose--post partner-post">
-                    <h2 class="post--partner-title">Find Partner</h2>
-                    <hr class="post--partner-hr light-blue">
+                    <h2 class="post--partner-title">Connect</h2>
+                    <hr class="post--partner-hr">
                 </div>
             </div>
-            <form action="/user/create/<% %>" method="POST"></form>
+            <form
+                class="climb--form"
+                action="/user/createClimb"
+                enctype="multipart/form-data"
+                method="POST"
+            >
+                <img class="form1-img" src="/assets/profile-backgrounds/background2.jpg">
+                <label class="climb--label climb-image-margin">Image</label>
+                <input class="climb--input climb-input-file" type="file" name="file">
+                <label class="climb--label">Grade</label>
+                <input class="climb--input" type="text" name="grade">
+                <label class="climb--label">Rating</label>
+                <input class="climb--input" type="number" name="grade">
+                <button type="submit">create post</button>
+            </form>
+            <form
+                class="connect--form"
+                action="/user/createClimb"
+                enctype="multipart/form-data"
+                method="POST"
+            >
+                <label class="climb--label">Grade</label>
+                <input class="climb--input" type="text" name="grade">
+                <label class="climb--label">Rating</label>
+                <input class="climb--input" type="number" name="grade">
+                <button type="submit">create post</button>
+            </form>
         </section>
     </div>
 </div>
