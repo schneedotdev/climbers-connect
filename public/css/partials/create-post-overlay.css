@@ -169,6 +169,10 @@
     color: var(--purple);
 }
 
+.default--star {
+    color: var(--purple);
+}
+
 /* HIDE RADIO */
 [type=radio] {
     opacity: 0;

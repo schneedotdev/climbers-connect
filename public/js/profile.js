@@ -5,6 +5,12 @@ const climbPost = document.querySelector('.climb-post')
 const partnerPost = document.querySelector('.partner-post')
 const climbForm = document.querySelector('.climb--form')
 const connectForm = document.querySelector('.connect--form')
+const stars = Array.from(document.querySelectorAll('.star')).reverse()
+const starInputs = Array.from(document.querySelectorAll('.star--input')).reverse()
+const climbTitle = document.querySelector('.post--climb-title')
+const partnerTitle = document.querySelector('.post--partner-title')
+const [purple, darkPurple, white, lightGray] = ['#A0A1F5', '#383970', '#fff', '#babebf']
+
 
 if (followingBtn) {
     followingBtn.addEventListener('mouseover', () => {
@@ -23,13 +29,23 @@ createPost.addEventListener('click', () => {
 createPostWrapper.addEventListener('click', (e) => {
     if (e.target.className === 'create--post-wrapper' || e.target.classList[0] === 'close--icon') {
         createPostWrapper.style.display = 'none'
+
+        // reset star colors
+        stars.forEach(star => {
+            star.style.color = white
+        })
+
+        stars[0].style.color = purple
+
+        starInputs.forEach(input => {
+            input.checked = false
+        })
+
+        starInputs[0].checked = true
     }
 })
 
 let lastClicked = 'climb'
-const climbTitle = document.querySelector('.post--climb-title')
-const partnerTitle = document.querySelector('.post--partner-title')
-const [purple, darkPurple, white, lightGray] = ['#A0A1F5', '#383970', '#fff', '#babebf']
 
 climbPost.addEventListener('click', () => {
     lastClicked = 'climb'
@@ -81,11 +97,9 @@ partnerPost.addEventListener('mouseout', () => {
     }
 })
 
-const stars = Array.from(document.querySelectorAll('.star')).reverse()
-
 stars.forEach((star, i) => {
     star.addEventListener('click', () => {
-        stars.forEach(star => star.style.color = white)
+        stars.slice(1).forEach(star => star.style.color = white)
 
         // color stars before
         for (let j = 0; j <= i; j++) {
