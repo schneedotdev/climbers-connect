@@ -14,9 +14,10 @@
     top: 5rem;
     left: 50%;
     transform: translate(-50%);
-    width: 35rem;
-    background: var(--dark-blue);
+    width: 32rem;
+    background: var(--alternate-dark-blue);
     border-radius: 1rem;
+    border: .1rem solid #3a42535b;
 }
 
 .create--post-title {
@@ -36,6 +37,8 @@
 
 .close--icon:hover {
     cursor: pointer;
+    border-radius: 50%;
+    background: var(--medium-blue);
 }
 
 .choose--post-type {
@@ -66,9 +69,12 @@
     background: var(--purple);
 }
 
-.post--climb-title,
-.post--partner-title {
+.post--climb-title {
     color: var(--white);
+}
+
+.post--partner-title {
+    color: var(--medium-light-gray);
 }
 
 .post--climb-hr,
@@ -85,7 +91,7 @@
 
 .climb--form,
 .connect--form {
-    width: 70%;
+    width: 80%;
     flex-direction: column;
     justify-content: center;
     margin: 0 auto;
@@ -118,4 +124,59 @@
 .form1-img {
     margin-block: 2rem;
     border-radius: .5rem;
+}
+
+.create--post-button {
+    margin-block: 2rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--white);
+    background: var(--purple);
+    border: none;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.create--post-button:hover {
+    cursor: pointer;
+    background: var(--dark-purple);
+}
+
+/* Star rating */
+
+.star--container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+}
+
+.star {
+    font-size: 1.75rem;
+}
+
+.star:hover {
+    cursor: pointer;
+}
+
+.star--container label .star {
+    float: right;
+    color: var(--white);
+    padding-inline: .3rem;
+}
+
+.star--container .star:hover,
+.star--container label:hover~label .star {
+    color: var(--purple);
+}
+
+/* HIDE RADIO */
+[type=radio] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio]+.star {
+    cursor: pointer;
 }

@@ -5,6 +5,7 @@
 :root {
     --white: #fff;
     --dark-blue-low-opacity: rgba(17, 20, 25, 0.475);
+    --alternate-dark-blue: #1f242e;
     --dark-blue: #111419;
     --lighter-gray: rgb(248, 248, 248);
     --light-gray: rgb(227, 228, 229);
