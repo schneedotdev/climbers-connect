@@ -4,6 +4,7 @@ const ClimbSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        trim: true,
     },
     grade: {
         type: String,
@@ -35,21 +36,22 @@ const ClimbSchema = new mongoose.Schema({
     },
 })
 
-const PartnerSearchSchema = new mongoose.Schema({
+const ConnectSchema = new mongoose.Schema({
     area: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
     },
-    text: {
+    message: {
         type: String,
         required: true,
         trim: true,
         maxLength: 1000,
     },
-    date: {
-        type: Date,
-        required: true
-    },
+    // date: {
+    //     type: Date,
+    //     required: true
+    // },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -62,7 +64,7 @@ const PartnerSearchSchema = new mongoose.Schema({
 
 const PostSchema = {
     Climb: mongoose.model('Climb', ClimbSchema),
-    PartnerSearch: mongoose.model('PartnerSearch', PartnerSearchSchema)
+    Connect: mongoose.model('Connect', ConnectSchema)
 }
 
 module.exports = PostSchema

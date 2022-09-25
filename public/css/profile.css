@@ -189,6 +189,10 @@ html {
     color: var(--dark-gray);
 }
 
+.profile--posts-text {
+    padding-block: .5rem;
+}
+
 .create--post {
     color: var(--white);
     background: var(--light-blue);

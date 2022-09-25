@@ -1,5 +1,5 @@
 const User = require('../models/User')
-const { Climb, PartnerSearch } = require('../models/Post')
+const { Climb, Connect } = require('../models/Post')
 const cloudinary = require("../middleware/cloudinary")
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
                 if (!user) throw 'User does not exist'
 
                 const climbs = await Climb.find({ user: req.user.id })
-                const partnerSearches = await PartnerSearch.find({ user: req.user.id })
+                const partnerSearches = await Connect.find({ user: req.user.id })
 
                 // check to see if the current user is requesting their own profile
                 const isCurrentUser = req.user.username === req.params.username

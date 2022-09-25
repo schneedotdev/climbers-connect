@@ -9,7 +9,7 @@ const stars = Array.from(document.querySelectorAll('.star')).reverse()
 const starInputs = Array.from(document.querySelectorAll('.star--input')).reverse()
 const climbTitle = document.querySelector('.post--climb-title')
 const partnerTitle = document.querySelector('.post--partner-title')
-const [purple, darkPurple, white, lightGray] = ['#A0A1F5', '#383970', '#fff', '#babebf']
+const [purple, darkPurple, white, lightGray, gold] = ['#A0A1F5', '#383970', '#fff', '#babebf', '#FFE55C']
 
 
 if (followingBtn) {
@@ -24,6 +24,10 @@ if (followingBtn) {
 
 createPost.addEventListener('click', () => {
     createPostWrapper.style.display = 'block'
+    document.querySelector('.climb-input-file').value = null
+    Array.from(document.querySelectorAll('.climb--input')).forEach(input => {
+        input.value = null
+    })
 })
 
 createPostWrapper.addEventListener('click', (e) => {
@@ -35,7 +39,7 @@ createPostWrapper.addEventListener('click', (e) => {
             star.style.color = white
         })
 
-        stars[0].style.color = purple
+        stars[0].style.color = gold
 
         starInputs.forEach(input => {
             input.checked = false
@@ -103,7 +107,7 @@ stars.forEach((star, i) => {
 
         // color stars before
         for (let j = 0; j <= i; j++) {
-            stars[j].style.color = purple
+            stars[j].style.color = gold
         }
     })
 })

@@ -1,10 +1,28 @@
+/* 
+============== Base Styles ==============
+*/
+
+input,
+textarea,
+textarea::placeholder {
+    font-family: 'Raleway', sans-serif;
+}
+
+textarea::placeholder {
+    font-size: .9rem;
+}
+
+
+/* 
+============== Additonal Styles ==============
+*/
+
 .create--post-wrapper {
     display: none;
     position: absolute;
     z-index: 1000;
     width: 100vw;
     height: 100vmax;
-    /* overflow-y: scroll; */
     background: var(--dark-blue-low-opacity)
 }
 
@@ -107,9 +125,33 @@
     margin-block: 1rem;
 }
 
-.climb--input {
+.rating--label {
+    margin-bottom: 0;
+}
+
+.climb--input,
+.climb--textarea {
     border-radius: .5rem;
     padding: .5rem;
+    border: none;
+}
+
+.climb--textarea {
+
+    min-height: 10rem;
+    max-height: 10rem;
+    min-width: 100%;
+    max-width: 100%;
+    resize: none;
+}
+
+.climb--input:focus,
+.climb--textarea:focus {
+    outline: none;
+    border-color: var(--purple);
+    box-shadow: 0 0 0 0.2rem var(--purple);
+    -moz-box-shadow: 0 0 0 0.2rem var(--purple);
+    -webkit-box-shadow: 0 0 0 0.2rem var(--purple);
 }
 
 .climb-input-file {
@@ -121,10 +163,10 @@
     display: none;
 }
 
-.form1-img {
+/* .form1-img {
     margin-block: 2rem;
     border-radius: .5rem;
-}
+} */
 
 .create--post-button {
     margin-block: 2rem;
@@ -166,11 +208,11 @@
 
 .star--container .star:hover,
 .star--container label:hover~label .star {
-    color: var(--purple);
+    color: #FFE55C;
 }
 
 .default--star {
-    color: var(--purple);
+    color: #FFE55C;
 }
 
 /* HIDE RADIO */

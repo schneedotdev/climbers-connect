@@ -15,16 +15,36 @@
             </div>
             <form
                 class="climb--form"
-                action="/user/createClimb"
+                action="/post/create/climbPost"
                 enctype="multipart/form-data"
                 method="POST"
             >
-                <img class="form1-img" src="/assets/profile-backgrounds/background2.jpg">
+                <label class="climb--label">Name</label>
+                <input
+                    class="climb--input"
+                    type="text"
+                    name="name"
+                    maxLength="25"
+                    placeholder="The Sorcerers Stone"
+                    required
+                >
                 <label class="climb--label climb-image-margin">Image</label>
-                <input class="climb--input climb-input-file" type="file" name="file">
-                <label class="climb--label">Grade</label>
-                <input class="climb--input" type="text" name="grade">
-                <label class="climb--label">Rating</label>
+                <input
+                    class="climb--input climb-input-file"
+                    type="file"
+                    name="file"
+                    required
+                >
+                <label class="climb--label">Grade (Bouldering or Sport)</label>
+                <input
+                    class="climb--input"
+                    type="text"
+                    name="grade"
+                    maxLength="5"
+                    placeholder="5.11b"
+                    required
+                >
+                <label class="climb--label rating--label">Rating</label>
                 <div class="star--container">
                     <label>
                         <input
@@ -118,19 +138,26 @@
                         <i class="star fa-solid fa-star"></i>
                     </label>
                 </div>
-                <button class="create--post-button" type="submit">create post</button>
+                <button class="create--post-button" type="submit">Create Post</button>
             </form>
-            <form
-                class="connect--form"
-                action="/user/createClimb"
-                enctype="multipart/form-data"
-                method="POST"
-            >
-                <label class="climb--label">Grade</label>
-                <input class="climb--input" type="text" name="grade">
-                <label class="climb--label">Rating</label>
-                <input class="climb--input" type="number" name="grade">
-                <button class="create--post-button" type="submit">create post</button>
+            <form class="connect--form" action="/post/create/connectPost" method="POST">
+                <label class="climb--label">Area</label>
+                <input
+                    class="climb--input"
+                    type="text"
+                    name="area"
+                    placeholder="Yosemite"
+                    required
+                >
+                <label class="climb--label">Message</label>
+                <textarea
+                    class="climb--textarea"
+                    type="text"
+                    name="message"
+                    placeholder="Hello fellow climbers,&#10;&#10;I just moved to the area and I'm looking for a climbing partner to help belay. I have been climbing for 5 years. My average climbing grade is 5.11b."
+                    required
+                ></textarea>
+                <button class="create--post-button" type="submit">Create Post</button>
             </form>
         </section>
     </div>
