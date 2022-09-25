@@ -1,4 +1,5 @@
 const User = require('../models/User')
+const Profile = require('../models/Profile')
 const { Climb, Connect } = require('../models/Post')
 const cloudinary = require("../middleware/cloudinary")
 
@@ -22,7 +23,9 @@ module.exports = {
                 let following = false;
                 if (!isCurrentUser) {
                     // check to see if the user is following the account they are requesting
-                    following = req.user.profile.following.some(userId => userId.toString() === user._id.toString())
+                    const profile = await Profile.findOne({ _id: req.user.profile }).lean()
+
+                    following = profile.following.some(userId => userId.toString() === user._id.toString())
                 }
 
                 const { twitter, avatar: { url } } = user.profile
@@ -38,7 +41,7 @@ module.exports = {
         try {
             const isCurrentUser = req.user.username === req.params.username
             const user = await User.findOne({ username: req.user.username })
-                .populate('profile')
+                .populate('profile').lean()
 
             if (!isCurrentUser) throw 'User does not have permissions to access this page'
 
@@ -53,15 +56,16 @@ module.exports = {
             if (req.params.username !== req.user.username) throw 'User does not have edit permissions for this profile'
 
             const user = await User.findOne({ _id: req.user._id })
-                .populate('profile')
+            const profile = await Profile.findOne({ _id: user.profile })
             const { name, location, about, twitter } = req.body;
 
-            if (name) user.profile.name = name.trim()
-            if (location) user.profile.location = location.trim()
-            if (about) user.profile.about = about.trim()
-            if (twitter) user.profile.twitter = twitter.trim().replaceAll(' ', '')
+            if (name) profile.name = name.trim()
+            if (location) profile.location = location.trim()
+            if (about) profile.about = about.trim()
+            if (twitter) profile.twitter = twitter.trim().replaceAll(' ', '')
 
-            await user.save()
+            console.log(profile)
+            await profile.save()
             res.redirect(`/user/${req.user.username}`)
         } catch (err) {
             console.error(err)
@@ -78,17 +82,16 @@ module.exports = {
             // check to see if a new url and id were provided
             if (secure_url && public_id) {
                 const user = await User.findOne({ _id: req.user._id })
-                    .populate('profile')
-                console.log('avatar:', user.profile.avatar)
-
-                if (user.profile.avatar.id) await cloudinary.uploader.destroy(user.profile.avatar.id)
-
-                // assign new url and id
-                user.profile.avatar.url = secure_url
-                user.profile.avatar.id = public_id
+                const profile = await Profile.findOne({ _id: user.profile })
 
                 // Delete previous avatar from cloudinary
-                await user.save()
+                if (profile.avatar.id) await cloudinary.uploader.destroy(user.profile.avatar.id)
+
+                // assign new url and id
+                profile.avatar.url = secure_url
+                profile.avatar.id = public_id
+
+                await profile.save()
             }
 
             res.redirect(`/user/edit/${req.user.username}`)
@@ -100,14 +103,18 @@ module.exports = {
     follow: async (req, res) => {
         try {
             const currentUser = await User.findOne({ _id: req.user._id })
+            const userA = await Profile.findOne({ _id: currentUser.profile })
             const userToFollow = await User.findOne({ username: req.params.username })
+            const userB = await Profile.findOne({ _id: userToFollow.profile })
 
-            if (!currentUser.profile.following.includes(userToFollow._id)) {
-                currentUser.profile.following.push(userToFollow._id)
-                userToFollow.profile.followers.push(currentUser._id)
+            if (!userA.following.includes(userB.user._id)) {
+                userA.following.push(userB.user._id)
+                userB.followers.push(userA.user._id)
 
-                await currentUser.save()
-                await userToFollow.save()
+
+                console.log('userA following: ', userA.following, 'userB followers: ', userB.followers)
+                await userA.save()
+                await userB.save()
             }
 
             res.redirect(`/user/${req.params.username}`)
@@ -119,17 +126,21 @@ module.exports = {
     unfollow: async (req, res) => {
         try {
             const currentUser = await User.findOne({ _id: req.user._id })
-            const userToFollow = await User.findOne({ username: req.params.username })
+            const userA = await Profile.findOne({ _id: currentUser.profile })
+            const userToUnfollow = await User.findOne({ username: req.params.username })
+            const userB = await Profile.findOne({ _id: userToUnfollow.profile })
 
-            if (currentUser.profile.following.includes(userToFollow._id)) {
-                const currentUserArr = currentUser.profile.following
-                const userToFollowArr = userToFollow.profile.followers
+            if (userA.following.includes(userB.user._id)) {
+                const currentUserArr = userA.following
+                const userToUnfollowArr = userB.followers
 
-                currentUserArr.splice(currentUserArr.indexOf(userToFollow._id), 1)
-                userToFollowArr.splice(userToFollowArr.indexOf(currentUser._id), 1)
+                currentUserArr.splice(currentUserArr.indexOf(userB.user._id), 1)
+                userToUnfollowArr.splice(userToUnfollowArr.indexOf(userA.user._id), 1)
 
-                await currentUser.save()
-                await userToFollow.save()
+                console.log('userA following: ', userA.following, 'userB followers: ', userB.followers)
+
+                await userA.save()
+                await userB.save()
             }
 
             res.redirect(`/user/${req.params.username}`)
