@@ -265,12 +265,22 @@ html {
 .profile--posts-list {
     width: 100%;
     display: flex;
-    padding-top: 1rem;
+    margin-top: 1rem;
     flex-wrap: wrap;
+    border-radius: .5rem;
+    background: var(--lighter-gray);
+    min-height: 15rem;
 }
 
-.profile--posts-list li {
-    width: 49%;
+.rendered--climb-post,
+.rendered--connect-post {
+    width: 50%;
+    padding: 1rem;
+}
+
+.connect--post-img {
+    width: 100%;
+    object-fit: contain;
 }
 
 .profile--post {

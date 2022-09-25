@@ -77,7 +77,7 @@
                 <% } %>            
             </div>
             <ul class="profile--posts-list">
-                <li>
+                <!-- <li>
                     <img class="profile--post" src="/assets/profile-backgrounds/background2.jpg">
                 </li>
                 <li class="li--margin-left">
@@ -88,7 +88,27 @@
                 </li>
                 <li class="li--margin-left margin-top">
                     <img class="profile--post" src="/assets/profile-backgrounds/background4.jpg">
-                </li>
+                </li> -->
+
+                <!-- <% for(let i = 0; i < connects.length; i++) { %>
+                    <li class="rendered--climb-post">
+                        <span><%= connects[i].user.username %></span>
+                        <span><%= connects[i].area %></span>
+                        <p><%= connects[i].message %></p>
+                        <span><%= connects[i].createdAt %></span>
+                    </li>
+                <% } %> -->
+
+                <% for(let i = 0; i < climbs.length; i++) { %>
+                    <li class="rendered--connect-post">
+                        <span><%= climbs[i].user.username %></span>
+                        <span><%= climbs[i].name %></span>
+                        <span><%= climbs[i].grade %></span>
+                        <img class="connect--post-img" src="<%= climbs[i].image.url %>">
+                        <span><%= climbs[i].rating %></h2>
+                        <span><%= climbs[i].createdAt %></span>
+                    </li>
+                <% } %>
             </ul>
         </section>
     </main>

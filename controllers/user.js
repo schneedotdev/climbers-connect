@@ -13,8 +13,8 @@ module.exports = {
                 // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
                 if (!user) throw 'User does not exist'
 
-                const climbs = await Climb.find({ user: req.user.id })
-                const partnerSearches = await Connect.find({ user: req.user.id })
+                const climbs = await Climb.find({ user: user._id })
+                const connects = await Connect.find({ user: user._id })
 
                 // check to see if the current user is requesting their own profile
                 const isCurrentUser = req.user.username === req.params.username
@@ -27,7 +27,7 @@ module.exports = {
 
                 const { twitter, avatar: { url } } = user.profile
 
-                res.render('profile', { user, climbs, partnerSearches, isCurrentUser, following, twitter, url })
+                res.render('profile', { user, climbs, connects, isCurrentUser, following, twitter, url })
             }
         } catch (err) {
             console.error(err)
