@@ -1,9 +1,41 @@
 const User = require('../models/User')
+const Profile = require('../models/Profile')
 const { Climb, Connect } = require('../models/Post')
 const cloudinary = require("../middleware/cloudinary")
 const { findOne } = require('../models/User')
 
 module.exports = {
+  getFeed: async (req, res) => {
+    try {
+      const climbs = await Climb.find()
+      const connects = await Connect.find()
+
+      res.render('feed', { user: req.user, climbs, connects })
+    } catch (err) {
+      console.error(err)
+      res.redirect(`/user/${req.user.username}`)
+    }
+  },
+  getFollowing: async (req, res) => {
+    try {
+      const { following } = await Profile.findOne({ user: req.user._id })
+
+      const { climbs, connects } = await following.reduce(async (posts, userId) => {
+        const climbPosts = await Climb.find({ user: userId })
+        const connectPosts = await Connect.find({ user: userId })
+
+        if (climbPosts) (await posts).climbs.push(...climbPosts)
+        if (connectPosts) (await posts).connects.push(...connectPosts)
+
+        return await posts
+      }, { climbs: [], connects: [] })
+
+      res.render('following', { user: req.user, climbs, connects })
+    } catch (err) {
+      console.error(err)
+      res.redirect(`/user/${req.user.username}`)
+    }
+  },
   createClimbPost: async (req, res) => {
     try {
       const user = await User.findOne({ username: req.user.username })

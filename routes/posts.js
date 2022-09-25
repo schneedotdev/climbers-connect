@@ -8,8 +8,8 @@ router.post('/create/climbPost', upload.single('file'), ensureAuth, postsControl
 // router.delete('/deleteClimb/:id', postController.deleteClimb)
 router.post('/create/connectPost', ensureAuth, postsController.createConnectPost)
 // router.delete('/deleteConnect/:id', postController.deleteConnect)
-// router.get('/feed', postsController.getFeed)
-// router.get('/following', postsController.getFollowing)
+router.get('/feed', postsController.getFeed)
+router.get('/following', postsController.getFollowing)
 
 
 module.exports = router
