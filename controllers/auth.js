@@ -1,6 +1,7 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const Profile = require('../models/Profile')
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -71,21 +72,29 @@ exports.postSignup = (req, res, next) => {
     gmail_remove_dots: false,
   })
 
+  const profile = new Profile({
+    name: req.body.username,
+    avatar: {
+      url: '',
+      id: ''
+    },
+    posts: {
+      climbs: [],
+      connects: []
+    },
+    followers: [],
+    following: [],
+    user: ''
+  })
+
   const user = new User({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    profile: {
-      name: req.body.username,
-      avatar: {
-        url: '',
-        id: ''
-      },
-      posts: [],
-      followers: [],
-      following: [],
-    }
+    profile: profile._id
   })
+
+  profile.user = user._id
 
   User.findOne(
     { $or: [{ email: req.body.email }, { username: req.body.username }] },
@@ -99,6 +108,7 @@ exports.postSignup = (req, res, next) => {
         })
         return res.redirect("../signup")
       }
+      profile.save()
       user.save((err) => {
         if (err) {
           return next(err)

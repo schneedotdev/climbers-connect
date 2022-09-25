@@ -7,6 +7,7 @@ module.exports = {
   createClimbPost: async (req, res) => {
     try {
       const user = await User.findOne({ username: req.user.username })
+        .populate('profile')
       // Upload image to cloudinary
       const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
 
@@ -21,7 +22,7 @@ module.exports = {
         user: req.user.id,
       })
 
-      user.profile.posts.push(climb._id)
+      user.profile.posts.climbs.push(climb._id)
       user.save()
 
       console.log("Climb Post has been added!")
@@ -49,6 +50,7 @@ module.exports = {
   createConnectPost: async (req, res) => {
     try {
       const user = await User.findOne({ username: req.user.username })
+        .populate('profile')
 
       const connect = await Connect.create({
         area: req.body.area,
@@ -56,9 +58,7 @@ module.exports = {
         user: req.user.id,
       })
 
-      console.log(connect)
-
-      user.profile.posts.push(connect._id)
+      user.profile.posts.connects.push(connect._id)
       user.save()
 
       console.log("Connect Post has been added!")

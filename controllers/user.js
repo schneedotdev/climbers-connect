@@ -8,7 +8,7 @@ module.exports = {
             if (req.query.myProfileBtn) {
                 res.redirect(`/user/${req.user.username}`)
             } else {
-                const user = await User.findOne({ username: req.params.username }).lean()
+                const user = await User.findOne({ username: req.params.username }).populate('profile').lean()
 
                 // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
                 if (!user) throw 'User does not exist'
@@ -37,10 +37,12 @@ module.exports = {
     getEditProfile: async (req, res) => {
         try {
             const isCurrentUser = req.user.username === req.params.username
+            const user = await User.findOne({ username: req.user.username })
+                .populate('profile')
 
             if (!isCurrentUser) throw 'User does not have permissions to access this page'
 
-            res.render('edit-profile', { user: req.user })
+            res.render('edit-profile', { user })
         } catch (err) {
             console.error(err)
             res.redirect(`/user/${req.user.username}`)
@@ -51,6 +53,7 @@ module.exports = {
             if (req.params.username !== req.user.username) throw 'User does not have edit permissions for this profile'
 
             const user = await User.findOne({ _id: req.user._id })
+                .populate('profile')
             const { name, location, about, twitter } = req.body;
 
             if (name) user.profile.name = name.trim()
@@ -75,6 +78,7 @@ module.exports = {
             // check to see if a new url and id were provided
             if (secure_url && public_id) {
                 const user = await User.findOne({ _id: req.user._id })
+                    .populate('profile')
                 console.log('avatar:', user.profile.avatar)
 
                 if (user.profile.avatar.id) await cloudinary.uploader.destroy(user.profile.avatar.id)
