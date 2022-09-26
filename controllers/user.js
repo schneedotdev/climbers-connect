@@ -14,9 +14,6 @@ module.exports = {
                 // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
                 if (!user) throw 'User does not exist'
 
-                const climbs = await Climb.find({ user: user._id })
-                const connects = await Connect.find({ user: user._id })
-
                 // check to see if the current user is requesting their own profile
                 const isCurrentUser = req.user.username === req.params.username
 
@@ -27,6 +24,11 @@ module.exports = {
 
                     following = profile.following.some(userId => userId.toString() === user._id.toString())
                 }
+
+                const climbs = await Climb.find({ user: user._id })
+                    .populate('user')
+                const connects = await Connect.find({ user: user._id })
+                    .populate('user')
 
                 const { twitter, avatar: { url } } = user.profile
 
@@ -59,12 +61,13 @@ module.exports = {
             const profile = await Profile.findOne({ _id: user.profile })
             const { name, location, about, twitter } = req.body;
 
+            console.log(req.body)
+
             if (name) profile.name = name.trim()
             if (location) profile.location = location.trim()
             if (about) profile.about = about.trim()
             if (twitter) profile.twitter = twitter.trim().replaceAll(' ', '')
 
-            console.log(profile)
             await profile.save()
             res.redirect(`/user/${req.user.username}`)
         } catch (err) {

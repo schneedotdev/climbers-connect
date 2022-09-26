@@ -257,11 +257,24 @@ label {
 }
 
 .bg--preview-li {
-    margin-top: 1rem;
     width: 48.5%;
 }
 
 .bg--preview-img {
     border-radius: .5rem;
     width: 100%;
+}
+
+[type=radio] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+[type=radio]+.bg--preview-img {
+    cursor: pointer;
+}
+
+.bg--input {
+    margin: 0;
 }

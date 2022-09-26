@@ -56,7 +56,6 @@ textarea::placeholder {
 .close--icon:hover {
     cursor: pointer;
     border-radius: 50%;
-    background: var(--medium-blue);
 }
 
 .choose--post-type {
@@ -194,10 +193,6 @@ textarea::placeholder {
 
 .star {
     font-size: 1.75rem;
-}
-
-.star:hover {
-    cursor: pointer;
 }
 
 .star--container label .star {
