@@ -338,6 +338,7 @@ html {
     border-radius: 50%;
     border: .1rem solid var(--light-gray);
     margin-right: .5rem;
+    /* test */
 }
 
 .climb--name {
