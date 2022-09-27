@@ -1,0 +1,33 @@
+<header class="header">
+    <nav class="header--nav">
+        <ul class="header--list">
+            <li class="header--li  logo--li">
+                <a class="header--li-link" href="/login">
+                    <img class="header--logo-img" src="/assets/mountain.png">
+                    <h3 class="header--logo-text">Climbers Connect</h3>
+                </a>
+            </li>
+            <li class="header--li">
+                <a class="header--li-link" href="/posts/feed">
+                    <h2>Feed</h2>
+                </a>
+            </li>
+            <li class="header--li margin-left">
+                <a class="header--li-link" href="/posts/following">
+                    <h2>Following</h2>
+                </a>
+            </li>
+            <li class="header--li margin-left">
+                <form action="/user/<%= user.username %>" method="get">
+                    <button class="header--li-button">My Profile</button>
+                    <input type="hidden" name="myProfileBtn" value="true">
+                </form>
+            </li>
+            <li class="header--li margin-left">
+                <a class="header--li-link" href="/logout">
+                    <h2 class="last--link">Sign out</h2>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>

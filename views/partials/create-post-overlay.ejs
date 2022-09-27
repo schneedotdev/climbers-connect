@@ -1,0 +1,164 @@
+<div class="create--post-wrapper">
+    <div class="create--post-container">
+        <h2 class="create--post-title">Create Post</h2>
+        <i class="close--icon fa-solid fa-x"></i>
+        <section class="create--form-container">
+            <div class="choose--post-type">
+                <div class="choose--post climb-post">
+                    <h2 class="post--climb-title">Climb</h2>
+                    <hr class="post--climb-hr">
+                </div>
+                <div class="choose--post partner-post">
+                    <h2 class="post--partner-title">Connect</h2>
+                    <hr class="post--partner-hr">
+                </div>
+            </div>
+            <form
+                class="climb--form"
+                action="/posts/create/climbPost"
+                enctype="multipart/form-data"
+                method="POST"
+            >
+                <label class="climb--label">Name</label>
+                <input
+                    class="climb--input"
+                    type="text"
+                    name="name"
+                    maxLength="25"
+                    placeholder="The Sorcerers Stone"
+                    required
+                >
+                <label class="climb--label climb-image-margin">Image</label>
+                <input
+                    class="climb--input climb-input-file"
+                    type="file"
+                    name="file"
+                    required
+                >
+                <label class="climb--label">Grade (Bouldering or Sport)</label>
+                <input
+                    class="climb--input"
+                    type="text"
+                    name="grade"
+                    maxLength="5"
+                    placeholder="5.11b"
+                    required
+                >
+                <label class="climb--label rating--label">Rating</label>
+                <div class="star--container">
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="10"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="9"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="8"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="7"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="6"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="5"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="4"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="3"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input"
+                            type="radio"
+                            name="rating"
+                            value="2"
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                    <label>
+                        <input
+                            class="star--input default--star"
+                            type="radio"
+                            name="rating"
+                            value="1"
+                            checked
+                        >
+                        <i class="star fa-solid fa-star"></i>
+                    </label>
+                </div>
+                <button class="create--post-button" type="submit">Create Post</button>
+            </form>
+            <form class="connect--form" action="/posts/create/connectPost" method="POST">
+                <label class="climb--label">Area</label>
+                <input
+                    class="climb--input"
+                    type="text"
+                    name="area"
+                    placeholder="Yosemite"
+                    required
+                >
+                <label class="climb--label">Message</label>
+                <textarea
+                    class="climb--textarea"
+                    type="text"
+                    name="message"
+                    placeholder="Hello fellow climbers,&#10;&#10;I just moved to the area and I'm looking for a climbing partner to help belay. I have been climbing for 5 years. My average climbing grade is 5.11b."
+                    required
+                ></textarea>
+                <button class="create--post-button" type="submit">Create Post</button>
+            </form>
+        </section>
+    </div>
+</div>

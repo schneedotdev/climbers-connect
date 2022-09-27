@@ -1,61 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Login | Climbers Connect</title>
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/login.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%= title %> | Climbers Connect</title>
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/account/login.css">
+        <!-- Favicon -->
+        <link rel="icon" href="assets/mountain.png">
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <img class="login--background-img" src="/assets/login.png" alt="picture of person standing in front of mountain">
+        <div class="login--text-container">
+          <header class="login--header">
+              <a class="header--link" href="/">
+                  <h2 class="login--header-title">Climbers Connect</h2>
+              </a>
+              <a class="header--link" href="/signup">
+                  <h2 class="header--signup-text">Sign Up</h2>
+              </a>
+          </header>
+            
+          <% if (locals.messages.errors) { %>
+              <% messages.errors.forEach( el => { %>
+                  <div class="alert alert-danger"><%= el.msg %></div>
+              <% }) %>    
+          <% } %>
+          <% if (locals.messages.info) { %>
+              <% messages.info.forEach( el => { %>
+                  <div class="alert alert-danger"><%= el.msg %></div>
+              <% }) %>    
+          <% } %>
 
-    <!-- Favicon -->
-    <link rel="icon" href="./assets/favicon.jpg" />
+          <div class="login--form-container">
+            <h1 class="login--title">Climber Login</h1>
+            <p class="login--p">Hello, please enter your login credentials</p>
+            <form class="login--form" action="/login" method="POST">
+              <ul class="login--list">
+                <li class="login--li">
+                  <label class="login--input-label" for="email">Email</label>
+                  <input class="login--input" type="email" name="email" placeholder="Email"/>
+                </li>
+                <li class="login--li">
+                  <label class="login--input-label" for="email">Password (8 character min.)</label>
+                  <input class="login--input" type="password" name="password" placeholder="Password"/>
+                </li>
+                <li class="submit--li">
+                  <input class="login--btn" type="submit" value="Login" />
+                </li>
+              </ul>
+            </form>
+            <p class="not-a-user">Not a user? <a class="redirect" href="/signup">Sign up now</a></p>
+          </div>
+        </div>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
-</head>
-<body>
-  <div class="login--text-container">
-    <header class="login--header">
-      <a href="#">Logo</a>
-      <h2 class="signup--redirect">Not a user? <a class="signup__link" href="/signup">Sign up now</a></h2>
-    </header>
-
-    <% if (locals.messages.errors) { %>
-        <% messages.errors.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
-    <% if (locals.messages.info) { %>
-        <% messages.info.forEach( el => { %>
-            <div class="alert alert-danger"><%= el.msg %></div>
-        <% }) %>    
-    <% } %>
-
-    <div class="login--form-container">
-      <h1 class="login--title">Login to Climbers Connect</h1>
-      <hr>
-      <form class="login--form" action="/login" method="POST">
-        <ul class="login--list">
-          <li class="login--li">
-            <h3 class="login--li-heading">Email:</h3>
-            <input class="login--input" type="email" name="email" placeholder="Email"/>
-          </li>
-          <li class="login--li">
-            <h3 class="login--li-heading">Password <span class="min-char-length">(8 character min.)</span>:</h3>
-            <input class="login--input" type="password" name="password" placeholder="Password"/>
-          </li>
-          <li class="submit--li">
-            <input class="login--btn" type="submit" value="Login" />
-          </li>
-        </ul>
-      </form>
-    </div>
-  </div>
-</body>
+        <h3 class="footer--author">&copy;Copyright Brian Schnee. All rights reserved.</h3>
+    </body>
 </html>

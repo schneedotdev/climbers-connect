@@ -4,27 +4,23 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Climbers Connect</title>
+        <title><%= title %> | Climbers Connect</title>
         <!-- Stylesheets -->
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/index.css">
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/index.css">
         <!-- Favicon -->
-        <link rel="icon" href="./assets/favicon.jpg">
+        <link rel="icon" href="assets/mountain.png">
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap" rel="stylesheet">
+        <script src="/js/index.js" defer></script>
     </head>
     <body>
         <div class="index--container">
-            <div class="text--container">
-                <h1 class="index--title">Climbers Connect</h1>
-                <p class="index--p">Find fellow climbers and grow your climbing crew</p>
-                <div class="link--container">
-                    <a class="link" href="/login">Login</a>
-                    <a class="link" href="/signup">Signup</a>
-                </div>
-            </div>
+            <img class="index--logo" src="/assets/mountain.png" alt="Climbers Connect logo">
+            <h1 id="text" class="index--text"></h1>
+            <p class="index--p">Click or press any key to continue</p>
         </div>
     </body>
 </html>
