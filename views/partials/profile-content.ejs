@@ -1,11 +1,7 @@
 <div class="profile--content">
     <header class="profile--header-container">
         <div class="profile--pic-wrapper">
-            <% if(url) { %>
-                <img class="profile--pic" src="<%= url %>">
-            <% } else { %>
-                <img class="profile--pic" src="/assets/headshot-nobg.png">
-            <% } %>
+            <img class="profile--pic" src="<%= url %>">
 
             <% if (isCurrentUser) { %>
                 <a class="edit--profile-link" href="/user/edit/<%= user.username %>">
@@ -78,15 +74,20 @@
             </div>
             <ul class="profile--posts-list">
                 <% for(let i = 0; i < connects.length; i++) { %>
-                    <li class="rendered--climb-post">
-                        <span><%= connects[i].area %></span>
-                        <p><%= connects[i].message %></p>
-                        <span><%= connects[i].createdAt %></span>
+                    <li class="rendered--connect-post">
+                        <header class="connect--header">
+                            <img class="post--avatar" src="<%= user.profile.avatar.url %>">
+                            <span><%= connects[i].area %></span>
+                        </header>
+                        <div class="connect--content">
+                            <p class="connect--message"><%= connects[i].message %></p>
+                            <span class="connect--createdAt"><%= connects[i].createdAt.getFullYear() %></span>
+                        </div>
                     </li>
                 <% } %>
 
                 <% for(let i = 0; i < climbs.length; i++) { %>
-                    <li class="rendered--connect-post">
+                    <li class="rendered--climb-post">
                         <header class="post--header">
                             <div class="post--avatar-name-container">
                                 <img class="post--avatar" src="<%= user.profile.avatar.url %>">
@@ -95,20 +96,16 @@
                                     <span class="created-at-date"><%= climbs[i].createdAt.getFullYear() %></span>
                                 </div>
                             </div>
-                            <span class="climb--grade"><%= climbs[i].grade %></span>
+                            <span class="climb--grade"><%= climbs[i].grade.toUpperCase() %></span>
                         </header>
                         <div class="climb--image-container">
                             <img class="climb--img" src="<%= climbs[i].image.url %>">
                         </div>
                         <div class="post--extra-info">
-
-                            <ul class="post--star-container">
-                                <% for(let j = 0; j < climbs[i].rating; j++) { %>
-                                    <li>
-                                        <i class="post--star fa-solid fa-star"></i>
-                                    </li>
-                                <% } %>
-                            </ul>
+                            <div class="star--amount-icon-container">
+                                <span class="star--amount"><%= climbs[i].rating %></span>
+                                <i class="post--star fa-solid fa-star"></i>
+                            </div>
                         </div>
                     </li>
                 <% } %>
