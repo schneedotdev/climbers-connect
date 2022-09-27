@@ -400,6 +400,7 @@ html {
     font-weight: 300;
     overflow-wrap: break-word;
     overflow-y: auto;
+    white-space: pre-line;
 }
 
 .connect--createdAt {
