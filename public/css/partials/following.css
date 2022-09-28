@@ -18,6 +18,9 @@
 
 
 .following--container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 40rem;
     margin-inline: 12rem;
     margin-block: 2rem;
@@ -26,6 +29,7 @@
 .following--title {
     font-weight: 400;
     font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 /* POSTS */
@@ -48,7 +52,6 @@
     background: rgb(248, 248, 248);
     border-radius: .5rem;
     border: .075rem solid var(--light-gray);
-    margin-top: 2rem;
     padding: 1rem;
 }
 
@@ -69,7 +72,7 @@
 
 .climb--image-container {
     height: 12rem;
-    margin-block: 1rem;
+    margin-block: .5rem;
 }
 
 .climb--img {
@@ -138,7 +141,7 @@
 /* Connect Post */
 
 .rendered--connect-post {
-    height: 17rem;
+    height: 16rem;
 }
 
 .connect--header {

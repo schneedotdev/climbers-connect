@@ -255,7 +255,6 @@ html {
 }
 
 .profile--posts {
-    /* background: red; */
     margin-left: 1.5rem;
     width: 65%;
     border-radius: .5rem;
@@ -271,10 +270,10 @@ html {
     flex-wrap: wrap;
     border-radius: .5rem;
     min-height: 15rem;
+    gap: 1rem 0;
 }
 
 /* POSTS */
-
 .post--col {
     display: flex;
     flex-direction: column;
@@ -282,7 +281,7 @@ html {
 
 .rendered--climb-post,
 .rendered--connect-post {
-    width: 49%;
+    width: 48.7%;
     height: 100%;
     background: rgb(248, 248, 248);
     border-radius: .5rem;
