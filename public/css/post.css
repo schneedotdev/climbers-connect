@@ -1,0 +1,25 @@
+:root {
+    --white: #fff;
+    --dark-blue-low-opacity: rgba(17, 20, 25, 0.475);
+    --alternate-dark-blue: #1f242e;
+    --dark-blue: #111419;
+    --lighter-gray: rgb(243, 243, 243);
+    --light-gray: rgb(227, 228, 229);
+    --medium-light-gray: #babebf;
+    --medium-gray: #959a9b;
+    --dark-gray: #4F5D5F;
+    --gray-blue: #68819C;
+    --light-blue: #81AEE5;
+    --medium-blue: #274469;
+    --purple: #A0A1F5;
+    --dark-purple: #383970;
+    --gold: #FFE55C;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.post--container {
+    min-height: 42rem;
+}

@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="/css/reset.css">
         <link rel="stylesheet" href="/css/partials/header.css">
         <link rel="stylesheet" href="/css/partials/footer.css">
-        <link rel="stylesheet" href="/css/partials/feed.css">
+        <link rel="stylesheet" href="/css/feed.css">
         
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
     
             <ul class="feed--posts-list">
                     <% for(let i = 0; i < connects.length; i++) { %>
-                        <a href="/posts/<%= connects[i][0].id %>">
+                        <a href="/posts/climb/<%= connects[i][0].id %>">
                             <li class="rendered--connect-post">
                                 <header class="connect--header">
                                     <img class="post--avatar" src="<%= connects[i][1] %>">
@@ -51,7 +51,7 @@
                     <% } %>
     
                     <% for(let i = 0; i < climbs.length; i++) { %>
-                        <a href="/posts/<%= climbs[i][0].id %>">
+                        <a href="/posts/connect/<%= climbs[i][0].id %>">
                             <li class="rendered--climb-post">
                                 <header class="post--header">
                                     <div class="post--avatar-name-container">

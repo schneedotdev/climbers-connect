@@ -16,12 +16,16 @@
     --gold: #FFE55C;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 
 .following--container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 40rem;
+    min-height: 42rem;
     margin-inline: 12rem;
     margin-block: 2rem;
 }
@@ -141,7 +145,7 @@
 /* Connect Post */
 
 .rendered--connect-post {
-    height: 16rem;
+    height: 18rem;
 }
 
 .connect--header {
@@ -175,4 +179,10 @@
 .connect--createdAt,
 .connect--area {
     color: var(--dark-gray);
+}
+
+.connect--area {
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+    background: rgb(240, 240, 240);
 }

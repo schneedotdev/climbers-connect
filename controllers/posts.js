@@ -135,7 +135,12 @@ module.exports = {
     //   res.redirect(`/user/${req.user.username}`)
     // }
   },
-  getPost: async (req, res) => {
-    console.log(req.params.id)
+  getClimbPost: async (req, res) => {
+    const post = await Climb.findOne({ _id: req.params.id })
+    res.render('post', { user: req.user, post })
+  },
+  getConnectPost: async (req, res) => {
+    const post = await Connect.findOne({ _id: req.params.id })
+    res.render('post', { user: req.user, post })
   }
 }
