@@ -266,6 +266,7 @@ html {
 .profile--posts-list {
     width: 100%;
     display: flex;
+    justify-content: space-between;
     margin-top: 1rem;
     flex-wrap: wrap;
     border-radius: .5rem;
@@ -281,9 +282,8 @@ html {
 
 .rendered--climb-post,
 .rendered--connect-post {
-    width: 45%;
+    width: 49%;
     height: 100%;
-    margin: 1rem;
     background: rgb(248, 248, 248);
     border-radius: .5rem;
     border: .075rem solid var(--light-gray);
@@ -353,15 +353,9 @@ html {
     margin-left: auto;
 }
 
-.post--star-container {
-    margin-left: auto;
-    gap: .1rem;
-}
-
 .post--star {
     color: var(--purple);
 }
-
 
 /* temp */
 .star--amount-icon-container {

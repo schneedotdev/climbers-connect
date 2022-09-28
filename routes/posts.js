@@ -10,6 +10,7 @@ router.post('/create/connectPost', ensureAuth, postsController.createConnectPost
 // router.delete('/deleteConnect/:id', postController.deleteConnect)
 router.get('/feed', postsController.getFeed)
 router.get('/following', postsController.getFollowing)
+router.get('/:id', postsController.getPost)
 
 
 module.exports = router
