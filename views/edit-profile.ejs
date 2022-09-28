@@ -41,11 +41,7 @@
                 <section class="edit--container-left">
                     <h2 class="edit--container-left-title">Profile</h2>
                     <div class="drop-shadow">
-                        <% if(user.profile.avatar.url) { %>
-                            <img class="edit--profile-pic" src="<%= user.profile.avatar.url %>">
-                        <% } else { %>
-                            <img class="edit--profile-pic" src="/assets/headshot-nobg.png">
-                        <% } %>
+                        <img class="edit--profile-pic" src="<%= user.profile.avatar.url %>">
                     </div>
                     <h3 class="edit--username">@<%= user.username %></h3>
 

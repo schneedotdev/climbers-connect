@@ -7,8 +7,18 @@ const { findOne } = require('../models/User')
 module.exports = {
   getFeed: async (req, res) => {
     try {
-      const climbs = await Climb.find()
-      const connects = await Connect.find()
+      let climbs = await Climb.find()
+      let connects = await Connect.find()
+
+      climbs = await Promise.all(climbs.map(async (climb) => {
+        const profile = await Profile.findOne({ user: climb.user })
+        return await [climb, profile.avatar.url]
+      }))
+
+      connects = await Promise.all(connects.map(async (connect) => {
+        const profile = await Profile.findOne({ user: connect.user })
+        return await [connect, profile.avatar.url]
+      }))
 
       res.render('feed', { user: req.user, climbs, connects })
     } catch (err) {
@@ -20,7 +30,7 @@ module.exports = {
     try {
       const { following } = await Profile.findOne({ user: req.user._id })
 
-      const { climbs, connects } = await following.reduce(async (posts, userId) => {
+      let { climbs, connects } = await following.reduce(async (posts, userId) => {
         const climbPosts = await Climb.find({ user: userId })
         const connectPosts = await Connect.find({ user: userId })
 
@@ -29,6 +39,16 @@ module.exports = {
 
         return await posts
       }, { climbs: [], connects: [] })
+
+      climbs = await Promise.all(climbs.map(async (climb) => {
+        const profile = await Profile.findOne({ user: climb.user })
+        return await [climb, profile.avatar.url]
+      }))
+
+      connects = await Promise.all(connects.map(async (connect) => {
+        const profile = await Profile.findOne({ user: connect.user })
+        return await [connect, profile.avatar.url]
+      }))
 
       res.render('following', { user: req.user, climbs, connects })
     } catch (err) {
@@ -115,4 +135,7 @@ module.exports = {
     //   res.redirect(`/user/${req.user.username}`)
     // }
   },
+  getPost: async (req, res) => {
+    console.log(req.params.id)
+  }
 }

@@ -75,7 +75,7 @@ exports.postSignup = (req, res, next) => {
   const profile = new Profile({
     name: req.body.username,
     avatar: {
-      url: '',
+      url: 'https://res.cloudinary.com/ddxox70fb/image/upload/v1664301459/default-avatar2_lngpkb.png',
       id: ''
     },
     posts: {

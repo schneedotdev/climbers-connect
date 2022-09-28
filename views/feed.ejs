@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="/css/reset.css">
         <link rel="stylesheet" href="/css/partials/header.css">
         <link rel="stylesheet" href="/css/partials/footer.css">
+        <link rel="stylesheet" href="/css/partials/feed.css">
         
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,27 +22,61 @@
         <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100&display=swap" rel="stylesheet"> 
 
         <!-- Scripts -->
+        <script
+			src="https://kit.fontawesome.com/b89dd87408.js"
+			crossorigin="anonymous"
+			defer
+		></script>
     </head>
     <body>
         <%- include('partials/header') -%>
 
-        <h1>Feed</h1>
-
-        <ul>
-            <% for (let connect of connects) { %>
-                <li>
-                    <%= connect %>
-                </li>
-            <% } %>
-        </ul>
-
-        <ul>
-            <% for (let climb of climbs) { %>
-                <li>
-                    <%= climb %>
-                </li>
-            <% } %>
-        </ul>
+        <div class="feed--container">
+            <h1 class="feed--title">Feed</h1>
+    
+            <ul class="feed--posts-list">
+                    <% for(let i = 0; i < connects.length; i++) { %>
+                        <a href="/posts/<%= connects[i][0].id %>">
+                            <li class="rendered--connect-post">
+                                <header class="connect--header">
+                                    <img class="post--avatar" src="<%= connects[i][1] %>">
+                                    <span class="connect--area"><%= connects[i][0].area %></span>
+                                </header>
+                                <div class="connect--content">
+                                    <p class="connect--message"><%= connects[i][0].message %></p>
+                                    <span class="connect--createdAt"><%= connects[i][0].createdAt.getFullYear() %></span>
+                                </div>
+                            </li>
+                        </a>
+                    <% } %>
+    
+                    <% for(let i = 0; i < climbs.length; i++) { %>
+                        <a href="/posts/<%= climbs[i][0].id %>">
+                            <li class="rendered--climb-post">
+                                <header class="post--header">
+                                    <div class="post--avatar-name-container">
+                                        <img class="post--avatar" src="<%= climbs[i][1] %>">
+                                        <div class="post--col">
+                                            <span class="climb--name"><%= climbs[i][0].name %></span>
+                                            <span class="created-at-date"><%= climbs[i][0].createdAt.getFullYear() %></span>
+                                        </div>
+                                    </div>
+                                    <span class="climb--grade"><%= climbs[i][0].grade.toUpperCase() %></span>
+                                </header>
+                                <div class="climb--image-container">
+                                    <img class="climb--img" src="<%= climbs[i][0].image.url %>">
+                                </div>
+                                <div class="post--extra-info">
+                                    <div class="star--amount-icon-container">
+                                        <span class="star--amount"><%= climbs[i][0].rating %></span>
+                                        <i class="post--star fa-solid fa-star"></i>
+                                    </div>
+                                </div>
+                            </li>
+                        </a>
+                    <% } %>
+                </ul>
+        </div>
 
         <%- include('partials/footer') -%>
     </body>
