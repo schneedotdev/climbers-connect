@@ -408,6 +408,7 @@ html {
     background: rgb(240, 240, 240);
 }
 
+/* Padding/Margin changes for profile content */
 @media screen and (max-width: 1290px) {
 
     .profile--info-container,
@@ -420,6 +421,7 @@ html {
     }
 }
 
+/* Change flex direction of profile content */
 @media screen and (max-width: 1170px) {
     .profile--about-posts {
         flex-direction: column;
@@ -437,5 +439,61 @@ html {
 
     .profile--posts {
         margin: 1rem 0 0 0;
+    }
+
+    .profile--info-posts-two,
+    .profile--info-posts-three {
+        margin-left: 2rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+
+    .profile--info-posts-two,
+    .profile--info-posts-three {
+        margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .profile--info-container,
+    .profile--about-posts {
+        padding-inline: 3rem;
+    }
+
+    .profile--username-name {
+        margin-left: 12rem;
+    }
+
+    .profile--pic-wrapper {
+        margin-left: 3rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .profile--pic-wrapper {
+        width: 8rem;
+        height: 8rem;
+        margin-top: 6rem;
+    }
+
+    .edit--profile-text {
+        padding-inline: 1rem;
+    }
+
+    .profile--username-name {
+        margin-left: 10rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .profile--posts-title,
+    .profile--followers-title,
+    .profile--following-title,
+    .profile--username {
+        font-size: .9rem;
     }
 }
