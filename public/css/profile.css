@@ -24,6 +24,10 @@
     box-sizing: border-box;
 }
 
+.reveal-mobile {
+    display: none;
+}
+
 /* 
 ============== Layout Styles ==============
 */
@@ -222,8 +226,10 @@ html {
 }
 
 .profile--about {
+    display: table;
     width: 23rem;
-    height: 20rem;
+    height: fit-content;
+    /* overflow: hidden; */
     background: var(--lighter-gray);
     border-radius: .5rem;
     padding: 1rem;
@@ -333,7 +339,14 @@ html {
 }
 
 .climb--name {
+    color: var(--dark-blue);
     font-weight: 400;
+}
+
+.climb--grade,
+.created-at-date,
+.star--amount {
+    color: var(--dark-gray);
 }
 
 .climb--grade {
@@ -344,7 +357,6 @@ html {
 }
 
 .created-at-date {
-    color: var(--dark-gray);
     font-weight: 300;
 }
 
@@ -389,6 +401,7 @@ html {
 }
 
 .connect--message {
+    color: var(--dark-blue);
     margin-top: 1rem;
     font-weight: 300;
     overflow-wrap: break-word;
@@ -403,6 +416,7 @@ html {
 }
 
 .connect--area {
+    color: var(--dark-gray);
     padding: .25rem .5rem;
     border-radius: .5rem;
     background: rgb(240, 240, 240);
@@ -473,10 +487,18 @@ html {
 
 @media screen and (max-width: 700px) {
 
+    .profile--header-container {
+        height: 11rem;
+    }
+
     .profile--pic-wrapper {
         width: 8rem;
         height: 8rem;
-        margin-top: 6rem;
+        margin-top: 3rem;
+    }
+
+    .profile--info-container {
+        height: 6rem;
     }
 
     .edit--profile-text {
@@ -485,6 +507,21 @@ html {
 
     .profile--username-name {
         margin-left: 10rem;
+    }
+
+    .rendered--climb-post,
+    .rendered--connect-post {
+        width: 100%;
+    }
+
+    .hide-mobile {
+        display: none;
+    }
+
+    .reveal-mobile {
+        display: block;
+        color: white;
+        font-size: 1.3rem;
     }
 }
 
@@ -495,5 +532,13 @@ html {
     .profile--following-title,
     .profile--username {
         font-size: .9rem;
+    }
+
+    .profile--name {
+        font-size: 1.2rem;
+    }
+
+    .profile--posts-number {
+        font-size: 1.5rem;
     }
 }

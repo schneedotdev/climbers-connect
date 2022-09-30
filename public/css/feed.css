@@ -21,11 +21,11 @@
 }
 
 .feed--container {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     min-height: 42rem;
-    margin-inline: 12rem;
+    padding-inline: 10rem;
     margin-block: 2rem;
 }
 
@@ -39,7 +39,6 @@
 
 .feed--posts-list {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
 }
@@ -51,7 +50,7 @@
 
 .rendered--climb-post,
 .rendered--connect-post {
-    width: 18rem;
+    width: 49%;
     background: rgb(248, 248, 248);
     border-radius: .5rem;
     border: .075rem solid var(--light-gray);

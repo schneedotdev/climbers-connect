@@ -75,38 +75,42 @@
             <ul class="profile--posts-list">
                 <% for(let i = 0; i < connects.length; i++) { %>
                     <li class="rendered--connect-post">
-                        <header class="connect--header">
-                            <img class="post--avatar" src="<%= user.profile.avatar.url %>">
-                            <span class="connect--area"><%= connects[i].area %></span>
-                        </header>
-                        <div class="connect--content">
-                            <p class="connect--message"><%= connects[i].message %></p>
-                            <span class="connect--createdAt"><%= connects[i].createdAt.getFullYear() %></span>
-                        </div>
+                        <a href="/posts/connect/<%= connects[i].id %>">
+                            <header class="connect--header">
+                                <img class="post--avatar" src="<%= user.profile.avatar.url %>">
+                                <span class="connect--area"><%= connects[i].area %></span>
+                            </header>
+                            <div class="connect--content">
+                                <p class="connect--message"><%= connects[i].message %></p>
+                                <span class="connect--createdAt"><%= connects[i].createdAt.getFullYear() %></span>
+                            </div>
+                        </a>
                     </li>
                 <% } %>
 
                 <% for(let i = 0; i < climbs.length; i++) { %>
                     <li class="rendered--climb-post">
-                        <header class="post--header">
-                            <div class="post--avatar-name-container">
-                                <img class="post--avatar" src="<%= user.profile.avatar.url %>">
-                                <div class="post--col">
-                                    <span class="climb--name"><%= climbs[i].name %></span>
-                                    <span class="created-at-date"><%= climbs[i].createdAt.getFullYear() %></span>
+                        <a href="/posts/climb/<%= climbs[i].id %>">
+                            <header class="post--header">
+                                <div class="post--avatar-name-container">
+                                    <img class="post--avatar" src="<%= user.profile.avatar.url %>">
+                                    <div class="post--col">
+                                        <span class="climb--name"><%= climbs[i].name %></span>
+                                        <span class="created-at-date"><%= climbs[i].createdAt.getFullYear() %></span>
+                                    </div>
+                                </div>
+                                <span class="climb--grade"><%= climbs[i].grade.toUpperCase() %></span>
+                            </header>
+                            <div class="climb--image-container">
+                                <img class="climb--img" src="<%= climbs[i].image.url %>">
+                            </div>
+                            <div class="post--extra-info">
+                                <div class="star--amount-icon-container">
+                                    <span class="star--amount"><%= climbs[i].rating %></span>
+                                    <i class="post--star fa-solid fa-star"></i>
                                 </div>
                             </div>
-                            <span class="climb--grade"><%= climbs[i].grade.toUpperCase() %></span>
-                        </header>
-                        <div class="climb--image-container">
-                            <img class="climb--img" src="<%= climbs[i].image.url %>">
-                        </div>
-                        <div class="post--extra-info">
-                            <div class="star--amount-icon-container">
-                                <span class="star--amount"><%= climbs[i].rating %></span>
-                                <i class="post--star fa-solid fa-star"></i>
-                            </div>
-                        </div>
+                        </a>
                     </li>
                 <% } %>
             </ul>
