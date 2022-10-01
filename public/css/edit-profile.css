@@ -278,3 +278,64 @@ label {
 .bg--input {
     margin: 0;
 }
+
+@media screen and (max-width: 1290px) {
+
+    .edit--options-list,
+    .edit--title,
+    .edit--containers-wrapper {
+        margin-inline: 6rem;
+    }
+}
+
+@media screen and (max-width: 1120px) {
+
+    .edit--container-left,
+    .edit--container-right {
+        padding-inline: 2rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .edit--containers-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .edit--container-left,
+    .edit--container-right {
+        padding-top: 0;
+        padding-inline: 0;
+        width: 100%;
+    }
+
+    .edit--container-left {
+        border-right: none;
+    }
+
+    .edit--left-list {
+        justify-content: center;
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .edit--options-list,
+    .edit--title,
+    .edit--containers-wrapper {
+        margin-inline: 3rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+
+    .cancel--link,
+    .save--btn {
+        padding-inline: .5rem;
+    }
+
+    .save--btn {
+        margin-left: .5rem;
+    }
+}

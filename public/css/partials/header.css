@@ -28,6 +28,10 @@ html {
     border-bottom: .1rem solid var(--light-blue);
 }
 
+.reveal-mobile {
+    display: none;
+}
+
 /* 
 ============== Layout Styles ==============
 */
@@ -120,5 +124,18 @@ html {
 @media screen and (max-width: 800px) {
     .header--list {
         padding-inline: 3rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .hide-mobile {
+        display: none;
+    }
+
+    .reveal-mobile {
+        display: block;
+        color: var(--white);
+        font-size: 1.3rem;
     }
 }

@@ -24,10 +24,6 @@
     box-sizing: border-box;
 }
 
-.reveal-mobile {
-    display: none;
-}
-
 /* 
 ============== Layout Styles ==============
 */
@@ -512,16 +508,6 @@ html {
     .rendered--climb-post,
     .rendered--connect-post {
         width: 100%;
-    }
-
-    .hide-mobile {
-        display: none;
-    }
-
-    .reveal-mobile {
-        display: block;
-        color: white;
-        font-size: 1.3rem;
     }
 }
 
