@@ -90,6 +90,11 @@
     margin-right: .5rem;
 }
 
+.edit--options {
+    font-size: 1.2rem;
+    padding: .5rem;
+    cursor: pointer;
+}
 
 /* 
 -------------- Climb --------------
