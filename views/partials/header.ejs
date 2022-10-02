@@ -12,18 +12,31 @@
                     <h2>Feed</h2>
                 </a>
             </li>
-            <li class="header--li margin-left hide-mobile">
+            <li class="header--li">
                 <a class="header--li-link" href="/posts/following">
                     <h2>Following</h2>
                 </a>
             </li>
-            <li class="header--li margin-left hide-mobile">
+            <li class="header--li">
                 <form action="/user/<%= user.username %>" method="get">
                     <button class="header--li-button">My Profile</button>
                     <input type="hidden" name="myProfileBtn" value="true">
                 </form>
             </li>
-            <li class="header--li margin-left hide-mobile">
+            <li class="header--li hide-mobile">
+                <form class="search--form" action="/user/get/user" method="GET">
+                    <input
+                        class="search--input"
+                        type="text"
+                        name="user"
+                        placeholder="Search"
+                    >
+                    <button class="search--btn" type="submit">
+                        <i class="search--icon fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </form>
+            </li>
+            <li class="header--li">
                 <a class="header--li-link" href="/logout">
                     <h2 class="last--link">Sign out</h2>
                 </a>

@@ -47,8 +47,10 @@ html {
 
 .header--list {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding-inline: 10rem;
+    gap: .5rem;
 }
 
 .logo--li {
@@ -94,6 +96,41 @@ html {
 .header--logo-img {
     width: 1.5rem;
     margin-right: 0.5rem;
+}
+
+.search--form {
+    display: flex;
+    align-items: center;
+}
+
+.search--input,
+.search--btn {
+    border: .15rem solid var(--light-gray);
+}
+
+.search--input {
+    background: var(--white);
+    padding: .25rem .25rem .25rem .5rem;
+    border-right: none;
+    border-radius: 0.25rem 0 0 0.25rem;
+    width: 8rem;
+}
+
+.search--input:focus {
+    outline: none;
+    border: .15rem solid var(--purple);
+}
+
+.search--btn {
+    background: var(--lighter-gray);
+    padding: .3rem .5rem .25rem .5rem;
+    border-left: none;
+    border-radius: 0 0.25rem 0.25rem 0;
+    cursor: pointer;
+}
+
+.seach--icon {
+    color: var(--light-blue);
 }
 
 .margin-left {
