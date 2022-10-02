@@ -32,9 +32,13 @@
         <%- include('partials/header') -%>
 
         <div class="post--container">
-
+            <% if(type === 'climb') { %>
+                <%- include('partials/post.climb.ejs') -%>
+            <% } else { %>
+                <%- include('partials/post.connect.ejs') -%>
+            <% } %>
         </div>
-        
+
         <%- include('partials/footer') -%>
     </body>
 </html>

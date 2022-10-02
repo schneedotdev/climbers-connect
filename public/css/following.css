@@ -185,3 +185,17 @@
     border-radius: .5rem;
     background: rgb(240, 240, 240);
 }
+
+@media screen and (max-width: 1290px) {
+
+    .following--container {
+        padding-inline: 6rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .following--container {
+        padding-inline: 3rem;
+    }
+}

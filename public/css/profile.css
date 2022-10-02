@@ -225,7 +225,6 @@ html {
     display: table;
     width: 23rem;
     height: fit-content;
-    /* overflow: hidden; */
     background: var(--lighter-gray);
     border-radius: .5rem;
     padding: 1rem;

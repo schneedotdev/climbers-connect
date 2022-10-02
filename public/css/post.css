@@ -1,3 +1,7 @@
+/*
+============== Base Styles ==============
+*/
+
 :root {
     --white: #fff;
     --dark-blue-low-opacity: rgba(17, 20, 25, 0.475);
@@ -21,5 +25,102 @@
 }
 
 .post--container {
-    min-height: 42rem;
+    display: flex;
+    min-height: 35rem;
+    margin: 2rem 10rem;
+    background: rgb(248, 248, 248);
+    border-radius: .5rem;
+    border: .075rem solid var(--light-gray);
+}
+
+.created-at-date {
+    color: var(--dark-gray);
+    font-weight: 300;
+}
+
+/*
+============== Layout Styles ==============
+*/
+
+.post--header,
+.post--extra-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post--col {
+    display: flex;
+    flex-direction: column;
+}
+
+.post--avatar-name-container {
+    display: flex;
+    align-items: center;
+}
+
+/*
+============== Additional Styles ==============
+*/
+
+.climb--image-container,
+.comments--container {
+    width: 50%;
+}
+
+.comments--container {
+    padding: 1rem;
+}
+
+.post--header {
+    border-radius: .5rem .5rem 0 0;
+}
+
+.post--extra-info {
+    border-radius: 0 0 .5rem .5rem;
+}
+
+.post--avatar {
+    background: var(--light-blue);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: .1rem solid var(--light-gray);
+    margin-right: .5rem;
+}
+
+
+/* 
+-------------- Climb --------------
+*/
+
+.climb--image-container {
+    display: flex;
+    align-items: center;
+    background: var(--dark-blue);
+    border-radius: .25rem 0 0 .25rem;
+}
+
+.climb--img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 
+-------------- Connect --------------
+*/
+
+@media screen and (max-width: 1290px) {
+
+    .post--container {
+        margin-inline: 6rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .post--container {
+        margin-inline: 3rem;
+    }
 }

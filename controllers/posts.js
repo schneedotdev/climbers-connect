@@ -135,12 +135,27 @@ module.exports = {
     //   res.redirect(`/user/${req.user.username}`)
     // }
   },
-  getClimbPost: async (req, res) => {
-    const post = await Climb.findOne({ _id: req.params.id })
-    res.render('post', { user: req.user, post })
-  },
-  getConnectPost: async (req, res) => {
-    const post = await Connect.findOne({ _id: req.params.id })
-    res.render('post', { user: req.user, post })
+  getPost: async (req, res) => {
+    const user = await User.findOne({ _id: req.user._id })
+      .populate('profile')
+    const type = req.query.type
+    let post
+
+    if (type === 'climb') {
+      post = await Climb.findOne({ _id: req.params.id })
+    } else {
+      post = await Connect.findOne({ _id: req.params.id })
+    }
+
+    const date = await formatDate(post.createdAt)
+
+    res.render('post', { user, type, post, date })
   }
+}
+
+function formatDate(date) {
+  // converts date month into short hand representation example: "Mar" for "March"
+  const month = date.toLocaleString('default', { month: 'short' });
+  const year = date.getFullYear()
+  return `${month} ${year}`
 }
