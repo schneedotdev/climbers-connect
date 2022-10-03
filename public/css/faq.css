@@ -35,9 +35,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: .25rem;
 }
 
 .faq--title {
+    color: var(--dark-blue);
     font-size: 1.3rem;
     font-weight: 400;
     margin: 2rem 10rem 0 10rem;
@@ -63,9 +65,10 @@
 }
 
 .faq--list li:hover .faq--question,
-.faq--list li:hover i {
+.faq--list li:hover .expand--icon {
     color: var(--medium-blue);
 }
+
 
 .question--div {
     display: flex;
@@ -75,6 +78,10 @@
 .faq--question {
     font-weight: 600;
     font-size: 1.5rem;
+}
+
+.expand--icon {
+    margin-left: 1rem;
 }
 
 .faq--answer {
