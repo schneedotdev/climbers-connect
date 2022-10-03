@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title><%= title %> | Climbers Connect</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="/assets/mountain.png">
+    
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/partials/header.css">
+        <link rel="stylesheet" href="/css/partials/footer.css">
+        <link rel="stylesheet" href="/css/faq.css">
+        
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100&display=swap" rel="stylesheet"> 
+
+        <!-- Scripts -->
+        <script src="/js/faq.js" defer></script>
+        <script
+			src="https://kit.fontawesome.com/b89dd87408.js"
+			crossorigin="anonymous"
+			defer
+		></script>
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+
+        <h1 class="faq--title">Frequently Asked Questions</h1>
+
+        <div class="faq--container">
+            <ul class="faq--list">
+                <li class="faq--li">
+                    <div class="question--div">
+                        <h2 class="faq--question">What is Bouldering?</h2>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <h2 class="faq--answer">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo nemo ad quod nisi, accusamus ipsum?</h2>
+                </li>
+                <li class="faq--li">
+                    <div class="question--div">
+                        <h2 class="faq--question">What is Sport Climbing?</h2>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <h2 class="faq--answer">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod, illo.</h2>
+                </li>
+                <li class="faq--li">
+                    <div class="question--div">
+                        <h2 class="faq--question">What is a Climbing Grade?</h2>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <h2 class="faq--answer">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum, natus?</h2>
+                </li>
+                <li class="faq--li">
+                    <div class="question--div">
+                        <h2 class="faq--question">What is a Climb Post?</h2>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <h2 class="faq--answer">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, consequuntur!</h2>
+                </li>
+                <li class="faq--li">
+                    <div class="question--div">
+                        <h2 class="faq--question">What is a Connect Post?</h2>
+                        <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                    <h2 class="faq--answer">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit, officiis!</h2>
+                </li>
+            </ul>
+            <div class="faq--image-container">
+                <img class="faq--image" src="/assets/faq.jpg">
+            </div>
+        </div>
+        
+        <%- include('partials/footer') -%>
+    </body>
+</html>

@@ -109,6 +109,7 @@ html {
 }
 
 .search--input {
+    font-family: 'Raleway', sans-serif;
     background: var(--white);
     padding: .25rem .25rem .25rem .5rem;
     border-right: none;
@@ -123,7 +124,7 @@ html {
 
 .search--btn {
     background: var(--lighter-gray);
-    padding: .3rem .5rem .25rem .5rem;
+    padding: .25rem .5rem .25rem .5rem;
     border-left: none;
     border-radius: 0 0.25rem 0.25rem 0;
     cursor: pointer;
