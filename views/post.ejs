@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Post | Climbers Connect</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="/assets/mountain.png">
+    
+        <!-- Stylesheets -->
+        <link rel="stylesheet" href="/css/reset.css">
+        <link rel="stylesheet" href="/css/partials/header.css">
+        <link rel="stylesheet" href="/css/partials/footer.css">
+        <link rel="stylesheet" href="/css/post.css">
+        
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100&display=swap" rel="stylesheet"> 
+
+        <!-- Scripts -->
+        <script
+			src="https://kit.fontawesome.com/b89dd87408.js"
+			crossorigin="anonymous"
+			defer
+		></script>
+    </head>
+    <body>
+        <%- include('partials/header') -%>
+
+        <div class="post--container">
+            <% if(type === 'climb') { %>
+                <%- include('partials/post.climb.ejs') -%>
+            <% } else { %>
+                <%- include('partials/post.connect.ejs') -%>
+            <% } %>
+        </div>
+
+        <%- include('partials/footer') -%>
+    </body>
+</html>

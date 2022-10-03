@@ -4,18 +4,26 @@ const { Climb, Connect } = require('../models/Post')
 const cloudinary = require("../middleware/cloudinary")
 
 module.exports = {
+    getUser: async (req, res) => {
+        try {
+            res.redirect(`/user/${req.query.user.toLowerCase()}`)
+        } catch (err) {
+            console.error(err)
+            res.redirect(`/user/${req.user.username}`)
+        }
+    },
     getProfile: async (req, res) => {
         try {
             if (req.query.myProfileBtn) {
                 res.redirect(`/user/${req.user.username}`)
             } else {
-                const user = await User.findOne({ username: req.params.username }).populate('profile').lean()
+                const user = await User.findOne({ username: req.params.username.toLowerCase() }).populate('profile').lean()
 
                 // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
                 if (!user) throw 'User does not exist'
 
                 // check to see if the current user is requesting their own profile
-                const isCurrentUser = req.user.username === req.params.username
+                const isCurrentUser = req.user.username === req.params.username.toLowerCase()
 
                 let following = false;
                 if (!isCurrentUser) {
@@ -36,7 +44,7 @@ module.exports = {
             }
         } catch (err) {
             console.error(err)
-            res.sendStatus(404)
+            res.redirect(`/user/${req.user.username}`)
         }
     },
     getEditProfile: async (req, res) => {

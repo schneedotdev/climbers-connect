@@ -4,4 +4,10 @@ module.exports = {
             title: 'Home'
         })
     },
+    getFAQ: (req, res) => {
+        res.render('faq.ejs', {
+            title: 'FAQ',
+            user: req.user
+        })
+    },
 }

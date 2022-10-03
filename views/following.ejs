@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="/css/reset.css">
         <link rel="stylesheet" href="/css/partials/header.css">
         <link rel="stylesheet" href="/css/partials/footer.css">
-        <link rel="stylesheet" href="/css/partials/following.css">
+        <link rel="stylesheet" href="/css/following.css">
         
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,8 +36,8 @@
     
             <ul class="following--posts-list">
                 <% for(let i = 0; i < connects.length; i++) { %>
-                    <a href="/posts/<%= connects[i][0].id %>">
-                        <li class="rendered--connect-post">
+                    <li class="rendered--connect-post">
+                        <a href="/posts/post/<%= connects[i][0].id %>?type=connect">
                             <header class="connect--header">
                                 <img class="post--avatar" src="<%= connects[i][1] %>">
                                 <span class="connect--area"><%= connects[i][0].area %></span>
@@ -46,13 +46,13 @@
                                 <p class="connect--message"><%= connects[i][0].message %></p>
                                 <span class="connect--createdAt"><%= connects[i][0].createdAt.getFullYear() %></span>
                             </div>
-                        </li>
-                    </a>
+                        </a>
+                    </li>
                 <% } %>
 
                 <% for(let i = 0; i < climbs.length; i++) { %>
-                    <a href="/posts/<%= connects[i][0].id %>">
-                        <li class="rendered--climb-post">
+                    <li class="rendered--climb-post">
+                        <a href="/posts/post/<%= climbs[i][0].id %>?type=climb">
                             <header class="post--header">
                                 <div class="post--avatar-name-container">
                                     <img class="post--avatar" src="<%= climbs[i][1] %>">
@@ -72,8 +72,8 @@
                                     <i class="post--star fa-solid fa-star"></i>
                                 </div>
                             </div>
-                        </li>
-                    </a>
+                        </a>
+                    </li>
                 <% } %>
             </ul>
         </div>

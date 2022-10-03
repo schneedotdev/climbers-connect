@@ -73,7 +73,7 @@ exports.postSignup = (req, res, next) => {
   })
 
   const profile = new Profile({
-    name: req.body.username,
+    name: req.body.username.toLowerCase(),
     avatar: {
       url: 'https://res.cloudinary.com/ddxox70fb/image/upload/v1664301459/default-avatar2_lngpkb.png',
       id: ''
@@ -88,7 +88,7 @@ exports.postSignup = (req, res, next) => {
   })
 
   const user = new User({
-    username: req.body.username,
+    username: req.body.username.toLowerCase(),
     email: req.body.email,
     password: req.body.password,
     profile: profile._id

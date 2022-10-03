@@ -1,0 +1,119 @@
+<div class="profile--content">
+    <header class="profile--header-container">
+        <div class="profile--pic-wrapper">
+            <img class="profile--pic" src="<%= url %>">
+
+            <% if (isCurrentUser) { %>
+                <a class="edit--profile-link" href="/user/edit/<%= user.username %>">
+                    <h3 class="edit--profile-text">Edit Profile</h3>
+                </a>
+            <% } else { %>
+                <% if(following) { %>
+                    <form action="/user/unfollow/<%= user.username %>?_method=PUT" method="POST">
+                        <button class="following--profile-button" type="submit">Following</button>
+                    </form>
+                <% } else { %> 
+                    <form action="/user/follow/<%= user.username %>?_method=PUT" method="POST">
+                        <button class="follow--profile-button" type="submit">Follow</button>
+                    </form>
+                <% } %>
+            <% } %>
+        </div>
+    </header>
+    <div class="profile--info-container">
+        <section class="profile--username-name">
+            <h2 class="profile--name"><%= user.profile.name %></h2>
+            <h6 class="profile--username">@<%= user.username %></h6>
+        </section>
+        <section class="profile--info-posts">
+            <h5 class="profile--posts-number"><%= climbs.length + connects.length %></h5>
+            <h4 class="profile--posts-title">Posts</h4>
+        </section>
+        <section class="profile--info-posts-two">
+            <h5 class="profile--posts-number"><%= user.profile.followers.length %></h5>
+            <h4 class="profile--posts-title">Followers</h4>
+        </section>
+        <section class="profile--info-posts-three">
+            <h5 class="profile--posts-number"><%= user.profile.following.length %></h5>
+            <h4 class="profile--posts-title">Following</h4>
+        </section>
+    </div>
+    <main class="profile--about-posts">
+        <section class="profile--about">
+            <ul>
+                <li class="li--flex">
+                    <h3 class="profile--about-text">About</h3>
+                    <% if(isCurrentUser) { %>
+                        <a href="/user/edit/<%= user.username %>">
+                            <i class="edit--icon fa-regular fa-pen-to-square"></i>
+                        </a>
+                    <% } %>
+                </li>
+                <li>
+                    <p class="about--margin-top"><%= user.profile.about %></p>
+                </li>
+                <li>
+                    <span class="about--margin-top profile--location-span"><i class="fa-solid fa-house home-icon"></i><%= user.profile.location %></span>
+                </li>
+                <% if(twitter) { %>
+                    <li>
+                        <i class="fa-brands fa-twitter twitter-icon"></i>
+                        <a class="profile--twitter-link" href="https://twitter.com/<%= twitter %>" target="_blank">
+                            <span class="about--margin-top profile--twitter-span"><%= user.profile.twitter %></span>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+        </section>
+        <section class="profile--posts">
+            <div class="posts--heading-container">
+                <h3 class="profile--posts-text">Posts</h3>
+                <% if(isCurrentUser) { %>
+                    <h2 class="create--post">Create<i class="create-icon fa-solid fa-circle-plus"></i></h2>
+                <% } %>            
+            </div>
+            <ul class="profile--posts-list">
+                <% for(let i = 0; i < connects.length; i++) { %>
+                    <li class="rendered--connect-post">
+                        <a href="/posts/post/<%= connects[i].id %>?type=connect">
+                            <header class="connect--header">
+                                <img class="post--avatar" src="<%= user.profile.avatar.url %>">
+                                <span class="connect--area"><%= connects[i].area %></span>
+                            </header>
+                            <div class="connect--content">
+                                <p class="connect--message"><%= connects[i].message %></p>
+                                <span class="connect--createdAt"><%= connects[i].createdAt.getFullYear() %></span>
+                            </div>
+                        </a>
+                    </li>
+                <% } %>
+
+                <% for(let i = 0; i < climbs.length; i++) { %>
+                    <li class="rendered--climb-post">
+                        <a href="/posts/post/<%= climbs[i].id %>?type=climb">
+                            <header class="post--header">
+                                <div class="post--avatar-name-container">
+                                    <img class="post--avatar" src="<%= user.profile.avatar.url %>">
+                                    <div class="post--col">
+                                        <span class="climb--name"><%= climbs[i].name %></span>
+                                        <span class="created-at-date"><%= climbs[i].createdAt.getFullYear() %></span>
+                                    </div>
+                                </div>
+                                <span class="climb--grade"><%= climbs[i].grade.toUpperCase() %></span>
+                            </header>
+                            <div class="climb--image-container">
+                                <img class="climb--img" src="<%= climbs[i].image.url %>">
+                            </div>
+                            <div class="post--extra-info">
+                                <div class="star--amount-icon-container">
+                                    <span class="star--amount"><%= climbs[i].rating %></span>
+                                    <i class="post--star fa-solid fa-star"></i>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+        </section>
+    </main>
+</div>

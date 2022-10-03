@@ -222,8 +222,9 @@ html {
 }
 
 .profile--about {
+    display: table;
     width: 23rem;
-    height: 20rem;
+    height: fit-content;
     background: var(--lighter-gray);
     border-radius: .5rem;
     padding: 1rem;
@@ -255,7 +256,6 @@ html {
 }
 
 .profile--posts {
-    /* background: red; */
     margin-left: 1.5rem;
     width: 65%;
     border-radius: .5rem;
@@ -271,10 +271,10 @@ html {
     flex-wrap: wrap;
     border-radius: .5rem;
     min-height: 15rem;
+    gap: 1rem 0;
 }
 
 /* POSTS */
-
 .post--col {
     display: flex;
     flex-direction: column;
@@ -282,7 +282,7 @@ html {
 
 .rendered--climb-post,
 .rendered--connect-post {
-    width: 49%;
+    width: 48.7%;
     height: 100%;
     background: rgb(248, 248, 248);
     border-radius: .5rem;
@@ -334,7 +334,14 @@ html {
 }
 
 .climb--name {
+    color: var(--dark-blue);
     font-weight: 400;
+}
+
+.climb--grade,
+.created-at-date,
+.star--amount {
+    color: var(--dark-gray);
 }
 
 .climb--grade {
@@ -345,7 +352,6 @@ html {
 }
 
 .created-at-date {
-    color: var(--dark-gray);
     font-weight: 300;
 }
 
@@ -390,6 +396,7 @@ html {
 }
 
 .connect--message {
+    color: var(--dark-blue);
     margin-top: 1rem;
     font-weight: 300;
     overflow-wrap: break-word;
@@ -401,4 +408,153 @@ html {
     margin-left: auto;
     color: var(--dark-gray);
     font-weight: 300;
+}
+
+.connect--area {
+    color: var(--dark-gray);
+    padding: .25rem .5rem;
+    border-radius: .5rem;
+    background: rgb(240, 240, 240);
+}
+
+/* Padding/Margin changes for profile content */
+@media screen and (max-width: 1290px) {
+
+    .profile--info-container,
+    .profile--about-posts {
+        padding-inline: 6rem;
+    }
+
+    .profile--pic-wrapper {
+        margin-left: 6rem;
+    }
+}
+
+/* Change flex direction of profile content */
+@media screen and (max-width: 1170px) {
+    .profile--about-posts {
+        flex-direction: column;
+        padding-top: 1rem;
+    }
+
+    .profile--about,
+    .profile--posts {
+        width: 100%;
+    }
+
+    .profile--about {
+        height: 10rem;
+    }
+
+    .profile--posts {
+        margin: 1rem 0 0 0;
+    }
+
+    .profile--info-posts-two,
+    .profile--info-posts-three {
+        margin-left: 2rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+
+    .profile--info-posts-two,
+    .profile--info-posts-three {
+        margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .profile--info-container,
+    .profile--about-posts {
+        padding-inline: 3rem;
+    }
+
+    .profile--username-name {
+        margin-left: 12rem;
+    }
+
+    .profile--pic-wrapper {
+        margin-left: 3rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .profile--header-container {
+        height: 11rem;
+    }
+
+    .profile--pic-wrapper {
+        width: 8rem;
+        height: 8rem;
+        margin-top: 3rem;
+    }
+
+    .profile--info-container {
+        height: 6rem;
+    }
+
+    .edit--profile-text {
+        padding-inline: 1rem;
+    }
+
+    .profile--username-name {
+        margin-left: 10rem;
+    }
+
+    .rendered--climb-post,
+    .rendered--connect-post {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    .profile--posts-title,
+    .profile--followers-title,
+    .profile--following-title,
+    .profile--username {
+        font-size: .9rem;
+    }
+
+    .profile--name {
+        font-size: 1.2rem;
+    }
+
+    .profile--posts-number {
+        font-size: 1.5rem;
+    }
+
+    .profile--header-container {
+        padding-top: 0;
+        height: 7rem;
+        /* background: var(--light-gray); */
+    }
+
+    .profile--pic-wrapper {
+        margin-top: 1rem;
+    }
+
+    .profile--name,
+    .profile--username {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .profile--header-container {
+        height: 6rem;
+    }
+
+    .profile--pic-wrapper {
+        width: 7rem;
+        height: 7rem;
+    }
+
+    .edit--profile-text {
+        padding-inline: 0;
+    }
 }

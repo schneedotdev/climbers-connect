@@ -1,0 +1,132 @@
+/*
+============== Base Styles ==============
+*/
+
+:root {
+    --white: #fff;
+    --dark-blue-low-opacity: rgba(17, 20, 25, 0.475);
+    --alternate-dark-blue: #1f242e;
+    --dark-blue: #111419;
+    --lighter-gray: rgb(243, 243, 243);
+    --light-gray: rgb(227, 228, 229);
+    --medium-light-gray: #babebf;
+    --medium-gray: #959a9b;
+    --dark-gray: #4F5D5F;
+    --gray-blue: #68819C;
+    --light-blue: #81AEE5;
+    --medium-blue: #274469;
+    --purple: #A0A1F5;
+    --dark-purple: #383970;
+    --gold: #FFE55C;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.post--container {
+    display: flex;
+    min-height: 35rem;
+    margin: 2rem 10rem;
+    background: rgb(248, 248, 248);
+    border-radius: .5rem;
+    border: .075rem solid var(--light-gray);
+}
+
+.created-at-date {
+    color: var(--dark-gray);
+    font-weight: 300;
+}
+
+/*
+============== Layout Styles ==============
+*/
+
+.post--header,
+.post--extra-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post--col {
+    display: flex;
+    flex-direction: column;
+}
+
+.post--avatar-name-container {
+    display: flex;
+    align-items: center;
+}
+
+/*
+============== Additional Styles ==============
+*/
+
+.climb--image-container,
+.comments--container {
+    width: 50%;
+}
+
+.comments--container {
+    padding: 1rem;
+    border-left: .075rem solid var(--light-gray);
+}
+
+.post--header {
+    border-radius: .5rem .5rem 0 0;
+}
+
+.post--extra-info {
+    border-radius: 0 0 .5rem .5rem;
+}
+
+.post--avatar {
+    background: var(--light-blue);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    border: .1rem solid var(--light-gray);
+    margin-right: .5rem;
+}
+
+.edit--options {
+    font-size: 1.2rem;
+    padding: .5rem;
+    cursor: pointer;
+}
+
+/* 
+-------------- Climb --------------
+*/
+
+.climb--image-container {
+    display: flex;
+    align-items: center;
+    background: black;
+    border-radius: .25rem 0 0 .25rem;
+}
+
+.climb--img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* 
+-------------- Connect --------------
+*/
+
+@media screen and (max-width: 1290px) {
+
+    .post--container {
+        margin-inline: 6rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    .post--container {
+        margin-inline: 3rem;
+    }
+}
