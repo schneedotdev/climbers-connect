@@ -21,8 +21,6 @@
 }
 
 .faq--container {
-    display: flex;
-    justify-content: center;
     margin: 2rem 10rem 2rem 10rem;
     min-height: 32rem;
 }
@@ -81,6 +79,11 @@
     margin-top: .5rem;
 }
 
+.faq--footnote {
+    text-align: center;
+    margin-top: 2rem;
+}
+
 @media screen and (max-width: 1290px) {
 
     .faq--container,
@@ -94,5 +97,12 @@
     .faq--container,
     .faq--title {
         margin-inline: 3rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .faq--list li {
+        padding-inline: 1rem;
     }
 }

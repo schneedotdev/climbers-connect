@@ -12,12 +12,12 @@
                     <h2>Feed</h2>
                 </a>
             </li>
-            <li class="header--li">
+            <li class="header--li hide-mobile">
                 <a class="header--li-link" href="/posts/following">
                     <h2>Following</h2>
                 </a>
             </li>
-            <li class="header--li">
+            <li class="header--li hide-mobile">
                 <form action="/user/<%= user.username %>" method="get">
                     <button class="header--li-button">My Profile</button>
                     <input type="hidden" name="myProfileBtn" value="true">
@@ -36,7 +36,7 @@
                     </button>
                 </form>
             </li>
-            <li class="header--li">
+            <li class="header--li hide-mobile">
                 <a class="header--li-link" href="/logout">
                     <h2 class="last--link">Sign out</h2>
                 </a>
