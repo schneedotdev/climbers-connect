@@ -88,20 +88,11 @@ module.exports = {
     // }
   },
   getPost: async (req, res) => {
-    const user = await User.findOne({ _id: req.user._id })
-      .populate('profile')
-    const type = req.query.type
-    let post
-
-    if (type === 'climb') {
-      post = await Climb.findOne({ _id: req.params.id })
-    } else {
-      post = await Connect.findOne({ _id: req.params.id })
-    }
-
+    const user = await User.findOne({ _id: req.user._id }).populate('profile')
+    const post = await Post.findOne({ _id: req.params.id })
     const date = await formatDate(post.createdAt)
 
-    res.render('post', { user, type, post, date })
+    res.render('post', { user, post, date })
   }
 }
 
