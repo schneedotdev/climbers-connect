@@ -1,26 +1,20 @@
 const User = require('../models/User')
 const Profile = require('../models/Profile')
-const { Climb, Connect } = require('../models/Post')
+const Post = require('../models/Post')
 const cloudinary = require("../middleware/cloudinary")
 const { findOne } = require('../models/User')
 
 module.exports = {
   getFeed: async (req, res) => {
     try {
-      let climbs = await Climb.find()
-      let connects = await Connect.find()
+      let posts = await Post.find()
 
-      climbs = await Promise.all(climbs.map(async (climb) => {
-        const profile = await Profile.findOne({ user: climb.user })
-        return await [climb, profile.avatar.url]
+      posts = await Promise.all(posts.map(async (post) => {
+        const profile = await Profile.findOne({ user: post.user })
+        return await [post, profile.avatar.url]
       }))
 
-      connects = await Promise.all(connects.map(async (connect) => {
-        const profile = await Profile.findOne({ user: connect.user })
-        return await [connect, profile.avatar.url]
-      }))
-
-      res.render('feed', { user: req.user, climbs, connects })
+      res.render('feed', { user: req.user, posts })
     } catch (err) {
       console.error(err)
       res.redirect(`/user/${req.user.username}`)
