@@ -87,42 +87,6 @@ module.exports = {
     //   res.redirect(`/user/${req.user.username}`)
     // }
   },
-  createConnectPost: async (req, res) => {
-    try {
-      const user = await User.findOne({ username: req.user.username })
-        .populate('profile')
-
-      const connect = await Connect.create({
-        area: req.body.area,
-        message: req.body.message,
-        user: req.user.id,
-      })
-
-      user.profile.posts.connects.push(connect._id)
-      user.save()
-
-      console.log("Connect Post has been added!")
-      res.redirect(`/user/${req.user.username}`)
-    } catch (err) {
-      console.log(err)
-      res.redirect(`/user/${req.user.username}`)
-    }
-  },
-  deleteConnectPost: async (req, res) => {
-    // try {
-    //   // Find post by id
-    //   let post = await Connect.findById({ _id: req.params.id })
-    //   // Delete image from cloudinary
-    //   await cloudinary.uploader.destroy(post.cloudinaryId)
-    //   // Delete post from db
-    //   await Connect.remove({ _id: req.params.id })
-
-    //   console.log("Deleted Connect Post")
-    //   res.redirect(`/user/${req.user.username}`)
-    // } catch (err) {
-    //   res.redirect(`/user/${req.user.username}`)
-    // }
-  },
   getPost: async (req, res) => {
     const user = await User.findOne({ _id: req.user._id })
       .populate('profile')
