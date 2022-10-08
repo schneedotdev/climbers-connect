@@ -43,14 +43,14 @@ module.exports = {
       res.redirect(`/user/${req.user.username}`)
     }
   },
-  createClimbPost: async (req, res) => {
+  createPost: async (req, res) => {
     try {
       const user = await User.findOne({ username: req.user.username })
         .populate('profile')
       // Upload image to cloudinary
       const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
 
-      const climb = await Climb.create({
+      const post = await Post.create({
         name: req.body.name,
         grade: req.body.grade,
         image: {
@@ -59,12 +59,13 @@ module.exports = {
         },
         rating: req.body.rating,
         user: req.user.id,
+        comments: [],
       })
 
-      user.profile.posts.climbs.push(climb._id)
+      user.profile.posts.push(post._id)
       user.save()
 
-      console.log("Climb Post has been added!")
+      console.log("Post has been created!")
       res.redirect(`/user/${req.user.username}`)
     } catch (err) {
       console.log(err)
