@@ -26,7 +26,7 @@
             <h6 class="profile--username">@<%= user.username %></h6>
         </section>
         <section class="profile--info-posts">
-            <h5 class="profile--posts-number"><%= climbs.length + connects.length %></h5>
+            <h5 class="profile--posts-number"><%= posts.length %></h5>
             <h4 class="profile--posts-title">Posts</h4>
         </section>
         <section class="profile--info-posts-two">
@@ -73,40 +73,25 @@
                 <% } %>            
             </div>
             <ul class="profile--posts-list">
-                <% for(let i = 0; i < connects.length; i++) { %>
-                    <li class="rendered--connect-post">
-                        <a href="/posts/post/<%= connects[i].id %>?type=connect">
-                            <header class="connect--header">
-                                <img class="post--avatar" src="<%= user.profile.avatar.url %>">
-                                <span class="connect--area"><%= connects[i].area %></span>
-                            </header>
-                            <div class="connect--content">
-                                <p class="connect--message"><%= connects[i].message %></p>
-                                <span class="connect--createdAt"><%= connects[i].createdAt.getFullYear() %></span>
-                            </div>
-                        </a>
-                    </li>
-                <% } %>
-
-                <% for(let i = 0; i < climbs.length; i++) { %>
+                <% for(let i = 0; i < posts.length; i++) { %>
                     <li class="rendered--climb-post">
-                        <a href="/posts/post/<%= climbs[i].id %>?type=climb">
+                        <a href="/posts/post/<%= posts[i].id %>">
                             <header class="post--header">
                                 <div class="post--avatar-name-container">
                                     <img class="post--avatar" src="<%= user.profile.avatar.url %>">
                                     <div class="post--col">
-                                        <span class="climb--name"><%= climbs[i].name %></span>
-                                        <span class="created-at-date"><%= climbs[i].createdAt.getFullYear() %></span>
+                                        <span class="climb--name"><%= posts[i].name %></span>
+                                        <span class="created-at-date"><%= posts[i].createdAt.getFullYear() %></span>
                                     </div>
                                 </div>
-                                <span class="climb--grade"><%= climbs[i].grade.toUpperCase() %></span>
+                                <span class="climb--grade"><%= posts[i].grade.toUpperCase() %></span>
                             </header>
                             <div class="climb--image-container">
-                                <img class="climb--img" src="<%= climbs[i].image.url %>">
+                                <img class="climb--img" src="<%= posts[i].image.url %>">
                             </div>
                             <div class="post--extra-info">
                                 <div class="star--amount-icon-container">
-                                    <span class="star--amount"><%= climbs[i].rating %></span>
+                                    <span class="star--amount"><%= posts[i].rating %></span>
                                     <i class="post--star fa-solid fa-star"></i>
                                 </div>
                             </div>
