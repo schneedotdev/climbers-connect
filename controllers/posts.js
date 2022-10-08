@@ -24,27 +24,20 @@ module.exports = {
     try {
       const { following } = await Profile.findOne({ user: req.user._id })
 
-      let { climbs, connects } = await following.reduce(async (posts, userId) => {
-        const climbPosts = await Climb.find({ user: userId })
-        const connectPosts = await Connect.find({ user: userId })
+      let posts = await following.reduce(async (posts, userId) => {
+        const followerPosts = await Post.find({ user: userId })
 
-        if (climbPosts) (await posts).climbs.push(...climbPosts)
-        if (connectPosts) (await posts).connects.push(...connectPosts)
+        if (followerPosts) (await posts).push(...followerPosts)
 
         return await posts
-      }, { climbs: [], connects: [] })
+      }, [])
 
-      climbs = await Promise.all(climbs.map(async (climb) => {
-        const profile = await Profile.findOne({ user: climb.user })
-        return await [climb, profile.avatar.url]
+      posts = await Promise.all(posts.map(async (post) => {
+        const profile = await Profile.findOne({ user: post.user })
+        return await [post, profile.avatar.url]
       }))
 
-      connects = await Promise.all(connects.map(async (connect) => {
-        const profile = await Profile.findOne({ user: connect.user })
-        return await [connect, profile.avatar.url]
-      }))
-
-      res.render('following', { user: req.user, climbs, connects })
+      res.render('following', { user: req.user, posts })
     } catch (err) {
       console.error(err)
       res.redirect(`/user/${req.user.username}`)
