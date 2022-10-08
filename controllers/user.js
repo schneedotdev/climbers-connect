@@ -1,6 +1,6 @@
 const User = require('../models/User')
 const Profile = require('../models/Profile')
-const { Climb, Connect } = require('../models/Post')
+const Post = require('../models/Post')
 const cloudinary = require("../middleware/cloudinary")
 
 module.exports = {
@@ -33,14 +33,12 @@ module.exports = {
                     following = profile.following.some(userId => userId.toString() === user._id.toString())
                 }
 
-                const climbs = await Climb.find({ user: user._id })
-                    .populate('user')
-                const connects = await Connect.find({ user: user._id })
+                const posts = await Post.find({ user: user._id })
                     .populate('user')
 
                 const { twitter, avatar: { url } } = user.profile
 
-                res.render('profile', { user, climbs, connects, isCurrentUser, following, twitter, url })
+                res.render('profile', { user, posts, isCurrentUser, following, twitter, url })
             }
         } catch (err) {
             console.error(err)
@@ -67,9 +65,7 @@ module.exports = {
 
             const user = await User.findOne({ _id: req.user._id })
             const profile = await Profile.findOne({ _id: user.profile })
-            const { name, location, about, twitter } = req.body;
-
-            console.log(req.body)
+            const { name, location, about, twitter } = req.body
 
             if (name) profile.name = name.trim()
             if (location) profile.location = location.trim()

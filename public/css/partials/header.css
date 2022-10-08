@@ -19,7 +19,6 @@ html {
 .header {
     width: 100%;
     height: 3.5rem;
-    /* background: var(--dark-blue); */
     background: hsla(216, 19%, 10%, 1);
     background: radial-gradient(circle, hsla(216, 19%, 10%, 1) 0%, hsla(218, 19%, 8%, 1) 100%, hsla(230, 66%, 60%, 1) 100%);
     background: -moz-radial-gradient(circle, hsla(216, 19%, 10%, 1) 0%, hsla(218, 19%, 8%, 1) 100%, hsla(230, 66%, 60%, 1) 100%);

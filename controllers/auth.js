@@ -78,10 +78,7 @@ exports.postSignup = (req, res, next) => {
       url: 'https://res.cloudinary.com/ddxox70fb/image/upload/v1664301459/default-avatar2_lngpkb.png',
       id: ''
     },
-    posts: {
-      climbs: [],
-      connects: []
-    },
+    posts: [],
     followers: [],
     following: [],
     user: ''

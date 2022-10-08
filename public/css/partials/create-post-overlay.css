@@ -59,8 +59,6 @@ textarea::placeholder {
 }
 
 .choose--post-type {
-    display: flex;
-    align-items: center;
     margin-top: 2rem;
 }
 
@@ -68,7 +66,7 @@ textarea::placeholder {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 100%;
 }
 
 .choose--post:hover {
@@ -149,7 +147,6 @@ textarea::placeholder {
     outline: none;
     border-color: var(--purple);
     box-shadow: 0 0 0 0.2rem var(--purple);
-    -moz-box-shadow: 0 0 0 0.2rem var(--purple);
     -webkit-box-shadow: 0 0 0 0.2rem var(--purple);
 }
 

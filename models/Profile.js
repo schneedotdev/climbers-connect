@@ -27,16 +27,10 @@ const ProfileSchema = new mongoose.Schema({
         type: String,
         maxLength: 15,
     },
-    posts: {
-        climbs: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Climb'
-        }],
-        connects: [{
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Connect'
-        }],
-    },
+    posts: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Post'
+    }],
     followers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

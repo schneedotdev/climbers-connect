@@ -8,14 +8,10 @@
                     <h2 class="post--climb-title">Climb</h2>
                     <hr class="post--climb-hr">
                 </div>
-                <div class="choose--post partner-post">
-                    <h2 class="post--partner-title">Connect</h2>
-                    <hr class="post--partner-hr">
-                </div>
             </div>
             <form
                 class="climb--form"
-                action="/posts/create/climbPost"
+                action="/posts/create/post"
                 enctype="multipart/form-data"
                 method="POST"
             >
@@ -138,26 +134,6 @@
                         <i class="star fa-solid fa-star"></i>
                     </label>
                 </div>
-                <button class="create--post-button" type="submit">Create Post</button>
-            </form>
-            <form class="connect--form" action="/posts/create/connectPost" method="POST">
-                <label class="climb--label">Area</label>
-                <input
-                    class="climb--input"
-                    type="text"
-                    name="area"
-                    placeholder="Yosemite"
-                    required
-                >
-                <label class="climb--label">Message</label>
-                <textarea
-                    class="climb--textarea"
-                    type="text"
-                    name="message"
-                    placeholder="Hello fellow climbers,&#10;&#10;I just moved to the area and I'm looking for a climbing partner to help belay. I have been climbing for 5 years. My average climbing grade is 5.11b."
-                    maxLength="1000"
-                    required
-                ></textarea>
                 <button class="create--post-button" type="submit">Create Post</button>
             </form>
         </section>
