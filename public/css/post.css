@@ -70,7 +70,6 @@
 
 .comments--container {
     padding: 1rem;
-    border-left: .075rem solid var(--light-gray);
 }
 
 .post--header {
@@ -121,6 +120,18 @@
 
     .post--container {
         margin-inline: 6rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .post--container {
+        flex-direction: column;
+        border-radius: .25rem;
+    }
+
+    .climb--image-container,
+    .comments--container {
+        width: 100%;
     }
 }
 

@@ -104,8 +104,7 @@ textarea::placeholder {
 
 /* Forms */
 
-.climb--form,
-.connect--form {
+.climb--form {
     width: 80%;
     flex-direction: column;
     justify-content: center;
@@ -154,15 +153,6 @@ textarea::placeholder {
     color: var(--white);
     padding: 0;
 }
-
-.connect--form {
-    display: none;
-}
-
-/* .form1-img {
-    margin-block: 2rem;
-    border-radius: .5rem;
-} */
 
 .create--post-button {
     margin-block: 2rem;
