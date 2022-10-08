@@ -147,7 +147,6 @@ textarea::placeholder {
     outline: none;
     border-color: var(--purple);
     box-shadow: 0 0 0 0.2rem var(--purple);
-    -moz-box-shadow: 0 0 0 0.2rem var(--purple);
     -webkit-box-shadow: 0 0 0 0.2rem var(--purple);
 }
 

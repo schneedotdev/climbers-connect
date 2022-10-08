@@ -238,7 +238,6 @@ label {
     outline: none;
     border-color: var(--purple);
     box-shadow: 0 0 0.3rem var(--purple);
-    -moz-box-shadow: 0 0 0.3rem var(--purple);
     -webkit-box-shadow: 0 0 0.3rem var(--purple);
     font-weight: 300;
 }
