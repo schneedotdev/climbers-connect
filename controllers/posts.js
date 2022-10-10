@@ -1,8 +1,8 @@
 const User = require('../models/User')
 const Profile = require('../models/Profile')
 const Post = require('../models/Post')
+const Comment = require('../models/Comment')
 const cloudinary = require("../middleware/cloudinary")
-const { findOne } = require('../models/User')
 
 module.exports = {
   getFeed: async (req, res) => {
@@ -45,8 +45,8 @@ module.exports = {
   },
   createPost: async (req, res) => {
     try {
-      const user = await User.findOne({ username: req.user.username })
-        .populate('profile')
+      const profile = await Profile.findOne({ user: req.user.id })
+
       // Upload image to cloudinary
       const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
 
@@ -62,8 +62,8 @@ module.exports = {
         comments: [],
       })
 
-      user.profile.posts.push(post._id)
-      user.save()
+      profile.posts.push(post._id)
+      profile.save()
 
       console.log("Post has been created!")
       res.redirect(`/user/${req.user.username}`)
@@ -90,9 +90,18 @@ module.exports = {
   getPost: async (req, res) => {
     const user = await User.findOne({ _id: req.user._id }).populate('profile')
     const post = await Post.findOne({ _id: req.params.id })
+    const comments = await Promise.all(post.comments.map(async (comment_id) => {
+      const comment = await Comment.findOne({ _id: comment_id })
+      const user = await User.findOne({ _id: comment.user })
+        .populate('profile')
+
+      return await { comment, user, date: formatDate(comment.createdAt) }
+    }))
     const date = await formatDate(post.createdAt)
 
-    res.render('post', { user, post, date })
+    console.log(comments)
+
+    res.render('post', { user, post, comments, date })
   }
 }
 

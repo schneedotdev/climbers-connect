@@ -70,10 +70,12 @@
 
 .comments--container {
     padding: 1rem;
-    border-left: .075rem solid var(--light-gray);
+    display: flex;
+    flex-direction: column;
 }
 
 .post--header {
+    position: relative;
     border-radius: .5rem .5rem 0 0;
 }
 
@@ -96,6 +98,50 @@
     cursor: pointer;
 }
 
+.options--div {
+    position: relative;
+}
+
+.options--form {
+    display: none;
+}
+
+.options {
+    position: absolute;
+    top: 1.9rem;
+    right: 0;
+    width: 10rem;
+    padding: .5rem;
+    background: var(--lighter-gray);
+    border: .1rem solid var(--light-gray);
+    border-radius: .25rem;
+}
+
+.delete--li,
+.edit--li {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .5rem .5rem;
+}
+
+.delete--li:hover,
+.edit--li:hover {
+    background: var(--light-gray);
+    border-radius: .25rem;
+}
+
+.options--span,
+.edit-icon,
+.edit--options {
+    color: var(--dark-blue);
+}
+
+.trash-icon {
+    color: red;
+}
+
 /* 
 -------------- Climb --------------
 */
@@ -114,13 +160,115 @@
 }
 
 /* 
--------------- Connect --------------
+-------------- Comments --------------
 */
 
-@media screen and (max-width: 1290px) {
+.comments--section {
+    height: 30rem;
+    width: 100%;
+    margin-block: 1rem;
+    overflow-y: scroll;
+}
 
+.comment--li {
+    display: flex;
+    align-items: center;
+    padding-block: 1rem;
+    border-top: .05rem solid var(--light-gray);
+}
+
+.commenter--avatar {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.comment--text {
+    margin-inline: 1rem;
+    word-wrap: break-word;
+    max-width: 75%;
+}
+
+.comment--date {
+    margin-left: auto;
+    color: var(--medium-gray);
+}
+
+.create--comment-form {
+    margin-top: auto;
+    width: 100%;
+    position: relative;
+}
+
+.create--comment-textarea {
+    height: 5rem;
+    width: 100%;
+    resize: none;
+    padding-right: 2rem;
+    border-radius: .25rem;
+    border: .1rem solid var(--medium-light-gray);
+}
+
+.create--comment-textarea::placeholder {
+    font-family: 'Raleway', sans-serif;
+    font-size: .9rem;
+}
+
+.create--comment-textarea:focus {
+    outline: none;
+    border-color: var(--purple);
+    box-shadow: 0 0 0 0.05rem var(--purple);
+    -webkit-box-shadow: 0 0 0 0.05rem var(--purple);
+}
+
+.create--comment-btn {
+    position: absolute;
+    z-index: 10;
+    top: .5rem;
+    right: .5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.create--comment-btn:hover .create--comment-icon {
+    color: var(--medium-blue);
+}
+
+.create--comment-icon {
+    font-size: 1.1rem;
+    color: var(--dark-blue);
+}
+
+
+
+@media screen and (max-width: 1290px) {
     .post--container {
         margin-inline: 6rem;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .post--container {
+        flex-direction: column;
+        border-radius: .25rem;
+    }
+
+    .climb--image-container,
+    .comments--container {
+        width: 100%;
+    }
+
+    .climb--img {
+        border-radius: .25rem .25rem 0 0;
+    }
+
+    .climb--image-container {
+        border-radius: .5rem .5rem 0 0;
+    }
+
+    .post--container {
+        border-radius: .5rem;
     }
 }
 
