@@ -172,21 +172,35 @@
 
 .comment--li {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding-block: 1rem;
     border-top: .05rem solid var(--light-gray);
 }
 
 .commenter--avatar {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 2rem;
+    height: 2rem;
     border-radius: 50%;
+}
+
+.comment--text,
+.comment--date {
+    margin-top: .5rem;
 }
 
 .comment--text {
     margin-inline: 1rem;
-    word-wrap: break-word;
     max-width: 75%;
+    word-wrap: break-word;
+}
+
+.elipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-clamp: 3;
+    text-overflow: ellipsis;
 }
 
 .comment--date {

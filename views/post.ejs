@@ -67,7 +67,7 @@
                         <% for (let i = 0; i < comments.length; i++) { %>
                             <li class="comment--li">
                                 <img class="commenter--avatar" src="<%= comments[i].user.profile.avatar.url %>" />
-                                <p class="comment--text"><%= comments[i].comment.text %></p>
+                                <p class="comment--text elipsis"><%= comments[i].comment.text %></p>
                                 <span class="comment--date"><%= comments[i].date %></span>
                             </li>
                         <% } %>
@@ -75,7 +75,7 @@
                 </section>
 
                 <form class="create--comment-form" action="/comments/create" method="POST">
-                    <textarea class="create--comment-textarea" type="text" name="comment" placeholder="Enter Comment Here"></textarea>
+                    <textarea class="create--comment-textarea" type="text" name="comment" placeholder="Enter Comment Here" maxlength="1000"></textarea>
                     <input type="hidden" name="post_id" value="<%= post._id %>">
                     <button class="create--comment-btn" type="submit">
                         <i class="create--comment-icon fa-solid fa-paper-plane"></i>

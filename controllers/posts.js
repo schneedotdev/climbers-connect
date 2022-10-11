@@ -88,18 +88,16 @@ module.exports = {
     // }
   },
   getPost: async (req, res) => {
-    const user = await User.findOne({ _id: req.user._id }).populate('profile')
     const post = await Post.findOne({ _id: req.params.id })
+    const user = await User.findOne({ _id: post.user }).populate('profile')
+    const date = await formatDate(post.createdAt)
+
     const comments = await Promise.all(post.comments.map(async (comment_id) => {
       const comment = await Comment.findOne({ _id: comment_id })
-      const user = await User.findOne({ _id: comment.user })
-        .populate('profile')
+      const user = await User.findOne({ _id: comment.user }).populate('profile')
 
       return await { comment, user, date: formatDate(comment.createdAt) }
     }))
-    const date = await formatDate(post.createdAt)
-
-    console.log(comments)
 
     res.render('post', { user, post, comments, date })
   }
