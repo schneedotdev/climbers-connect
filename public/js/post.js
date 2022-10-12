@@ -1,6 +1,7 @@
 const body = document.querySelector('body')
 const edit = document.querySelector('.edit--options')
 const options = document.querySelector('.options')
+const listItems = [...document.querySelectorAll('.options--li')]
 let display = false
 
 body.addEventListener('click', (e) => {
@@ -35,4 +36,10 @@ comments.addEventListener('click', (e) => {
 
     // negate the value of expanded for every other click
     expanded = !expanded
+})
+
+listItems.forEach(li => {
+    li.addEventListener('click', () => {
+        li.children[0].submit()
+    })
 })

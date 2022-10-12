@@ -114,8 +114,7 @@
     border-radius: .25rem;
 }
 
-.delete--li form,
-.edit--li form {
+.options--li form {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -123,17 +122,17 @@
     padding: .5rem .5rem;
 }
 
-.delete--li:hover,
-.edit--li:hover {
+.options--li:hover {
     background: var(--light-gray);
     border-radius: .25rem;
+    cursor: pointer;
 }
 
-.options--btn {
+.options--span {
     border: none;
     background: none;
     font-size: 1rem;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .options--btn,

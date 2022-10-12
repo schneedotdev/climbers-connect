@@ -51,15 +51,15 @@
                         <div class="options--div">
                             <i class="edit--options fa-solid fa-ellipsis-vertical"></i>
                             <ul class="options">
-                                <li class="delete--li">
+                                <li class="options--li">
                                     <form action="/posts/delete/<%= post._id %>?_method=DELETE" method="POST">
-                                        <button type="submit" class="options--btn">Delete Post</button>
+                                        <span class="options--span">Delete Post</span>
                                         <i class="trash-icon fa-regular fa-trash-can"></i>
                                     </form>
                                 </li>
-                                <li class="edit--li">
+                                <li class="options--li">
                                     <form type="submit" action="/posts/edit/<%= post._id %>?_method=PUT" method="POST">
-                                        <button class="options--btn">Edit Post</button>
+                                        <span class="options--span">Edit Post</span>
                                         <i class="edit-icon fa-regular fa-pen-to-square"></i>
                                     </form>
                                 </li>
