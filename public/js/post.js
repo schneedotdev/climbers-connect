@@ -1,16 +1,16 @@
 const body = document.querySelector('body')
 const edit = document.querySelector('.edit--options')
-const form = document.querySelector('.options--form')
+const options = document.querySelector('.options')
 let display = false
 
 body.addEventListener('click', (e) => {
     if (e.target !== edit && !display) return
 
     if (!display) {
-        form.style.display = 'block'
+        options.style.display = 'block'
         display = !display
     } else {
-        form.style.display = 'none'
+        options.style.display = 'none'
         display = !display
     }
 })

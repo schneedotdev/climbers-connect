@@ -39,34 +39,42 @@
             <div class="comments--container">
                 <header class="post--header">
                     <div class="post--avatar-name-container">
-                        <img class="post--avatar" src="<%= user.profile.avatar.url %>">
+                        <a href="/user/<%= user.username %>">
+                            <img class="post--avatar" src="<%= user.profile.avatar.url %>" />
+                        </a>
                         <div class="post--col">
                             <span class="username"><%= user.username %></span>
                             <span class="created-at-date"><%= date %></span>
                         </div>
                     </div>
-                    <div class="options--div">
-                        <i class="edit--options fa-solid fa-ellipsis-vertical"></i>
-                        <form class="options--form">
+                    <% if (isCurrentUsersPost) { %>
+                        <div class="options--div">
+                            <i class="edit--options fa-solid fa-ellipsis-vertical"></i>
                             <ul class="options">
                                 <li class="delete--li">
-                                    <span class="options--span">Delete Post</span>
-                                    <i class="trash-icon fa-regular fa-trash-can"></i>
+                                    <form action="/posts/delete/<%= post._id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="options--btn">Delete Post</button>
+                                        <i class="trash-icon fa-regular fa-trash-can"></i>
+                                    </form>
                                 </li>
                                 <li class="edit--li">
-                                    <span class="options--span">Edit Post</span>
-                                    <i class="edit-icon fa-regular fa-pen-to-square"></i>
+                                    <form type="submit" action="/posts/edit/<%= post._id %>?_method=PUT" method="POST">
+                                        <button class="options--btn">Edit Post</button>
+                                        <i class="edit-icon fa-regular fa-pen-to-square"></i>
+                                    </form>
                                 </li>
                             </ul>
-                        </form>
-                    </div>
+                        </div>
+                    <% } %>
                 </header>
 
                 <section class="comments--section">
                     <ul class="comments--list">
                         <% for (let i = 0; i < comments.length; i++) { %>
                             <li class="comment--li">
-                                <img class="commenter--avatar" src="<%= comments[i].user.profile.avatar.url %>" />
+                                <a href="/user/<%= comments[i].user.username %>">
+                                    <img class="commenter--avatar" src="<%= comments[i].user.profile.avatar.url %>" />
+                                </a>
                                 <p class="comment--text elipsis"><%= comments[i].comment.text %></p>
                                 <span class="comment--date"><%= comments[i].date %></span>
                             </li>

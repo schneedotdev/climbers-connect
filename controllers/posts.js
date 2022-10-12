@@ -72,25 +72,34 @@ module.exports = {
       res.redirect(`/user/${req.user.username}`)
     }
   },
-  deleteClimbPost: async (req, res) => {
-    // try {
-    //   // Find post by id
-    //   let post = await Climb.findById({ _id: req.params.id })
-    //   // Delete image from cloudinary
-    //   await cloudinary.uploader.destroy(post.cloudinaryId)
-    //   // Delete post from db
-    //   await Climb.remove({ _id: req.params.id })
+  deletePost: async (req, res) => {
+    try {
+      const postId = req.params.id
+      // Find post by id
+      const post = await Post.findById({ _id: postId })
 
-    //   console.log("Deleted Climb Post")
-    //   res.redirect(`/user/${req.user.username}`)
-    // } catch (err) {
-    //   res.redirect(`/user/${req.user.username}`)
-    // }
+      // throw error if the current user does not own the post
+      if (post.user.toString() !== req.user._id.toString()) throw 'Post does not belong to current user'
+
+      // Delete image from cloudinary
+      await cloudinary.uploader.destroy(post.image.id)
+
+      // Delete post and comments from db
+      await Post.remove({ _id: postId })
+      await Comment.remove({ post: postId })
+
+      console.log("Deleted User's Post")
+      res.redirect(`/user/${req.user.username}`)
+    } catch (err) {
+      console.error(err)
+      res.redirect(`/posts/${req.params.id}`)
+    }
   },
   getPost: async (req, res) => {
     const post = await Post.findOne({ _id: req.params.id })
     const user = await User.findOne({ _id: post.user }).populate('profile')
     const date = await formatDate(post.createdAt)
+    const isCurrentUsersPost = post.user.toString() === req.user._id.toString()
 
     const comments = await Promise.all(post.comments.map(async (comment_id) => {
       const comment = await Comment.findOne({ _id: comment_id })
@@ -99,7 +108,7 @@ module.exports = {
       return await { comment, user, date: formatDate(comment.createdAt) }
     }))
 
-    res.render('post', { user, post, comments, date })
+    res.render('post', { user, post, comments, date, isCurrentUsersPost })
   }
 }
 

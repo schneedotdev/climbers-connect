@@ -102,11 +102,8 @@
     position: relative;
 }
 
-.options--form {
-    display: none;
-}
-
 .options {
+    display: none;
     position: absolute;
     top: 1.9rem;
     right: 0;
@@ -117,8 +114,8 @@
     border-radius: .25rem;
 }
 
-.delete--li,
-.edit--li {
+.delete--li form,
+.edit--li form {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -132,7 +129,14 @@
     border-radius: .25rem;
 }
 
-.options--span,
+.options--btn {
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.options--btn,
 .edit-icon,
 .edit--options {
     color: var(--dark-blue);
@@ -218,7 +222,7 @@
     height: 5rem;
     width: 100%;
     resize: none;
-    padding-right: 2rem;
+    padding-inline: .5rem 2rem;
     border-radius: .25rem;
     border: .1rem solid var(--medium-light-gray);
 }
