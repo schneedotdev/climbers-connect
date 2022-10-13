@@ -84,7 +84,9 @@
                                         <span class="created-at-date"><%= posts[i].createdAt.getFullYear() %></span>
                                     </div>
                                 </div>
-                                <span class="climb--grade"><%= posts[i].grade.toUpperCase() %></span>
+                                <% if(posts[i].grade) { %>
+                                    <span class="climb--grade"><%= posts[i].grade.toUpperCase() %></span>
+                                <% } %>
                             </header>
                             <div class="climb--image-container">
                                 <img class="climb--img" src="<%= posts[i].image.url %>">

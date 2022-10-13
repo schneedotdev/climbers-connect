@@ -7,8 +7,7 @@ const PostSchema = new mongoose.Schema({
         trim: true,
     },
     grade: {
-        type: String,
-        required: true
+        type: String
     },
     image: {
         url: {
