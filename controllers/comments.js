@@ -8,7 +8,7 @@ module.exports = {
         try {
             const post = await Post.findOne({ _id: req.body.post_id })
             const comment = await Comment.create({
-                text: req.body.comment,
+                text: req.body.comment.trim(),
                 user: req.user._id,
                 post: req.body.post_id,
             })

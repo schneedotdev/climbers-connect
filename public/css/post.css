@@ -211,6 +211,7 @@
     margin-top: .5rem;
     padding-right: 2rem;
     word-wrap: break-word;
+    white-space: pre-line
 }
 
 .comment--date {

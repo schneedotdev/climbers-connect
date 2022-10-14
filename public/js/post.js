@@ -43,3 +43,14 @@ listItems.forEach(li => {
         li.children[0].submit()
     })
 })
+
+
+const textarea = document.querySelector('.create--comment-textarea')
+
+// when enter is pressed when adding comments to a post, submit the form, unless the shift key is pressed, which should allow a new line character
+textarea.addEventListener('keydown', (e) => {
+    console.log(e.key)
+    if (e.key === 'Enter' && !e.shiftKey) {
+        document.querySelector('.create--comment-form').submit()
+    }
+})
