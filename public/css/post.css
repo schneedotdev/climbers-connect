@@ -209,6 +209,7 @@
 .comment--date {
     margin-left: auto;
     color: var(--medium-gray);
+    font-weight: 300;
 }
 
 .create--comment-form {

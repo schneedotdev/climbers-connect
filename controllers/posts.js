@@ -3,6 +3,8 @@ const Profile = require('../models/Profile')
 const Post = require('../models/Post')
 const Comment = require('../models/Comment')
 const cloudinary = require("../middleware/cloudinary")
+const moment = require('moment')
+moment().format()
 
 module.exports = {
   getFeed: async (req, res) => {
@@ -51,7 +53,7 @@ module.exports = {
       const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
 
       const post = await Post.create({
-        name: req.body.name,
+        title: req.body.title,
         grade: req.body.grade,
         image: {
           url: secure_url,
@@ -105,7 +107,7 @@ module.exports = {
       const comment = await Comment.findOne({ _id: comment_id })
       const user = await User.findOne({ _id: comment.user }).populate('profile')
 
-      return await { comment, user, date: formatDate(comment.createdAt) }
+      return await { comment, user, date: moment(comment.createdAt).fromNow() }
     }))
 
     res.render('post', { user, post, comments, date, isCurrentUsersPost })
@@ -114,7 +116,11 @@ module.exports = {
 
 function formatDate(date) {
   // converts date month into short hand representation example: "Mar" for "March"
-  const month = date.toLocaleString('default', { month: 'short' });
+  const month = date.toLocaleString('default', { month: 'short' })
+  const day = date.getDay()
   const year = date.getFullYear()
-  return `${month} ${year}`
+  const hours = ((date.getHours() % 11) % 12 + 1)
+  const minutes = date.getMinutes()
+  const timePeriod = date.getHours() <= 12 ? 'AM' : 'PM'
+  return `${month} ${day} ${year} at ${hours}:${minutes} ${timePeriod}`
 }

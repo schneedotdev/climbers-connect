@@ -323,6 +323,10 @@ html {
     align-items: center;
 }
 
+.post--avatar-name-container {
+    padding-block: .25rem;
+}
+
 .post--avatar {
     background: var(--light-blue);
     width: 1.75rem;
@@ -332,7 +336,7 @@ html {
     margin-right: .5rem;
 }
 
-.climb--name {
+.climb--title {
     color: var(--dark-blue);
     font-weight: 400;
 }
