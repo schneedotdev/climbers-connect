@@ -45,6 +45,8 @@
                         <div class="post--col">
                             <span class="username"><%= user.username %></span>
                             <span class="created-at-date"><%= date %></span>
+                            <h1 class="post--title"><%= post.title %></h1>
+                            <p class="post--comment">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur dolorum porro consequuntur quod quam, optio facilis perferendis. Rerum, ullam doloremque!</p>
                         </div>
                     </div>
                     <% if (isCurrentUsersPost) { %>
@@ -75,8 +77,8 @@
                                 <a href="/user/<%= comments[i].user.username %>">
                                     <img class="commenter--avatar" src="<%= comments[i].user.profile.avatar.url %>" />
                                 </a>
-                                <!-- <span><%= comments[i].user.username %></span> -->
-                                <div class="text-date--container">
+                                <div class="text-date-username--container">
+                                    <span class="comment--username"><%= comments[i].user.username%></span>
                                     <p class="comment--text elipsis"><%= comments[i].comment.text %></p>
                                     <p class="comment--date"><%= comments[i].date %></p>
                                 </div>

@@ -34,29 +34,32 @@
 }
 
 .created-at-date {
-    color: var(--dark-gray);
+    color: var(--medium-gray);
     font-weight: 300;
+    font-size: .75rem;
+    margin-top: .15rem;
 }
 
 /*
 ============== Layout Styles ==============
 */
 
-.post--header,
-.post--extra-info {
+.post--header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .post--col {
     display: flex;
     flex-direction: column;
+    /* margin-top: .5rem; */
 }
 
 .post--avatar-name-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: .5rem;
 }
 
 /*
@@ -77,10 +80,6 @@
 .post--header {
     position: relative;
     border-radius: .5rem .5rem 0 0;
-}
-
-.post--extra-info {
-    border-radius: 0 0 .5rem .5rem;
 }
 
 .post--avatar {
@@ -145,6 +144,14 @@
     color: red;
 }
 
+.post--title {
+    margin-block: .75rem .25rem;
+}
+
+.post--comment {
+    font-weight: 300;
+}
+
 /* 
 -------------- Climb --------------
 */
@@ -188,22 +195,31 @@
     border-radius: 50%;
 }
 
-.text-date--container {
-    width: 100%;
+.text-date-username--container {
+    width: 90%;
+    margin-left: 1rem;
+}
+
+.comment--username {
+    display: block;
+    font-weight: 400;
+    margin-top: .5rem;
+}
+
+.comment--text {
+    font-weight: 300;
+    margin-top: .5rem;
+    padding-right: 2rem;
+    word-wrap: break-word;
 }
 
 .comment--date {
-    margin: .5rem 0 0 1rem;
+    margin-top: .25rem;
     color: var(--medium-gray);
     font-weight: 300;
     font-size: .75rem;
 }
 
-.comment--text {
-    margin: .5rem 2rem 0 1rem;
-    max-width: 100%;
-    word-wrap: break-word;
-}
 
 .elipsis {
     display: -webkit-box;
