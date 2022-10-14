@@ -76,8 +76,10 @@
                                     <img class="commenter--avatar" src="<%= comments[i].user.profile.avatar.url %>" />
                                 </a>
                                 <!-- <span><%= comments[i].user.username %></span> -->
-                                <p class="comment--text elipsis"><%= comments[i].comment.text %></p>
-                                <span class="comment--date"><%= comments[i].date %></span>
+                                <div class="text-date--container">
+                                    <p class="comment--text elipsis"><%= comments[i].comment.text %></p>
+                                    <p class="comment--date"><%= comments[i].date %></p>
+                                </div>
                             </li>
                         <% } %>
                     </ul>

@@ -174,10 +174,12 @@
 }
 
 .comment--li {
+    width: 100%;
     display: flex;
     align-items: flex-start;
     padding-block: 1rem;
     border-top: .05rem solid var(--light-gray);
+    overflow-x: hidden;
 }
 
 .commenter--avatar {
@@ -186,14 +188,20 @@
     border-radius: 50%;
 }
 
-.comment--text,
+.text-date--container {
+    width: 100%;
+}
+
 .comment--date {
-    margin-top: .5rem;
+    margin: .5rem 0 0 1rem;
+    color: var(--medium-gray);
+    font-weight: 300;
+    font-size: .75rem;
 }
 
 .comment--text {
-    margin-inline: 1rem;
-    max-width: 75%;
+    margin: .5rem 2rem 0 1rem;
+    max-width: 100%;
     word-wrap: break-word;
 }
 
@@ -204,12 +212,6 @@
     overflow: hidden;
     line-clamp: 3;
     text-overflow: ellipsis;
-}
-
-.comment--date {
-    margin-left: auto;
-    color: var(--medium-gray);
-    font-weight: 300;
 }
 
 .create--comment-form {
