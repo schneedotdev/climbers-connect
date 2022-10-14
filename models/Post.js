@@ -6,6 +6,12 @@ const PostSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
+    caption: {
+        type: String,
+        required: true,
+        trim: true,
+        maxLength: 500
+    },
     grade: {
         type: String
     },

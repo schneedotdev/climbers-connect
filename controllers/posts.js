@@ -45,6 +45,21 @@ module.exports = {
       res.redirect(`/user/${req.user.username}`)
     }
   },
+  getPost: async (req, res) => {
+    const post = await Post.findOne({ _id: req.params.id })
+    const user = await User.findOne({ _id: post.user }).populate('profile')
+    const date = await formatDate(post.createdAt)
+    const isCurrentUsersPost = post.user.toString() === req.user._id.toString()
+
+    const comments = await Promise.all(post.comments.map(async (comment_id) => {
+      const comment = await Comment.findOne({ _id: comment_id })
+      const user = await User.findOne({ _id: comment.user }).populate('profile')
+
+      return await { comment, user, date: moment(comment.createdAt).fromNow() }
+    }))
+
+    res.render('post', { user, post, comments, date, isCurrentUsersPost })
+  },
   createPost: async (req, res) => {
     try {
       const profile = await Profile.findOne({ user: req.user.id })
@@ -54,6 +69,7 @@ module.exports = {
 
       const post = await Post.create({
         title: req.body.title,
+        caption: req.body.caption,
         grade: req.body.grade,
         image: {
           url: secure_url,
@@ -96,21 +112,6 @@ module.exports = {
       console.error(err)
       res.redirect(`/posts/${req.params.id}`)
     }
-  },
-  getPost: async (req, res) => {
-    const post = await Post.findOne({ _id: req.params.id })
-    const user = await User.findOne({ _id: post.user }).populate('profile')
-    const date = await formatDate(post.createdAt)
-    const isCurrentUsersPost = post.user.toString() === req.user._id.toString()
-
-    const comments = await Promise.all(post.comments.map(async (comment_id) => {
-      const comment = await Comment.findOne({ _id: comment_id })
-      const user = await User.findOne({ _id: comment.user }).populate('profile')
-
-      return await { comment, user, date: moment(comment.createdAt).fromNow() }
-    }))
-
-    res.render('post', { user, post, comments, date, isCurrentUsersPost })
   }
 }
 
