@@ -5,7 +5,7 @@ const postsController = require('../controllers/posts')
 const { ensureAuth } = require('../middleware/auth')
 
 router.post('/create', upload.single('file'), ensureAuth, postsController.createPost)
-// router.delete('/deleteClimb/:id', postController.deleteClimb)
+router.delete('/delete/:id', ensureAuth, postsController.deletePost)
 router.get('/feed', postsController.getFeed)
 router.get('/following', postsController.getFollowing)
 router.get('/:id', postsController.getPost)

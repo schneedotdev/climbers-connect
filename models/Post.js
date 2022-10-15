@@ -1,14 +1,19 @@
 const mongoose = require('mongoose')
 
 const PostSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true,
         trim: true,
     },
-    grade: {
+    caption: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        maxLength: 500
+    },
+    grade: {
+        type: String
     },
     image: {
         url: {

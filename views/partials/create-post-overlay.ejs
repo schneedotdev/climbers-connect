@@ -15,15 +15,23 @@
                 enctype="multipart/form-data"
                 method="POST"
             >
-                <label class="climb--label">Name</label>
+                <label class="climb--label">Title</label>
                 <input
                     class="climb--input"
                     type="text"
-                    name="name"
+                    name="title"
                     maxLength="25"
                     placeholder="The Sorcerers Stone"
                     required
                 >
+                <label class="climb--label">Caption</label>
+                <textarea
+                    class="climb--textarea"
+                    name="caption"
+                    maxlength="500"
+                    placeholder="Check out this climb I just completed at Yosemite!"
+                    required
+                ></textarea>
                 <label class="climb--label climb-image-margin">Image</label>
                 <input
                     class="climb--input climb-input-file"
@@ -31,14 +39,13 @@
                     name="file"
                     required
                 >
-                <label class="climb--label">Grade (Bouldering or Sport)</label>
+                <label class="climb--label">Climbing Grade (optional)</label>
                 <input
                     class="climb--input"
                     type="text"
                     name="grade"
                     maxLength="5"
                     placeholder="5.11b"
-                    required
                 >
                 <label class="climb--label rating--label">Rating</label>
                 <div class="star--container">

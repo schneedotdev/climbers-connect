@@ -79,17 +79,17 @@
                             <header class="post--header">
                                 <div class="post--avatar-name-container">
                                     <img class="post--avatar" src="<%= user.profile.avatar.url %>">
-                                    <div class="post--col">
-                                        <span class="climb--name"><%= posts[i].name %></span>
-                                        <span class="created-at-date"><%= posts[i].createdAt.getFullYear() %></span>
-                                    </div>
+                                    <span class="climb--title"><%= posts[i].title %></span>
                                 </div>
-                                <span class="climb--grade"><%= posts[i].grade.toUpperCase() %></span>
+                                <% if(posts[i].grade) { %>
+                                    <span class="climb--grade"><%= posts[i].grade.toUpperCase() %></span>
+                                <% } %>
                             </header>
                             <div class="climb--image-container">
                                 <img class="climb--img" src="<%= posts[i].image.url %>">
                             </div>
                             <div class="post--extra-info">
+                                <span class="created-at-date"><%= posts[i].createdAt.getFullYear() %></span>
                                 <div class="star--amount-icon-container">
                                     <span class="star--amount"><%= posts[i].rating %></span>
                                     <i class="post--star fa-solid fa-star"></i>

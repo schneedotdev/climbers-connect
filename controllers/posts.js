@@ -3,6 +3,8 @@ const Profile = require('../models/Profile')
 const Post = require('../models/Post')
 const Comment = require('../models/Comment')
 const cloudinary = require("../middleware/cloudinary")
+const moment = require('moment')
+moment().format()
 
 module.exports = {
   getFeed: async (req, res) => {
@@ -43,6 +45,21 @@ module.exports = {
       res.redirect(`/user/${req.user.username}`)
     }
   },
+  getPost: async (req, res) => {
+    const post = await Post.findOne({ _id: req.params.id })
+    const user = await User.findOne({ _id: post.user }).populate('profile')
+    const date = await formatDate(post.createdAt)
+    const isCurrentUsersPost = post.user.toString() === req.user._id.toString()
+
+    const comments = await Promise.all(post.comments.map(async (comment_id) => {
+      const comment = await Comment.findOne({ _id: comment_id })
+      const user = await User.findOne({ _id: comment.user }).populate('profile')
+
+      return await { comment, user, date: moment(comment.createdAt).fromNow() }
+    }))
+
+    res.render('post', { user, post, comments, date, isCurrentUsersPost })
+  },
   createPost: async (req, res) => {
     try {
       const profile = await Profile.findOne({ user: req.user.id })
@@ -51,7 +68,8 @@ module.exports = {
       const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
 
       const post = await Post.create({
-        name: req.body.name,
+        title: req.body.title,
+        caption: req.body.caption,
         grade: req.body.grade,
         image: {
           url: secure_url,
@@ -72,42 +90,38 @@ module.exports = {
       res.redirect(`/user/${req.user.username}`)
     }
   },
-  deleteClimbPost: async (req, res) => {
-    // try {
-    //   // Find post by id
-    //   let post = await Climb.findById({ _id: req.params.id })
-    //   // Delete image from cloudinary
-    //   await cloudinary.uploader.destroy(post.cloudinaryId)
-    //   // Delete post from db
-    //   await Climb.remove({ _id: req.params.id })
+  deletePost: async (req, res) => {
+    try {
+      const postId = req.params.id
+      // Find post by id
+      const post = await Post.findById({ _id: postId })
 
-    //   console.log("Deleted Climb Post")
-    //   res.redirect(`/user/${req.user.username}`)
-    // } catch (err) {
-    //   res.redirect(`/user/${req.user.username}`)
-    // }
-  },
-  getPost: async (req, res) => {
-    const user = await User.findOne({ _id: req.user._id }).populate('profile')
-    const post = await Post.findOne({ _id: req.params.id })
-    const comments = await Promise.all(post.comments.map(async (comment_id) => {
-      const comment = await Comment.findOne({ _id: comment_id })
-      const user = await User.findOne({ _id: comment.user })
-        .populate('profile')
+      // throw error if the current user does not own the post
+      if (post.user.toString() !== req.user._id.toString()) throw 'Post does not belong to current user'
 
-      return await { comment, user, date: formatDate(comment.createdAt) }
-    }))
-    const date = await formatDate(post.createdAt)
+      // Delete image from cloudinary
+      await cloudinary.uploader.destroy(post.image.id)
 
-    console.log(comments)
+      // Delete post and comments from db
+      await Post.remove({ _id: postId })
+      await Comment.remove({ post: postId })
 
-    res.render('post', { user, post, comments, date })
+      console.log("Deleted User's Post")
+      res.redirect(`/user/${req.user.username}`)
+    } catch (err) {
+      console.error(err)
+      res.redirect(`/posts/${req.params.id}`)
+    }
   }
 }
 
 function formatDate(date) {
   // converts date month into short hand representation example: "Mar" for "March"
-  const month = date.toLocaleString('default', { month: 'short' });
+  const month = date.toLocaleString('default', { month: 'short' })
+  const day = date.getDay()
   const year = date.getFullYear()
-  return `${month} ${year}`
+  const hours = ((date.getHours() % 11) % 12 + 1)
+  const minutes = date.getMinutes()
+  const timePeriod = date.getHours() <= 12 ? 'AM' : 'PM'
+  return `${month} ${day} ${year} at ${hours}:${minutes} ${timePeriod}`
 }

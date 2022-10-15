@@ -42,11 +42,13 @@
                                 <div class="post--avatar-name-container">
                                     <img class="post--avatar" src="<%= posts[i][1] %>">
                                     <div class="post--col">
-                                        <span class="climb--name"><%= posts[i][0].name %></span>
+                                        <span class="climb--title"><%= posts[i][0].title %></span>
                                         <span class="created-at-date"><%= posts[i][0].createdAt.getFullYear() %></span>
                                     </div>
                                 </div>
-                                <span class="climb--grade"><%= posts[i][0].grade.toUpperCase() %></span>
+                                <% if(posts[i][0].grade) { %>
+                                    <span class="climb--grade"><%= posts[i][0].grade.toUpperCase() %></span>
+                                <% } %>
                             </header>
                             <div class="climb--image-container">
                                 <img class="climb--img" src="<%= posts[i][0].image.url %>">
