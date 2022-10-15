@@ -196,7 +196,7 @@
 }
 
 .text-date-username--container {
-    width: 90%;
+    width: 80%;
     margin-left: 1rem;
 }
 
@@ -209,7 +209,7 @@
 .comment--text {
     font-weight: 300;
     margin-top: .5rem;
-    padding-right: 2rem;
+    padding: 0 2rem .1rem 0;
     word-wrap: break-word;
     white-space: pre-line
 }
@@ -221,7 +221,6 @@
     font-size: .75rem;
 }
 
-
 .elipsis {
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -229,6 +228,12 @@
     overflow: hidden;
     line-clamp: 3;
     text-overflow: ellipsis;
+}
+
+.comment-trash-icon {
+    color: transparent;
+    margin: .5rem 2rem 0 0;
+    cursor: pointer;
 }
 
 .create--comment-form {

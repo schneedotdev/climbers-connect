@@ -23,6 +23,21 @@ module.exports = {
             res.redirect(`/posts/${req.body.post_id}`)
         }
     },
+    deleteComment: async (req, res) => {
+        try {
+            await Post.findOneAndUpdate(
+                { _id: req.query.postId }, // find the document
+                { $pull: { comments: req.params.id } } // delete the objectId from an array of ObjectId's
+            )
+            await Comment.deleteOne({ _id: req.params.id })
+
+            console.log('deleted comment')
+            res.redirect(`/posts/${req.query.postId}`)
+        } catch (err) {
+            console.log(err)
+            res.redirect(`/posts/${req.query.postId}`)
+        }
+    },
 }
 
 function formatDate(date) {

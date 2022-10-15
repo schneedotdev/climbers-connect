@@ -49,16 +49,22 @@ module.exports = {
     const post = await Post.findOne({ _id: req.params.id })
     const user = await User.findOne({ _id: post.user }).populate('profile')
     const date = await formatDate(post.createdAt)
-    const isCurrentUsersPost = post.user.toString() === req.user._id.toString()
+    const currentUsersId = req.user._id
 
     const comments = await Promise.all(post.comments.map(async (comment_id) => {
       const comment = await Comment.findOne({ _id: comment_id })
       const user = await User.findOne({ _id: comment.user }).populate('profile')
 
-      return await { comment, user, date: moment(comment.createdAt).fromNow() }
+      return await {
+        comment,
+        id: String(comment_id),
+        postId: String(comment.post),
+        user,
+        date: moment(comment.createdAt).fromNow()
+      }
     }))
 
-    res.render('post', { user, post, comments, date, isCurrentUsersPost })
+    res.render('post', { user, post, comments, date, currentUsersId })
   },
   createPost: async (req, res) => {
     try {
@@ -103,8 +109,8 @@ module.exports = {
       await cloudinary.uploader.destroy(post.image.id)
 
       // Delete post and comments from db
-      await Post.remove({ _id: postId })
-      await Comment.remove({ post: postId })
+      await Post.deleteOne({ _id: postId })
+      await Comment.deleteOne({ post: postId })
 
       console.log("Deleted User's Post")
       res.redirect(`/user/${req.user.username}`)

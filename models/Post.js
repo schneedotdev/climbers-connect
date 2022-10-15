@@ -10,7 +10,7 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true,
         trim: true,
-        maxLength: 500
+        maxLength: 1000
     },
     grade: {
         type: String

@@ -1,7 +1,6 @@
 const body = document.querySelector('body')
 const edit = document.querySelector('.edit--options')
 const options = document.querySelector('.options')
-const listItems = [...document.querySelectorAll('.options--li')]
 let display = false
 
 body.addEventListener('click', (e) => {
@@ -16,10 +15,10 @@ body.addEventListener('click', (e) => {
     }
 })
 
-const comments = document.querySelector('.comments--list')
+const commentList = document.querySelector('.comments--list')
 let expanded = false
 
-comments.addEventListener('click', (e) => {
+commentList.addEventListener('click', (e) => {
     let { target } = e
 
     // change target to point to the comment text stored in the p tag
@@ -38,7 +37,40 @@ comments.addEventListener('click', (e) => {
     expanded = !expanded
 })
 
-listItems.forEach(li => {
+const comments = [...document.querySelectorAll('.comment--li')]
+
+comments.forEach(comment => {
+    comment.addEventListener('mouseover', (e) => {
+        // if the comment has 3 children nodes, a delete form was rendered for the user, meaning that the comment was theirs to delete
+        if (comment.children.length > 2) {
+            // select the trash icon to be styled
+            const icon = comment.children[2].children[0]
+
+            // if the icon is hovered, style it red, otherwise style it light gray
+            if (e.target.classList[0] === 'comment-trash-icon') {
+                icon.style.color = 'red'
+                // create a click event for the trash icon that submits the form
+                e.target.addEventListener('click', () => {
+                    e.target.parentNode.submit()
+                })
+            } else {
+                icon.style.color = '#babebf'
+            }
+        }
+    })
+    comment.addEventListener('mouseout', (e) => {
+        // if the comment has 3 children nodes, a delete form was rendered for the user, meaning that the comment was theirs to delete
+        if (comment.children.length > 2) {
+            // hide the trash icon when the comment is no longer hovered
+            const icon = comment.children[2].children[0]
+            icon.style.color = 'transparent'
+        }
+    })
+})
+
+const options_li = [...document.querySelectorAll('.options--li')]
+
+options_li.forEach(li => {
     li.addEventListener('click', () => {
         li.children[0].submit()
     })
