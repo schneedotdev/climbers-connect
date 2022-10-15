@@ -51,7 +51,7 @@ comments.forEach(comment => {
                 icon.style.color = 'red'
                 // create a click event for the trash icon that submits the form
                 e.target.addEventListener('click', () => {
-                    document.querySelector('.delete--comment-form').submit()
+                    e.target.parentNode.submit()
                 })
             } else {
                 icon.style.color = '#babebf'

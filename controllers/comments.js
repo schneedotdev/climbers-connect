@@ -25,13 +25,11 @@ module.exports = {
     },
     deleteComment: async (req, res) => {
         try {
-            // find the comment, the user who made the comment and the post it belongs to
-            const comment = await Comment.findById(req.params.id)
-            const post = await Post.findOne({ _id: req.query.postId })
-
-            post.comments = post.comments.filter(id => id.toString() !== req.params.id.toString())
-            await post.save()
-            await Comment.remove({ _id: req.params.id })
+            await Post.findOneAndUpdate(
+                { _id: req.query.postId }, // find the document
+                { $pull: { comments: req.params.id } } // delete the objectId from an array of ObjectId's
+            )
+            await Comment.deleteOne({ _id: req.params.id })
 
             console.log('deleted comment')
             res.redirect(`/posts/${req.query.postId}`)

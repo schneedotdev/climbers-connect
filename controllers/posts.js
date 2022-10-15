@@ -109,8 +109,8 @@ module.exports = {
       await cloudinary.uploader.destroy(post.image.id)
 
       // Delete post and comments from db
-      await Post.remove({ _id: postId })
-      await Comment.remove({ post: postId })
+      await Post.deleteOne({ _id: postId })
+      await Comment.deleteOne({ post: postId })
 
       console.log("Deleted User's Post")
       res.redirect(`/user/${req.user.username}`)
