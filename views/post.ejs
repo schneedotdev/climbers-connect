@@ -49,7 +49,7 @@
                             <p class="post--caption"><%= post.caption %></p>
                         </div>
                     </div>
-                    <% if (isCurrentUsersPost) { %>
+                    <% if (post.user.toString() === currentUsersId.toString()) { %>
                         <div class="options--div">
                             <i class="edit--options fa-solid fa-ellipsis-vertical"></i>
                             <ul class="options">
@@ -82,6 +82,11 @@
                                     <p class="comment--text elipsis"><%= comments[i].comment.text %></p>
                                     <p class="comment--date"><%= comments[i].date %></p>
                                 </div>
+                                <% if(comments[i].user._id.toString() === currentUsersId.toString()) { %>
+                                    <form class="delete--comment-form" action="/comments/delete/<%= comments[i].id %>?_method=DELETE&postId=<%= comments[i].postId %>" method="POST">
+                                        <i class="comment-trash-icon fa-regular fa-trash-can"></i>
+                                    </form>
+                                <% } %>
                             </li>
                         <% } %>
                     </ul>
