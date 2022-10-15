@@ -186,3 +186,10 @@ body {
 	color: var(--white);
 	text-align: center;
 }
+
+@media screen and (max-width: 560px) {
+	.signup--form-container {
+		width: 22.5rem;
+		padding: 3.5rem;
+	}
+}
