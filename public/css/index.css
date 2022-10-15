@@ -76,3 +76,15 @@ body {
         color: var(--dark-gray);
     }
 }
+
+@media screen and (max-width: 625px) {
+    .index--logo {
+        width: 4rem;
+    }
+
+    .index--text {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-left: 1rem;
+    }
+}

@@ -43,7 +43,6 @@
                                     <img class="post--avatar" src="<%= posts[i][1] %>">
                                     <div class="post--col">
                                         <span class="climb--title"><%= posts[i][0].title %></span>
-                                        <span class="created-at-date"><%= posts[i][0].createdAt.getFullYear() %></span>
                                     </div>
                                 </div>
                                 <% if(posts[i][0].grade) { %>
@@ -54,6 +53,7 @@
                                 <img class="climb--img" src="<%= posts[i][0].image.url %>">
                             </div>
                             <div class="post--extra-info">
+                                <span class="created-at-date"><%= posts[i][0].createdAt.getFullYear() %></span>
                                 <div class="star--amount-icon-container">
                                     <span class="star--amount"><%= posts[i][0].rating %></span>
                                     <i class="post--star fa-solid fa-star"></i>
