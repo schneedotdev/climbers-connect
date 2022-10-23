@@ -92,6 +92,23 @@
                     </ul>
                 </section>
 
+                <div class="like--container">
+                    <% if(post.liked) { %>
+                        <form class="like--form" action="/posts/like/<%= post._id %>?_method=PUT" method="POST">
+                            <button class="like--btn">
+                                <i class="like--icon liked fa-regular fa-heart"></i>
+                            </button>
+                        </form>
+                    <% } else { %>
+                        <form class="like--form" action="/posts/like/<%= post._id %>?_method=PUT" method="POST">
+                            <button class="like--btn">
+                                <i class="like--icon not-liked fa-regular fa-heart"></i>
+                            </button>
+                        </form>
+                    <% } %>
+                    <span class="like--span"><%= post.likes %> likes</span>
+                </div>
+
                 <form class="create--comment-form" action="/comments/create" method="POST">
                     <textarea class="create--comment-textarea" type="text" name="comment" placeholder="Enter Comment Here" maxlength="1000"></textarea>
                     <input type="hidden" name="post_id" value="<%= post._id %>">
