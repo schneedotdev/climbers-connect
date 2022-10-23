@@ -176,7 +176,7 @@
 .comments--section {
     height: 20rem;
     width: 100%;
-    margin-block: 1rem;
+    margin-top: 1rem;
     overflow-y: scroll;
 }
 
@@ -236,6 +236,43 @@
     cursor: pointer;
 }
 
+.like--container {
+    display: flex;
+    align-items: center;
+    margin-block: .75rem;
+    gap: .5rem;
+}
+
+.like--btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.like--icon {
+    font-size: 1.25rem;
+}
+
+.liked {
+    color: var(--purple);
+}
+
+.not-liked {
+    color: var(--dark-purple);
+}
+
+.like--btn:hover .liked {
+    color: var(--dark-purple);
+}
+
+.like--btn:hover .not-liked {
+    color: var(--purple);
+}
+
+.like--span {
+    font-size: 1rem;
+}
+
 .create--comment-form {
     margin-top: auto;
     width: 100%;
@@ -243,6 +280,7 @@
 }
 
 .create--comment-textarea {
+    font-family: 'Raleway', sans-serif;
     height: 5rem;
     width: 100%;
     resize: none;
@@ -281,8 +319,6 @@
     font-size: 1.1rem;
     color: var(--dark-blue);
 }
-
-
 
 @media screen and (max-width: 1290px) {
     .post--container {
