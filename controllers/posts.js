@@ -123,7 +123,6 @@ module.exports = {
   },
   likePost: async (req, res) => {
     try {
-
       await Profile.findOneAndUpdate(
         { user: req.user.id },
         { $push: { likes: req.params.id } }

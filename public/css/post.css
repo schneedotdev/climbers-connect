@@ -258,7 +258,7 @@
 }
 
 .not-liked {
-    color: var(--dark-blue);
+    color: var(--dark-purple);
 }
 
 .like--btn:hover .liked {
