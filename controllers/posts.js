@@ -2,7 +2,7 @@ const User = require('../models/User')
 const Profile = require('../models/Profile')
 const Post = require('../models/Post')
 const Comment = require('../models/Comment')
-const cloudinary = require("../middleware/cloudinary")
+const cloudinary = require('../middleware/cloudinary')
 const moment = require('moment')
 moment().format()
 
@@ -50,6 +50,8 @@ module.exports = {
     const user = await User.findOne({ _id: post.user }).populate('profile')
     const date = await formatDate(post.createdAt)
     const currentUsersId = req.user._id
+    const profile = await Profile.findOne({ user: req.user.id })
+    const userLikedPost = profile.likes.some(like => like.toString() === req.params.id.toString())
 
     const comments = await Promise.all(post.comments.map(async (comment_id) => {
       const comment = await Comment.findOne({ _id: comment_id })
@@ -64,7 +66,7 @@ module.exports = {
       }
     }))
 
-    res.render('post', { user, post, comments, date, currentUsersId })
+    res.render('post', { user, post, comments, date, currentUsersId, userLikedPost })
   },
   createPost: async (req, res) => {
     try {
@@ -116,6 +118,43 @@ module.exports = {
       res.redirect(`/user/${req.user.username}`)
     } catch (err) {
       console.error(err)
+      res.redirect(`/posts/${req.params.id}`)
+    }
+  },
+  likePost: async (req, res) => {
+    try {
+
+      await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $push: { likes: req.params.id } }
+      )
+
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { $inc: { likes: 1 } }
+      )
+
+      res.redirect(`/posts/${req.params.id}`)
+    } catch (err) {
+      console.error('In likePost ', err)
+      res.redirect(`/posts/${req.params.id}`)
+    }
+  },
+  unlikePost: async (req, res) => {
+    try {
+      await Profile.findOneAndUpdate(
+        { user: req.user.id },
+        { $pull: { likes: req.params.id } }
+      )
+
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { $inc: { likes: -1 } }
+      )
+
+      res.redirect(`/posts/${req.params.id}`)
+    } catch (err) {
+      console.error('In unlikePost ', err)
       res.redirect(`/posts/${req.params.id}`)
     }
   }

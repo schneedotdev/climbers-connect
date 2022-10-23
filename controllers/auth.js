@@ -81,6 +81,7 @@ exports.postSignup = (req, res, next) => {
     posts: [],
     followers: [],
     following: [],
+    likes: [],
     user: ''
   })
 

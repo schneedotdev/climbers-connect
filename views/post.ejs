@@ -93,10 +93,10 @@
                 </section>
 
                 <div class="like--container">
-                    <% if(post.liked) { %>
+                    <% if(userLikedPost) { %>
                         <form class="like--form" action="/posts/unlike/<%= post._id %>?_method=PUT" method="POST">
                             <button class="like--btn">
-                                <i class="like--icon liked fa-regular fa-heart"></i>
+                                <i class="like--icon liked fa-solid fa-heart"></i>
                             </button>
                         </form>
                     <% } else { %>
