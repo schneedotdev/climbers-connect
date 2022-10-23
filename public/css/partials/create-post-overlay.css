@@ -133,6 +133,7 @@ textarea::placeholder {
 }
 
 .climb--textarea {
+    font-size: .9rem;
     min-height: 7.5rem;
     max-height: 7.5rem;
     min-width: 100%;

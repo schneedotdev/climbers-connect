@@ -92,7 +92,7 @@ module.exports = {
                 const profile = await Profile.findOne({ _id: user.profile })
 
                 // Delete previous avatar from cloudinary
-                if (profile.avatar.id) await cloudinary.uploader.destroy(user.profile.avatar.id)
+                if (profile.avatar.id) await cloudinary.uploader.destroy(profile.avatar.id)
 
                 // assign new url and id
                 profile.avatar.url = secure_url

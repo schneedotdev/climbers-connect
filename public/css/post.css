@@ -243,6 +243,7 @@
 }
 
 .create--comment-textarea {
+    font-family: 'Raleway', sans-serif;
     height: 5rem;
     width: 100%;
     resize: none;
