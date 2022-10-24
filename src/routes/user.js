@@ -13,4 +13,4 @@ router.get('/edit/:username', ensureAuth, userController.getEditProfile)
 router.put('/update/:username', ensureAuth, userController.updateProfile)
 router.put('/updateAvatar/:username', upload.single("file"), ensureAuth, userController.updateAvatar)
 
-module.exports = router
+export default router

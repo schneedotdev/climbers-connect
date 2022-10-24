@@ -7,4 +7,4 @@ const router = express.Router()
 router.post('/create', ensureAuth, commentsController.createComment)
 router.delete('/delete/:id', ensureAuth, commentsController.deleteComment)
 
-module.exports = router
+export default router

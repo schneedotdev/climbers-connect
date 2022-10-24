@@ -13,4 +13,4 @@ router.get('/:id', postsController.getPost)
 router.put('/like/:id', postsController.likePost)
 router.put('/unlike/:id', postsController.unlikePost)
 
-module.exports = router
+export default router
