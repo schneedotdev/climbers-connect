@@ -2,7 +2,8 @@ import express from 'express'
 import upload from "../middleware/multer"
 import userControllers from '../controllers/user'
 const { getProfile, getUser, follow, unfollow, getEditProfile, updateProfile, updateAvatar } = userControllers
-import { ensureAuth } from '../middleware/auth'
+import auth from '../middleware/auth'
+const { ensureAuth } = auth
 
 const router = express.Router()
 

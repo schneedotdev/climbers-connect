@@ -2,7 +2,8 @@ import express from 'express'
 import upload from '../middleware/multer'
 import postControllers from '../controllers/posts'
 const { createPost, deletePost, getFeed, getFollowing, getPost, likePost, unlikePost } = postControllers
-import { ensureAuth } from '../middleware/auth'
+import auth from '../middleware/auth'
+const { ensureAuth } = auth
 
 const router = express.Router()
 

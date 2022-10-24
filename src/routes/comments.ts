@@ -1,7 +1,8 @@
 import express from 'express'
 import commentControllers from '../controllers/comments'
 const { createComment, deleteComment } = commentControllers
-import { ensureAuth } from '../middleware/auth'
+import auth from '../middleware/auth'
+const { ensureAuth } = auth
 
 const router = express.Router()
 
