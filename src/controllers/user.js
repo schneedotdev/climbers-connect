@@ -3,7 +3,7 @@ import Profile from '../models/Profile'
 import Post from '../models/Post'
 import cloudinary from "../middleware/cloudinary"
 
-module.exports = {
+export default {
     getUser: async (req, res) => {
         try {
             res.redirect(`/user/${req.query.user.toLowerCase()}`)
