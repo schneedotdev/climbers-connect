@@ -1,7 +1,7 @@
 import multer from "multer"
 import path from "path"
 
-module.exports = multer({
+export default multer({
     storage: multer.diskStorage({}),
     fileFilter: (req, file, cb) => {
         let ext = path.extname(file.originalname)

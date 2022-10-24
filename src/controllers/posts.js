@@ -6,7 +6,7 @@ import cloudinary from '../middleware/cloudinary'
 import moment from 'moment'
 moment().format()
 
-module.exports = {
+export default {
   getFeed: async (req, res) => {
     try {
       let posts = await Post.find()
