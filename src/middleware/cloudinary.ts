@@ -1,7 +1,6 @@
 import cloudinary from "cloudinary"
 import dotenv from 'dotenv'
 
-cloudinary.v2
 dotenv.config({ path: "./src/config/.env" })
 
 try {
@@ -14,7 +13,7 @@ try {
     const API_SECRET = process.env.API_SECRET
     if (!API_SECRET) throw 'Cloudinary secret: "API_SECRET" not provided'
 
-    cloudinary.config({
+    cloudinary.v2.config({
         cloud_name: CLOUD_NAME,
         api_key: API_KEY,
         api_secret: API_SECRET,

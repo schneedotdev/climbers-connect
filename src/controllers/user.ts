@@ -17,7 +17,13 @@ export default {
             if (req.query.myProfileBtn) {
                 res.redirect(`/user/${req.user.username}`)
             } else {
-                const user = await User.findOne({ username: req.params.username.toLowerCase() }).populate('profile').lean()
+                const user = await User.findOne({ username: req.params.username.toLowerCase() }).lean()
+                if (!user) throw 'User was not found'
+
+                const profile = await Profile.findOne({ _id: user.profile })
+                if (!profile) throw "User's profile was not found"
+
+                const { twitter, avatar: { url } } = profile
 
                 // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
                 if (!user) throw 'User does not exist'
@@ -26,6 +32,7 @@ export default {
                 const isCurrentUser = req.user.username === req.params.username.toLowerCase()
 
                 let following = false;
+                // if the current user is not the user they are trying to follow, check to see if they are already following the user
                 if (!isCurrentUser) {
                     // check to see if the user is following the account they are requesting
                     const profile = await Profile.findOne({ _id: req.user.profile }).lean()
@@ -38,9 +45,6 @@ export default {
                 const posts = await Post.find({ user: user._id })
                     .populate('user')
 
-
-                if (!user.profile) throw "User's profile was not found"
-                const { twitter, avatar: { url } } = user.profile
 
                 res.render('profile', { user, posts, isCurrentUser, following, twitter, url })
             }
@@ -91,7 +95,7 @@ export default {
             if (req.params.username !== req.user.username) throw 'User does not have edit permissions for this profile'
 
             // Upload image to cloudinary
-            const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
+            const { secure_url, public_id } = await cloudinary.v2.uploader.upload(req.file.path)
 
             // check to see if a new url and id were provided
             if (secure_url && public_id) {
@@ -109,7 +113,7 @@ export default {
                 }
 
                 // Delete previous avatar from cloudinary
-                if (profile.avatar.id) await cloudinary.uploader.destroy(profile.avatar.id)
+                if (profile.avatar.id) await cloudinary.v2.uploader.destroy(profile.avatar.id)
 
                 // assign new url and id
                 profile.avatar.url = secure_url

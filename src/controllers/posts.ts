@@ -77,7 +77,7 @@ export default {
       if (!profile) throw 'Profile was not found'
 
       // Upload image to cloudinary
-      const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
+      const { secure_url, public_id } = await cloudinary.v2.uploader.upload(req.file.path)
 
       const post = await Post.create({
         title: req.body.title,
@@ -113,7 +113,7 @@ export default {
       if (post.user?.toString() !== req.user._id.toString()) throw 'Post does not belong to current user'
 
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.image?.id)
+      await cloudinary.v2.uploader.destroy(post.image?.id)
 
       // Delete post and comments from db
       await Post.deleteOne({ _id: postId })
