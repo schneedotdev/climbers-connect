@@ -92,7 +92,7 @@ export default {
         comments: [],
       })
 
-      profile.posts.push({ type: post._id, ref: 'Post' })
+      profile.posts.push(post._id)
       profile.save()
 
       console.log("Post has been created!")

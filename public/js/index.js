@@ -12,7 +12,7 @@ function frameLooper() {
     } else {
         clearTimeout(timer);
     }
-    loopTimer = setTimeout('frameLooper()', 70); /* change 70 for speed */
+    setTimeout('frameLooper()', 70); /* change 70 for speed */
 }
 
 frameLooper();

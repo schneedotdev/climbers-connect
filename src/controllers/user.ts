@@ -141,9 +141,9 @@ export default {
             const userB = await Profile.findOne({ _id: userToFollow.profile })
             if (!userB) throw 'User to follows profile could not be found'
 
-            if (!userA.following.includes({ type: userB.user?._id, ref: 'User' })) {
-                userA.following.push({ type: userB.user?._id, ref: 'User' })
-                userB.followers.push({ type: userA.user?._id, ref: 'User' })
+            if (!userA.following.includes(userB.user?._id)) {
+                userA.following.push(userB.user?._id)
+                userB.followers.push(userA.user?._id)
 
 
                 console.log('userA following: ', userA.following, 'userB followers: ', userB.followers)
@@ -171,12 +171,12 @@ export default {
             const userB = await Profile.findOne({ _id: userToUnfollow.profile })
             if (!userB) throw 'User to follows profile could not be found'
 
-            if (userA.following.includes({ type: userB.user?._id, ref: 'User' })) {
+            if (userA.following.includes(userB.user?._id)) {
                 const currentUserArr = userA.following
                 const userToUnfollowArr = userB.followers
 
-                currentUserArr.splice(currentUserArr.indexOf({ type: userB.user?._id, ref: 'User' }), 1)
-                userToUnfollowArr.splice(userToUnfollowArr.indexOf({ type: userA.user?._id, ref: 'User' }), 1)
+                currentUserArr.splice(currentUserArr.indexOf(userB.user?._id), 1)
+                userToUnfollowArr.splice(userToUnfollowArr.indexOf(userA.user?._id), 1)
 
                 console.log('userA following: ', userA.following, 'userB followers: ', userB.followers)
 

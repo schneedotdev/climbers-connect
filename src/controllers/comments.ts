@@ -13,7 +13,7 @@ export default {
                 post: req.body.post_id,
             })
 
-            post.comments.push({ type: comment._id, ref: 'Comment' })
+            post.comments.push(comment._id)
             post.save()
 
             console.log("Comment has been created!")
