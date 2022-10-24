@@ -23,4 +23,4 @@ try {
     console.error(err)
 }
 
-module.exports = cloudinary
+export default cloudinary

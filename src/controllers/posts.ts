@@ -9,14 +9,14 @@ moment().format()
 export default {
   getFeed: async (req, res) => {
     try {
-      let posts = await Post.find()
+      const posts = await Post.find()
 
-      posts = await Promise.all(posts.map(async (post) => {
+      const postsWithAvatar = await Promise.all(posts.map(async (post) => {
         const profile = await Profile.findOne({ user: post.user })
-        return await [post, profile.avatar.url]
+        return [post, profile?.avatar?.url || process.env.DEFAULT_AVATAR]
       }))
 
-      res.render('feed', { user: req.user, posts })
+      res.render('feed', { user: req.user, postsWithAvatar })
     } catch (err) {
       console.error(err)
       res.redirect(`/user/${req.user.username}`)
