@@ -2,7 +2,10 @@ import mongoose from 'mongoose'
 
 export default async function connectDB() {
   try {
-    const conn = await mongoose.connect(process.env.DB_STRING)
+    const DB_STRING = process.env.DB_STRING
+    if (!DB_STRING) throw 'No Mongo Uri provided'
+
+    const conn = await mongoose.connect(DB_STRING)
     console.log(`MongoDB Connected: ${conn.connection.host}`)
   } catch (err) {
     console.error(err)
