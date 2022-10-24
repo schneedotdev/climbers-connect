@@ -15,6 +15,7 @@ import dotenv from 'dotenv'
 import passport_config from './config/passport'
 
 const app = express()
+const PORT = process.env.PORT || 4000
 
 // use environment variables
 dotenv.config({ path: './src/config/.env' })
@@ -35,10 +36,10 @@ app.use(methodOverride("_method"))
 
 try {
   const DB_STRING = process.env.DB_STRING
-  if (!DB_STRING) throw 'No Mongo URI provided'
+  if (!DB_STRING) throw 'MongoDB connection string: "DB_STRING" not provided'
 
   const SESSION_SECRET = process.env.SESSION_SECRET
-  if (!SESSION_SECRET) throw 'No Session Secret Provided'
+  if (!SESSION_SECRET) throw 'Session secret: "SESSION_SECRET" not provided'
 
   // Sessions
   app.use(
@@ -66,7 +67,6 @@ app.use('/user', userRoutes)
 app.use('/posts', postsRoutes)
 app.use('/comments', commentsRoutes)
 
-const PORT = process.env.PORT || 4000
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}, you better catch it!`)
 })
