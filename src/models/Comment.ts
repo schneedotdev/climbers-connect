@@ -1,6 +1,14 @@
-import mongoose from 'mongoose'
+import mongoose, { Types } from 'mongoose'
 
-const CommentSchema = new mongoose.Schema({
+interface Comment {
+    text: string
+    user: Types.ObjectId
+    post: Types.ObjectId
+    likes: number
+    createdAt: Date
+}
+
+const CommentSchema = new mongoose.Schema<Comment>({
     text: {
         type: String,
         required: true,
@@ -25,4 +33,4 @@ const CommentSchema = new mongoose.Schema({
     }
 })
 
-export default mongoose.model('Comment', CommentSchema)
+export default mongoose.model<Comment>('Comment', CommentSchema)

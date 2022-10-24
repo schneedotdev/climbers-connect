@@ -1,6 +1,22 @@
-import mongoose from 'mongoose'
+import mongoose, { Types } from 'mongoose'
 
-const ProfileSchema = new mongoose.Schema({
+interface Profile {
+    name: string
+    avatar: {
+        url: string
+        id: string
+    }
+    about?: string
+    location?: string
+    twitter?: string
+    posts: Types.ObjectId[]
+    followers: Types.ObjectId[]
+    following: Types.ObjectId[]
+    likes: Types.ObjectId[]
+    user: Types.ObjectId
+}
+
+const ProfileSchema = new mongoose.Schema<Profile>({
     name: {
         type: String,
         required: true,
@@ -49,4 +65,4 @@ const ProfileSchema = new mongoose.Schema({
     }
 })
 
-export default mongoose.model('Profile', ProfileSchema)
+export default mongoose.model<Profile>('Profile', ProfileSchema)
