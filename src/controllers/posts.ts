@@ -9,14 +9,12 @@ moment().format()
 export default {
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find()
+      const posts = await Post.find().populate({
+        path: 'user',
+        populate: { path: 'profile' }
+      })
 
-      const postsWithAvatar = await Promise.all(posts.map(async (post) => {
-        const profile = await Profile.findOne({ user: post.user })
-        return [post, profile?.avatar?.url || process.env.DEFAULT_AVATAR]
-      }))
-
-      res.render('feed', { user: req.user, postsWithAvatar })
+      res.render('feed', { user: req.user, posts })
     } catch (err) {
       console.error(err)
       res.redirect(`/user/${req.user.username}`)
@@ -27,20 +25,20 @@ export default {
       const profile = await Profile.findOne({ user: req.user._id })
       if (!profile) throw 'Profile could not be found'
 
-      const { following } = profile
+      const { posts } = await profile.populate('following')
 
-      let posts = await following.reduce(async (posts, userId) => {
-        const followerPosts = await Post.find({ user: userId })
+      // let posts = await following.reduce(async (posts, userId) => {
+      //   const followerPosts = await Post.find({ user: userId })
 
-        if (followerPosts) (await posts).push(...followerPosts)
+      //   if (followerPosts) (await posts).push(...followerPosts)
 
-        return await posts
-      }, [])
+      //   return await posts
+      // }, [])
 
-      posts = await Promise.all(posts.map(async (post) => {
-        const profile = await Profile.findOne({ user: post.user })
-        return await [post, profile.avatar.url]
-      }))
+      // posts = await Promise.all(posts.map(async (post) => {
+      //   const profile = await Profile.findOne({ user: post.user })
+      //   return await [post, profile?.avatar?.url || process.env.DEFAULT_AVATAR]
+      // }))
 
       res.render('following', { user: req.user, posts })
     } catch (err) {
@@ -50,22 +48,24 @@ export default {
   },
   getPost: async (req, res) => {
     const post = await Post.findOne({ _id: req.params.id })
-    const user = await User.findOne({ _id: post.user }).populate('profile')
-    const date = await formatDate(post.createdAt)
+    if (!post) throw 'Post was not found'
+
+    const user = await User.findOne({ _id: post?.user }).populate('profile')
+    const date = await formatDate(post?.createdAt)
     const currentUsersId = req.user._id
     const profile = await Profile.findOne({ user: req.user.id })
-    const userLikedPost = profile.likes.some(like => like.toString() === req.params.id.toString())
+    const userLikedPost = profile?.likes.some(like => like.toString() === req.params.id.toString())
 
     const comments = await Promise.all(post.comments.map(async (comment_id) => {
       const comment = await Comment.findOne({ _id: comment_id })
-      const user = await User.findOne({ _id: comment.user }).populate('profile')
+      const user = await User.findOne({ _id: comment?.user }).populate('profile')
 
       return await {
         comment,
         id: String(comment_id),
-        postId: String(comment.post),
+        postId: String(comment?.post),
         user,
-        date: moment(comment.createdAt).fromNow()
+        date: moment(comment?.createdAt).fromNow()
       }
     }))
 
@@ -74,6 +74,7 @@ export default {
   createPost: async (req, res) => {
     try {
       const profile = await Profile.findOne({ user: req.user.id })
+      if (!profile) throw 'Profile was not found'
 
       // Upload image to cloudinary
       const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
@@ -91,7 +92,7 @@ export default {
         comments: [],
       })
 
-      profile.posts.push(post._id)
+      profile.posts.push({ type: post._id, ref: 'Post' })
       profile.save()
 
       console.log("Post has been created!")
@@ -106,12 +107,13 @@ export default {
       const postId = req.params.id
       // Find post by id
       const post = await Post.findById({ _id: postId })
+      if (!post) throw 'Post was not found'
 
       // throw error if the current user does not own the post
-      if (post.user.toString() !== req.user._id.toString()) throw 'Post does not belong to current user'
+      if (post.user?.toString() !== req.user._id.toString()) throw 'Post does not belong to current user'
 
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.image.id)
+      await cloudinary.uploader.destroy(post.image?.id)
 
       // Delete post and comments from db
       await Post.deleteOne({ _id: postId })

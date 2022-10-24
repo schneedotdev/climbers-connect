@@ -30,12 +30,16 @@ export default {
                     // check to see if the user is following the account they are requesting
                     const profile = await Profile.findOne({ _id: req.user.profile }).lean()
 
+                    if (!profile) throw 'Profile could not be found'
+
                     following = profile.following.some(userId => userId.toString() === user._id.toString())
                 }
 
                 const posts = await Post.find({ user: user._id })
                     .populate('user')
 
+
+                if (!user.profile) throw "User's profile was not found"
                 const { twitter, avatar: { url } } = user.profile
 
                 res.render('profile', { user, posts, isCurrentUser, following, twitter, url })
@@ -64,7 +68,10 @@ export default {
             if (req.params.username !== req.user.username) throw 'User does not have edit permissions for this profile'
 
             const user = await User.findOne({ _id: req.user._id })
+            if (!user) throw 'User could not be found'
+
             const profile = await Profile.findOne({ _id: user.profile })
+            if (!profile) throw 'Profile was not found'
             const { name, location, about, twitter } = req.body
 
             if (name) profile.name = name.trim()
@@ -89,7 +96,17 @@ export default {
             // check to see if a new url and id were provided
             if (secure_url && public_id) {
                 const user = await User.findOne({ _id: req.user._id })
+                if (!user) throw 'User was not found'
                 const profile = await Profile.findOne({ _id: user.profile })
+                if (!profile) throw 'Profile was not found'
+
+                // if the avatar property did not exist, create the property
+                if (!profile.avatar) {
+                    profile.avatar = {
+                        id: '',
+                        url: ''
+                    }
+                }
 
                 // Delete previous avatar from cloudinary
                 if (profile.avatar.id) await cloudinary.uploader.destroy(profile.avatar.id)
@@ -110,13 +127,19 @@ export default {
     follow: async (req, res) => {
         try {
             const currentUser = await User.findOne({ _id: req.user._id })
-            const userA = await Profile.findOne({ _id: currentUser.profile })
-            const userToFollow = await User.findOne({ username: req.params.username })
-            const userB = await Profile.findOne({ _id: userToFollow.profile })
+            if (!currentUser) throw 'Current user could not be found'
 
-            if (!userA.following.includes(userB.user._id)) {
-                userA.following.push(userB.user._id)
-                userB.followers.push(userA.user._id)
+            const userA = await Profile.findOne({ _id: currentUser.profile })
+            if (!userA) throw 'Current users profile could not be found'
+
+            const userToFollow = await User.findOne({ username: req.params.username })
+            if (!userToFollow) throw 'User to follow could not be found'
+            const userB = await Profile.findOne({ _id: userToFollow.profile })
+            if (!userB) throw 'User to follows profile could not be found'
+
+            if (!userA.following.includes({ type: userB.user?._id, ref: 'User' })) {
+                userA.following.push({ type: userB.user?._id, ref: 'User' })
+                userB.followers.push({ type: userA.user?._id, ref: 'User' })
 
 
                 console.log('userA following: ', userA.following, 'userB followers: ', userB.followers)
@@ -133,16 +156,23 @@ export default {
     unfollow: async (req, res) => {
         try {
             const currentUser = await User.findOne({ _id: req.user._id })
-            const userA = await Profile.findOne({ _id: currentUser.profile })
-            const userToUnfollow = await User.findOne({ username: req.params.username })
-            const userB = await Profile.findOne({ _id: userToUnfollow.profile })
+            if (!currentUser) throw 'Current user could not be found'
 
-            if (userA.following.includes(userB.user._id)) {
+            const userA = await Profile.findOne({ _id: currentUser.profile })
+            if (!userA) throw 'Current users profile could not be found'
+
+            const userToUnfollow = await User.findOne({ username: req.params.username })
+            if (!userToUnfollow) throw 'User to unfollow was not found'
+
+            const userB = await Profile.findOne({ _id: userToUnfollow.profile })
+            if (!userB) throw 'User to follows profile could not be found'
+
+            if (userA.following.includes({ type: userB.user?._id, ref: 'User' })) {
                 const currentUserArr = userA.following
                 const userToUnfollowArr = userB.followers
 
-                currentUserArr.splice(currentUserArr.indexOf(userB.user._id), 1)
-                userToUnfollowArr.splice(userToUnfollowArr.indexOf(userA.user._id), 1)
+                currentUserArr.splice(currentUserArr.indexOf({ type: userB.user?._id, ref: 'User' }), 1)
+                userToUnfollowArr.splice(userToUnfollowArr.indexOf({ type: userA.user?._id, ref: 'User' }), 1)
 
                 console.log('userA following: ', userA.following, 'userB followers: ', userB.followers)
 
