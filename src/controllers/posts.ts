@@ -14,6 +14,7 @@ export default {
         populate: { path: 'profile' }
       })
 
+
       res.render('feed', { user: req.user, posts })
     } catch (err) {
       console.error(err)
