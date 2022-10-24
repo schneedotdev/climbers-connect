@@ -20,33 +20,32 @@ export default {
                 const user = await User.findOne({ username: req.params.username.toLowerCase() }).lean()
                 if (!user) throw 'User was not found'
 
-                const profile = await Profile.findOne({ _id: user.profile })
-                if (!profile) throw "User's profile was not found"
-
-                const { twitter, avatar } = profile
-
                 // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
                 if (!user) throw 'User does not exist'
 
                 // check to see if the current user is requesting their own profile
                 const isCurrentUser = req.user.username === req.params.username.toLowerCase()
 
+                let profile;
                 let following = false;
                 // if the current user is not the user they are trying to follow, check to see if they are already following the user
                 if (!isCurrentUser) {
                     // check to see if the user is following the account they are requesting
-                    const profile = await Profile.findOne({ _id: req.user.profile }).lean()
-
-                    if (!profile) throw 'Profile could not be found'
+                    profile = await Profile.findOne({ _id: req.user.profile }).lean()
+                    if (!profile) throw "Users Profile could not be found"
 
                     following = profile.following.some(userId => userId.toString() === user._id.toString())
+                } else {
+                    profile = await Profile.findOne({ _id: user.profile })
+                    if (!profile) throw "Profile was not found"
                 }
+
+                const { twitter, avatar } = profile
 
                 const posts = await Post.find({ user: user._id })
                     .populate('user')
 
-
-                res.render('profile', { user, posts, isCurrentUser, following, twitter, url: avatar?.url })
+                res.render('profile', { user, profile, posts, isCurrentUser, following, twitter, url: avatar?.url })
             }
         } catch (err) {
             console.error(err)
