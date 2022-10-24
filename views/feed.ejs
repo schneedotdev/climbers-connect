@@ -37,25 +37,25 @@
             <ul class="feed--posts-list">
                 <% for(let i = 0; i < posts.length; i++) { %>
                     <li class="rendered--post">
-                        <a href="/posts/<%= posts[i][0].id %>">
+                        <a href="/posts/<%= postWithAvatar[i][0].id %>">
                             <header class="post--header">
                                 <div class="post--avatar-name-container">
-                                    <img class="post--avatar" src="<%= posts[i][1] %>">
+                                    <img class="post--avatar" src="<%= postWithAvatar[i][1] %>">
                                     <div class="post--col">
-                                        <span class="climb--title"><%= posts[i][0].title %></span>
+                                        <span class="climb--title"><%= postWithAvatar[i][0].title %></span>
                                     </div>
                                 </div>
-                                <% if(posts[i][0].grade) { %>
-                                    <span class="climb--grade"><%= posts[i][0].grade.toUpperCase() %></span>
+                                <% if(postWithAvatar[i][0].grade) { %>
+                                    <span class="climb--grade"><%= postWithAvatar[i][0].grade.toUpperCase() %></span>
                                 <% } %>
                             </header>
                             <div class="climb--image-container">
-                                <img class="climb--img" src="<%= posts[i][0].image.url %>">
+                                <img class="climb--img" src="<%= postWithAvatar[i][0].image.url %>">
                             </div>
                             <div class="post--extra-info">
-                                <span class="created-at-date"><%= posts[i][0].createdAt.getFullYear() %></span>
+                                <span class="created-at-date"><%= postWithAvatar[i][0].createdAt.getFullYear() %></span>
                                 <div class="star--amount-icon-container">
-                                    <span class="star--amount"><%= posts[i][0].rating %></span>
+                                    <span class="star--amount"><%= postWithAvatar[i][0].rating %></span>
                                     <i class="post--star fa-solid fa-star"></i>
                                 </div>
                             </div>

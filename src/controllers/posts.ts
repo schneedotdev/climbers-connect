@@ -24,7 +24,10 @@ export default {
   },
   getFollowing: async (req, res) => {
     try {
-      const { following } = await Profile.findOne({ user: req.user._id })
+      const profile = await Profile.findOne({ user: req.user._id })
+      if (!profile) throw 'Profile could not be found'
+
+      const { following } = profile
 
       let posts = await following.reduce(async (posts, userId) => {
         const followerPosts = await Post.find({ user: userId })
