@@ -113,7 +113,7 @@ export default {
       if (post.user?.toString() !== req.user._id.toString()) throw 'Post does not belong to current user'
 
       // Delete image from cloudinary
-      await cloudinary.v2.uploader.destroy(post.image?.id)
+      await cloudinary.v2.uploader.destroy(post.image?.id || '')
 
       // Delete post and comments from db
       await Post.deleteOne({ _id: postId })

@@ -23,7 +23,7 @@ export default {
                 const profile = await Profile.findOne({ _id: user.profile })
                 if (!profile) throw "User's profile was not found"
 
-                const { twitter, avatar: { url } } = profile
+                const { twitter, avatar } = profile
 
                 // DISPLAY ERROR IF THE USER INPUTS A URL THATS NOT AN ACTUAL USER
                 if (!user) throw 'User does not exist'
@@ -46,7 +46,7 @@ export default {
                     .populate('user')
 
 
-                res.render('profile', { user, posts, isCurrentUser, following, twitter, url })
+                res.render('profile', { user, posts, isCurrentUser, following, twitter, url: avatar?.url })
             }
         } catch (err) {
             console.error(err)
