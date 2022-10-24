@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import passport from 'passport'
 import session from 'express-session'
 import MongoStore from 'connect-mongo'
-import methodOverride from "method-override"
+import methodOverride from 'method-override'
 import flash from 'express-flash'
 import logger from 'morgan'
 import connectDB from './config/database'
@@ -31,19 +31,29 @@ app.use(express.json())
 app.use(logger('dev'))
 
 //Use forms for put / delete
-app.use(methodOverride("_method"));
+app.use(methodOverride("_method"))
 
-// Sessions
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    store: MongoStore.create({
-      client: mongoose.connection.getClient()
-    }),
-  })
-)
+try {
+  const DB_STRING = process.env.DB_STRING
+  if (!DB_STRING) throw 'No Mongo URI provided'
+
+  const SESSION_SECRET = process.env.SESSION_SECRET
+  if (!SESSION_SECRET) throw 'No Session Secret Provided'
+
+  // Sessions
+  app.use(
+    session({
+      secret: SESSION_SECRET,
+      resave: false,
+      saveUninitialized: false,
+      store: MongoStore.create({
+        mongoUrl: DB_STRING
+      }),
+    })
+  )
+} catch (err) {
+  console.error(err)
+}
 
 // Passport middleware
 app.use(passport.initialize())
