@@ -2,7 +2,8 @@
   "name": "climbers-connect",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/server.js",
+  "main": "dist/server",
+  "typings": "dist/server",
   "scripts": {
     "start": "tsc && node dist/app.js",
     "lint": "eslint . --ext .ts",
