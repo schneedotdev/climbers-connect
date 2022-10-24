@@ -3,17 +3,16 @@ import Profile from '../models/Profile'
 import Post from '../models/Post'
 import Comment from '../models/Comment'
 import cloudinary from '../middleware/cloudinary'
+// import { UserType } from '../models/User'
+import { ProfileType } from '../models/Profile'
 import moment from 'moment'
 moment().format()
 
 export default {
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().populate({
-        path: 'user',
-        populate: { path: 'profile' }
-      })
-
+      // populate the user properties of posts, and then the profile properties within those user documents, then convert their types defined in the interface from ObjectId's to the corresponding interface type.
+      const posts = await Post.find().populate<{ user: { profile: ProfileType } }>({ path: 'user', populate: { path: 'profile' } })
 
       res.render('feed', { user: req.user, posts })
     } catch (err) {

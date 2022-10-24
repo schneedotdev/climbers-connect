@@ -1,14 +1,14 @@
 import bcrypt from 'bcrypt'
 import mongoose, { Types } from 'mongoose'
 
-interface User {
+export interface UserType {
   username: string
   password: string
   email: string
   profile: Types.ObjectId
 }
 
-const UserSchema = new mongoose.Schema<User>({
+const UserSchema = new mongoose.Schema<UserType>({
   username: {
     type: String,
     unique: true,
@@ -50,4 +50,4 @@ UserSchema.methods.comparePassword = function comparePassword(candidatePassword,
   })
 }
 
-export default mongoose.model<User>('User', UserSchema)
+export default mongoose.model<UserType>('User', UserSchema)

@@ -1,6 +1,6 @@
 import mongoose, { Types } from 'mongoose'
 
-interface Profile {
+export interface ProfileType {
     name: string
     avatar: {
         url: string
@@ -16,7 +16,7 @@ interface Profile {
     user: Types.ObjectId
 }
 
-const ProfileSchema = new mongoose.Schema<Profile>({
+const ProfileSchema = new mongoose.Schema<ProfileType>({
     name: {
         type: String,
         required: true,
@@ -65,4 +65,4 @@ const ProfileSchema = new mongoose.Schema<Profile>({
     }
 })
 
-export default mongoose.model<Profile>('Profile', ProfileSchema)
+export default mongoose.model<ProfileType>('Profile', ProfileSchema)

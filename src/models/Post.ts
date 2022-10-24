@@ -1,6 +1,6 @@
 import mongoose, { Types } from 'mongoose'
 
-interface Post {
+export interface PostType {
     title: string
     caption: string
     grade?: string
@@ -15,7 +15,7 @@ interface Post {
     createdAt?: Date
 }
 
-const PostSchema = new mongoose.Schema<Post>({
+const PostSchema = new mongoose.Schema<PostType>({
     title: {
         type: String,
         required: true,
@@ -65,4 +65,4 @@ const PostSchema = new mongoose.Schema<Post>({
     },
 })
 
-export default mongoose.model<Post>('Post', PostSchema)
+export default mongoose.model<PostType>('Post', PostSchema)
