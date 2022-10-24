@@ -1,8 +1,8 @@
-const express = require('express')
+import express from 'express'
+import authController from '../controllers/auth'
+import homeController from '../controllers/home'
+
 const router = express.Router()
-const authController = require('../controllers/auth')
-const homeController = require('../controllers/home')
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 router.get('/', homeController.getIndex)
 router.get('/FAQ', homeController.getFAQ)

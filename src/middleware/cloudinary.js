@@ -1,6 +1,8 @@
-const cloudinary = require("cloudinary").v2
+import cloudinary from "cloudinary"
+import dotenv from 'dotenv'
 
-require("dotenv").config({ path: "./src/config/.env" })
+cloudinary.v2
+dotenv.config({ path: "./src/config/.env" })
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,

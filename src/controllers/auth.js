@@ -1,7 +1,7 @@
-const passport = require('passport')
-const validator = require('validator')
-const User = require('../models/User')
-const Profile = require('../models/Profile')
+import passport from 'passport'
+import validator from 'validator'
+import User from '../models/User'
+import Profile from '../models/Profile'
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -39,6 +39,7 @@ exports.postLogin = (req, res, next) => {
 
 exports.logout = (req, res) => {
   req.session.destroy((err) => {
+    console.error(err)
     req.user = null
     res.redirect('/login')
   })

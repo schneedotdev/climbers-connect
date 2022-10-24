@@ -1,9 +1,9 @@
-const User = require('../models/User')
-const Profile = require('../models/Profile')
-const Post = require('../models/Post')
-const Comment = require('../models/Comment')
-const cloudinary = require('../middleware/cloudinary')
-const moment = require('moment')
+import User from '../models/User'
+import Profile from '../models/Profile'
+import Post from '../models/Post'
+import Comment from '../models/Comment'
+import cloudinary from '../middleware/cloudinary'
+import moment from 'moment'
 moment().format()
 
 module.exports = {

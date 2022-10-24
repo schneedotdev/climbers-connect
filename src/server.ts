@@ -1,22 +1,26 @@
-const express = require('express')
+import express from 'express'
+import mongoose from 'mongoose'
+import passport from 'passport'
+import session from 'express-session'
+import MongoStore from 'connect-mongo'
+import methodOverride from "method-override"
+import flash from 'express-flash'
+import logger from 'morgan'
+import connectDB from './config/database'
+import mainRoutes from './routes/main'
+import userRoutes from './routes/user'
+import postsRoutes from './routes/posts'
+import commentsRoutes from './routes/comments'
+import dotenv from 'dotenv'
+import passport_config from './config/passport'
+
 const app = express()
-const mongoose = require('mongoose')
-const passport = require('passport')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')
-const methodOverride = require("method-override")
-const flash = require('express-flash')
-const logger = require('morgan')
-const connectDB = require('./config/database')
-const mainRoutes = require('./routes/main')
-const userRoutes = require('./routes/user')
-const postsRoutes = require('./routes/posts')
-const commentsRoutes = require('./routes/comments')
 
-require('dotenv').config({ path: './src/config/.env' })
+// use environment variables
+dotenv.config({ path: './src/config/.env' })
 
-// Passport config
-require('./config/passport')(passport)
+// passport config
+passport_config(passport)
 
 connectDB()
 

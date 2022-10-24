@@ -1,7 +1,7 @@
-const User = require('../models/User')
-const Profile = require('../models/Profile')
-const Post = require('../models/Post')
-const cloudinary = require("../middleware/cloudinary")
+import User from '../models/User'
+import Profile from '../models/Profile'
+import Post from '../models/Post'
+import cloudinary from "../middleware/cloudinary"
 
 module.exports = {
     getUser: async (req, res) => {

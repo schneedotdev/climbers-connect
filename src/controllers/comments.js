@@ -1,7 +1,5 @@
-const User = require('../models/User')
-const Profile = require('../models/Profile')
-const Post = require('../models/Post')
-const Comment = require('../models/Comment')
+import Post from '../models/Post'
+import Comment from '../models/Comment'
 
 module.exports = {
     createComment: async (req, res) => {
@@ -38,11 +36,4 @@ module.exports = {
             res.redirect(`/posts/${req.query.postId}`)
         }
     },
-}
-
-function formatDate(date) {
-    // converts date month into short hand representation example: "Mar" for "March"
-    const month = date.toLocaleString('default', { month: 'short' });
-    const year = date.getFullYear()
-    return `${month} ${year}`
 }

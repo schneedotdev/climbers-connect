@@ -1,8 +1,9 @@
-const express = require('express')
+import express from 'express'
+import upload from "../middleware/multer"
+import userController from '../controllers/user'
+import { ensureAuth } from '../middleware/auth'
+
 const router = express.Router()
-const upload = require("../middleware/multer")
-const userController = require('../controllers/user')
-const { ensureAuth, ensureGuest } = require('../middleware/auth')
 
 router.get('/:username', ensureAuth, userController.getProfile)
 router.get('/get/user', userController.getUser)

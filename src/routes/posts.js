@@ -1,8 +1,9 @@
-const express = require('express')
+import express from 'express'
+import upload from '../middleware/multer'
+import postsController from '../controllers/posts'
+import { ensureAuth } from '../middleware/auth'
+
 const router = express.Router()
-const upload = require('../middleware/multer')
-const postsController = require('../controllers/posts')
-const { ensureAuth } = require('../middleware/auth')
 
 router.post('/create', upload.single('file'), ensureAuth, postsController.createPost)
 router.delete('/delete/:id', ensureAuth, postsController.deletePost)
