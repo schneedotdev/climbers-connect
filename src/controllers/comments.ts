@@ -1,10 +1,12 @@
 import Post from '../models/Post'
 import Comment from '../models/Comment'
 
-module.exports = {
+export default {
     createComment: async (req, res) => {
         try {
             const post = await Post.findOne({ _id: req.body.post_id })
+            if (!post) throw 'Post does not exist'
+
             const comment = await Comment.create({
                 text: req.body.comment.trim(),
                 user: req.user._id,

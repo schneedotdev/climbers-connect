@@ -13,7 +13,7 @@ export default {
     })
   },
   postLogin: (req, res, next) => {
-    const validationErrors = []
+    const validationErrors: { msg: string }[] = []
     if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
     if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
 
@@ -52,7 +52,7 @@ export default {
     })
   },
   postSignup: (req, res, next) => {
-    const validationErrors = []
+    const validationErrors: { msg: string }[] = []
     if (!validator.isEmail(req.body.email))
       validationErrors.push({ msg: "Please enter a valid email address." })
     if (!validator.isLength(req.body.password, { min: 8 }))
