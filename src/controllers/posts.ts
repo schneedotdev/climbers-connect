@@ -3,7 +3,6 @@ import Profile from '../models/Profile'
 import Post from '../models/Post'
 import Comment from '../models/Comment'
 import cloudinary from '../middleware/cloudinary'
-// import { UserType } from '../models/User'
 import { ProfileType } from '../models/Profile'
 import moment from 'moment'
 moment().format()
@@ -25,22 +24,13 @@ export default {
       const profile = await Profile.findOne({ user: req.user._id })
       if (!profile) throw 'Profile could not be found'
 
-      const { posts } = await profile.populate('following')
+      // loop through all the accounts followed and gather the posts they've made
+      const following = await Promise.all(profile.following.map(async userId => {
+        const followedProfile = await Profile.findOne({ user: userId }).populate('posts')
+        return followedProfile
+      }))
 
-      // let posts = await following.reduce(async (posts, userId) => {
-      //   const followerPosts = await Post.find({ user: userId })
-
-      //   if (followerPosts) (await posts).push(...followerPosts)
-
-      //   return await posts
-      // }, [])
-
-      // posts = await Promise.all(posts.map(async (post) => {
-      //   const profile = await Profile.findOne({ user: post.user })
-      //   return await [post, profile?.avatar?.url || process.env.DEFAULT_AVATAR]
-      // }))
-
-      res.render('following', { user: req.user, posts })
+      res.render('following', { user: req.user, following })
     } catch (err) {
       console.error(err)
       res.redirect(`/user/${req.user.username}`)
