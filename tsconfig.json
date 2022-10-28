@@ -19,9 +19,6 @@
     "files": [
         "./src/server.ts"
     ],
-    // "include": [
-    //     "src/**/*"
-    // ],
     "exclude": [
         "node_modules"
     ]
