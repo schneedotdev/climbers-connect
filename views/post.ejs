@@ -106,7 +106,11 @@
                             </button>
                         </form>
                     <% } %>
-                    <span class="like--span"><%= post.likes %> likes</span>
+                    <% if (post.likes === 1) { %>
+                        <span class="like--span"><%= post.likes %> like</span>
+                    <% } else { %>
+                        <span class="like--span"><%= post.likes %> likes</span>
+                    <% } %>
                 </div>
 
                 <form class="create--comment-form" action="/comments/create" method="POST">

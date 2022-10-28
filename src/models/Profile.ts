@@ -1,6 +1,22 @@
-const mongoose = require('mongoose')
+import mongoose, { Types } from 'mongoose'
 
-const ProfileSchema = new mongoose.Schema({
+export interface ProfileType {
+    name: string
+    avatar: {
+        url: string
+        id: string
+    }
+    about?: string
+    location?: string
+    twitter?: string
+    posts: Types.ObjectId[]
+    followers: Types.ObjectId[]
+    following: Types.ObjectId[]
+    likes: Types.ObjectId[]
+    user: Types.ObjectId
+}
+
+const ProfileSchema = new mongoose.Schema<ProfileType>({
     name: {
         type: String,
         required: true,
@@ -49,4 +65,4 @@ const ProfileSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Profile', ProfileSchema)
+export default mongoose.model<ProfileType>('Profile', ProfileSchema)

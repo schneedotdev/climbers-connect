@@ -22,7 +22,7 @@
     </header>
     <div class="profile--info-container">
         <section class="profile--username-name">
-            <h2 class="profile--name"><%= user.profile.name %></h2>
+            <h2 class="profile--name"><%= profile.name %></h2>
             <h6 class="profile--username">@<%= user.username %></h6>
         </section>
         <section class="profile--info-posts">
@@ -30,11 +30,11 @@
             <h4 class="profile--posts-title">Posts</h4>
         </section>
         <section class="profile--info-posts-two">
-            <h5 class="profile--posts-number"><%= user.profile.followers.length %></h5>
+            <h5 class="profile--posts-number"><%= profile.followers.length %></h5>
             <h4 class="profile--posts-title">Followers</h4>
         </section>
         <section class="profile--info-posts-three">
-            <h5 class="profile--posts-number"><%= user.profile.following.length %></h5>
+            <h5 class="profile--posts-number"><%= profile.following.length %></h5>
             <h4 class="profile--posts-title">Following</h4>
         </section>
     </div>
@@ -50,16 +50,16 @@
                     <% } %>
                 </li>
                 <li>
-                    <p class="about--margin-top"><%= user.profile.about %></p>
+                    <p class="about--margin-top"><%= profile.about %></p>
                 </li>
                 <li>
-                    <span class="about--margin-top profile--location-span"><i class="fa-solid fa-house home-icon"></i><%= user.profile.location %></span>
+                    <span class="about--margin-top profile--location-span"><i class="fa-solid fa-house home-icon"></i><%= profile.location %></span>
                 </li>
                 <% if(twitter) { %>
                     <li>
                         <i class="fa-brands fa-twitter twitter-icon"></i>
                         <a class="profile--twitter-link" href="https://twitter.com/<%= twitter %>" target="_blank">
-                            <span class="about--margin-top profile--twitter-span"><%= user.profile.twitter %></span>
+                            <span class="about--margin-top profile--twitter-span"><%= profile.twitter %></span>
                         </a>
                     </li>
                 <% } %>
@@ -78,7 +78,7 @@
                         <a href="/posts/<%= posts[i].id %>">
                             <header class="post--header">
                                 <div class="post--avatar-name-container">
-                                    <img class="post--avatar" src="<%= user.profile.avatar.url %>">
+                                    <img class="post--avatar" src="<%= profile.avatar.url %>">
                                     <span class="climb--title"><%= posts[i].title %></span>
                                 </div>
                                 <% if(posts[i].grade) { %>

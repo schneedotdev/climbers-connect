@@ -1,6 +1,21 @@
-const mongoose = require('mongoose')
+import mongoose, { Types } from 'mongoose'
 
-const PostSchema = new mongoose.Schema({
+export interface PostType {
+    title: string
+    caption: string
+    grade?: string
+    image: {
+        url: string
+        id: string
+    }
+    rating: number
+    user: Types.ObjectId
+    comments?: Types.ObjectId[]
+    likes?: number
+    createdAt?: Date
+}
+
+const PostSchema = new mongoose.Schema<PostType>({
     title: {
         type: String,
         required: true,
@@ -50,4 +65,4 @@ const PostSchema = new mongoose.Schema({
     },
 })
 
-module.exports = mongoose.model('Post', PostSchema)
+export default mongoose.model<PostType>('Post', PostSchema)

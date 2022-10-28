@@ -1,20 +1,17 @@
-const User = require('../models/User')
-const Profile = require('../models/Profile')
-const Post = require('../models/Post')
-const Comment = require('../models/Comment')
-const cloudinary = require('../middleware/cloudinary')
-const moment = require('moment')
+import User from '../models/User'
+import Profile from '../models/Profile'
+import Post from '../models/Post'
+import Comment from '../models/Comment'
+import cloudinary from '../middleware/cloudinary'
+import { ProfileType } from '../models/Profile'
+import moment from 'moment'
 moment().format()
 
-module.exports = {
+export default {
   getFeed: async (req, res) => {
     try {
-      let posts = await Post.find()
-
-      posts = await Promise.all(posts.map(async (post) => {
-        const profile = await Profile.findOne({ user: post.user })
-        return await [post, profile.avatar.url]
-      }))
+      // populate the user properties of posts, and then the profile properties within those user documents, then convert their types defined in the interface from ObjectId's to the corresponding interface type.
+      const posts = await Post.find().populate<{ user: { profile: ProfileType } }>({ path: 'user', populate: { path: 'profile' } })
 
       res.render('feed', { user: req.user, posts })
     } catch (err) {
@@ -24,22 +21,16 @@ module.exports = {
   },
   getFollowing: async (req, res) => {
     try {
-      const { following } = await Profile.findOne({ user: req.user._id })
+      const profile = await Profile.findOne({ user: req.user._id })
+      if (!profile) throw 'Profile could not be found'
 
-      let posts = await following.reduce(async (posts, userId) => {
-        const followerPosts = await Post.find({ user: userId })
-
-        if (followerPosts) (await posts).push(...followerPosts)
-
-        return await posts
-      }, [])
-
-      posts = await Promise.all(posts.map(async (post) => {
-        const profile = await Profile.findOne({ user: post.user })
-        return await [post, profile.avatar.url]
+      // loop through all the accounts followed and gather the posts they've made
+      const following = await Promise.all(profile.following.map(async userId => {
+        const followedProfile = await Profile.findOne({ user: userId }).populate('posts')
+        return followedProfile
       }))
 
-      res.render('following', { user: req.user, posts })
+      res.render('following', { user: req.user, following })
     } catch (err) {
       console.error(err)
       res.redirect(`/user/${req.user.username}`)
@@ -47,22 +38,24 @@ module.exports = {
   },
   getPost: async (req, res) => {
     const post = await Post.findOne({ _id: req.params.id })
-    const user = await User.findOne({ _id: post.user }).populate('profile')
-    const date = await formatDate(post.createdAt)
+    if (!post) throw 'Post was not found'
+
+    const user = await User.findOne({ _id: post?.user }).populate('profile')
+    const date = await formatDate(post?.createdAt)
     const currentUsersId = req.user._id
     const profile = await Profile.findOne({ user: req.user.id })
-    const userLikedPost = profile.likes.some(like => like.toString() === req.params.id.toString())
+    const userLikedPost = profile?.likes.some(like => like.toString() === req.params.id.toString())
 
     const comments = await Promise.all(post.comments.map(async (comment_id) => {
       const comment = await Comment.findOne({ _id: comment_id })
-      const user = await User.findOne({ _id: comment.user }).populate('profile')
+      const user = await User.findOne({ _id: comment?.user }).populate('profile')
 
       return await {
         comment,
         id: String(comment_id),
-        postId: String(comment.post),
+        postId: String(comment?.post),
         user,
-        date: moment(comment.createdAt).fromNow()
+        date: moment(comment?.createdAt).fromNow()
       }
     }))
 
@@ -71,9 +64,10 @@ module.exports = {
   createPost: async (req, res) => {
     try {
       const profile = await Profile.findOne({ user: req.user.id })
+      if (!profile) throw 'Profile was not found'
 
       // Upload image to cloudinary
-      const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path)
+      const { secure_url, public_id } = await cloudinary.v2.uploader.upload(req.file.path)
 
       const post = await Post.create({
         title: req.body.title,
@@ -103,12 +97,13 @@ module.exports = {
       const postId = req.params.id
       // Find post by id
       const post = await Post.findById({ _id: postId })
+      if (!post) throw 'Post was not found'
 
       // throw error if the current user does not own the post
-      if (post.user.toString() !== req.user._id.toString()) throw 'Post does not belong to current user'
+      if (post.user?.toString() !== req.user._id.toString()) throw 'Post does not belong to current user'
 
       // Delete image from cloudinary
-      await cloudinary.uploader.destroy(post.image.id)
+      await cloudinary.v2.uploader.destroy(post.image?.id || '')
 
       // Delete post and comments from db
       await Post.deleteOne({ _id: postId })
