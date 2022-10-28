@@ -1,6 +1,13 @@
-const mongoose = require('mongoose')
+import mongoose, { Types } from 'mongoose'
+export interface CommentType {
+    text: string
+    user: Types.ObjectId
+    post: Types.ObjectId
+    likes: number
+    createdAt: Date
+}
 
-const CommentSchema = new mongoose.Schema({
+const CommentSchema = new mongoose.Schema<CommentType>({
     text: {
         type: String,
         required: true,
@@ -25,4 +32,4 @@ const CommentSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Comment', CommentSchema)
+export default mongoose.model<CommentType>('Comment', CommentSchema)

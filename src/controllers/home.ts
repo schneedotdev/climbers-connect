@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     getIndex: (req, res) => {
         res.render('index.ejs', {
             title: 'Home'

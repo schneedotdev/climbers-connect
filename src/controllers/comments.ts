@@ -1,12 +1,12 @@
-const User = require('../models/User')
-const Profile = require('../models/Profile')
-const Post = require('../models/Post')
-const Comment = require('../models/Comment')
+import Post from '../models/Post'
+import Comment from '../models/Comment'
 
-module.exports = {
+export default {
     createComment: async (req, res) => {
         try {
             const post = await Post.findOne({ _id: req.body.post_id })
+            if (!post) throw 'Post does not exist'
+
             const comment = await Comment.create({
                 text: req.body.comment.trim(),
                 user: req.user._id,
@@ -38,11 +38,4 @@ module.exports = {
             res.redirect(`/posts/${req.query.postId}`)
         }
     },
-}
-
-function formatDate(date) {
-    // converts date month into short hand representation example: "Mar" for "March"
-    const month = date.toLocaleString('default', { month: 'short' });
-    const year = date.getFullYear()
-    return `${month} ${year}`
 }
