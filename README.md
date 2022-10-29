@@ -61,6 +61,7 @@ Interact with other climbers, share the climbs you've completed, rate the climbs
 - Node
 - EJS
 - Passport
+- TypeScript
 - JavaScript
 - CSS
 - Cloudinary
