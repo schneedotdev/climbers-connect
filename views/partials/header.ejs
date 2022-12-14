@@ -42,9 +42,55 @@
                 </a>
             </li>
             <li class="reveal-mobile">
-                <a class="dropdown--icon-link" href="#">
-                    <i class="fa-solid fa-bars"></i>
-                </a>
+                <div class="dropdown-container">
+                    <div
+                        class="dropdown"
+                        data-dropdown
+                    >
+                        <button
+                            class="dropdown-button"
+                        >
+                            <i
+                                id="menu-icon"
+                                data-dropdown-button
+                                class="fa-solid fa-bars"
+                            ></i>
+                        </button>
+
+                        <div class="dropdown-menu">
+                            <ul class="mobile-list">
+                                <li>
+                                    <a
+                                        class="link-hover"
+                                        href="/user/<%= user.username %>"
+                                        >Profile</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="link-hover"
+                                        href="/posts/following"
+                                        >Following</a
+                                    >
+                                </li>
+                                <li>
+                                    <a
+                                        class="link-hover"
+                                        href="/posts/feed"
+                                        >Feed</a
+                                    >
+                                </li>
+                                <!-- <li>
+                                    <a
+                                        class="link-hover"
+                                        href="#"
+                                        >Search</a
+                                    >
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </li>
         </ul>
     </nav>
