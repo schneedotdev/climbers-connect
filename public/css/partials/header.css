@@ -8,6 +8,7 @@
     --dark-gray: #4F5D5F;
     --gray-blue: #68819C;
     --light-blue: #81AEE5;
+    --medium-blue: #274469;
     --purple: #A0A1F5;
     --dark-purple: #383970;
 }
@@ -149,7 +150,7 @@ html {
     background: var(--purple);
 }
 
-.dropdown--icon-link {
+.dropdown-button {
     color: var(--white);
 }
 
@@ -173,7 +174,77 @@ html {
 
     .reveal-mobile {
         display: block;
-        color: var(--white);
+    }
+
+    /* dropdown menu */
+    .dropdown {
+        position: relative;
+    }
+
+    #menu-icon {
         font-size: 1.3rem;
+    }
+
+    .dropdown-button {
+        background: none;
+        border: none;
+        text-decoration: none;
+        color: (--white);
+        cursor: pointer;
+        padding: 0;
+    }
+
+    .dropdown.active>.dropdown-button,
+    .dropdown-button:hover {
+        color: var(--purple);
+    }
+
+    .dropdown.active>.dropdown-button:hover {
+        color: var(--dark-purple)
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 1.1rem);
+        right: 0;
+        z-index: 1;
+        background: rgba(255, 255, 255, 0.97);
+        box-shadow: 0 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-1rem);
+        transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+        border-radius: 0 0 .5rem .5rem;
+    }
+
+    .dropdown.active>.dropdown-button+.dropdown-menu {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    .mobile-list {
+        border-radius: 0 0 .5rem .5rem;
+        border-right: 0.1rem solid rgba(0, 0, 0, 0.1);
+        border-left: 0.1rem solid rgba(0, 0, 0, 0.1);
+        border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-list li {
+        font-size: 1.3rem;
+        text-align: center;
+        padding: 1rem 3rem;
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+    }
+
+    .link-hover {
+        padding: auto;
+        color: var(--dark-blue);
+    }
+    .mobile-list li:hover {
+        background: var(--lighter-gray);
+    }
+    .mobile-list li:hover .link-hover {
+        color: var(--medium-blue);
     }
 }
