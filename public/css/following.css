@@ -41,7 +41,7 @@
 .following--posts-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 2%;
 }
 
 .post--col {
@@ -55,6 +55,7 @@
     border-radius: .5rem;
     border: .075rem solid var(--light-gray);
     padding: 1rem;
+    margin-bottom: 2%;
 }
 
 .post--header,
@@ -151,5 +152,12 @@
 
     .following--container {
         padding-inline: 3rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .rendered--post {
+        width: 100%;
+        margin-bottom: 1rem;
     }
 }
