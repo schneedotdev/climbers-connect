@@ -37,6 +37,14 @@
 
 /* POSTS */
 
+.no-users-have-posted {
+    background: #dce9f8;
+    padding: 1rem;
+    border-radius: .5rem;
+    border: .1rem solid #6c93c369;
+    line-height: 1.2;
+}
+
 .feed--posts-list {
     display: flex;
     flex-wrap: wrap;
