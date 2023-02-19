@@ -7,7 +7,7 @@
     <a href="https://github.com/brianschnee/climbers-connect#about-the-project"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://comingsoon.com/">Coming Soon</a>
+    <a href="https://climbersconnect.up.railway.app/">Website</a>
     ·
     <a href="https://github.com/brianschnee/climbers-connect/issues">Report Bug</a>
     ·
