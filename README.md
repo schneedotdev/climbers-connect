@@ -4,9 +4,6 @@
   <p align="center">
     A social media app that connects climbers to other climbers!
     <br />
-    <a href="https://github.com/brianschnee/climbers-connect#about-the-project"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
     <a href="https://climbersconnect.up.railway.app/">Website</a>
     ·
     <a href="https://github.com/brianschnee/climbers-connect/issues">Report Bug</a>
