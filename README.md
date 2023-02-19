@@ -145,6 +145,4 @@ Twitter - [@BrianSchneeDev](https://twitter.com/brianschneedev)
 
 Email - [Contact Me](https://www.brianschnee.com/#contact)
 
-Project Link: [https://github.com/brianschnee/climbers-connect](https://github.com/brianschnee/climbers-connect)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
