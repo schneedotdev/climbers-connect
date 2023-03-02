@@ -153,19 +153,36 @@ body {
   margin-bottom: .5rem;
 }
 
-.login--btn {
+.login--btn,
+.demo--btn {
   font-size: 1rem;
   margin-top: 1.5rem;
   width: 100%;
   padding-block: .75rem;
   color: var(--white);
-  background: var(--purple);
-  border: none;
   border-radius: .5rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.login--btn {
+  background: var(--purple);
+}
+
+.demo--btn {
+  color: var(--purple);
+  background: transparent;
+  border-color: var(--purple);
 }
 
 .login--btn:hover {
-  background: var(--dark-purple)
+  background: var(--dark-purple);
+}
+
+.demo--btn:hover {
+  color: var(--white);
+  background-color: var(--dark-purple);
+  border-color: var(--dark-purple);
 }
 
 .not-a-user {
