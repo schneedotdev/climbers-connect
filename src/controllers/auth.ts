@@ -36,6 +36,26 @@ export default {
       })
     })(req, res, next)
   },
+  postDemo: (req, res, next) => {
+    req.body = {
+      "email": process.env.DEMO_EMAIL,
+      "password": process.env.DEMO_PASSWORD
+    }
+    
+    passport.authenticate('local', (err, user, info) => {
+      console.log(user)
+      if (err) { return next(err) }
+      if (!user) {
+        req.flash('errors', info)
+        return res.redirect('/login')
+      }
+      req.logIn(user, (err) => {
+        if (err) { return next(err) }
+        req.flash('success', { msg: 'Success! You are logged in.' })
+        res.redirect(`/user/demouser`)
+      })
+    })(req, res, next)
+  },
   logout: (req, res) => {
     req.session.destroy((err) => {
       console.error(err)
