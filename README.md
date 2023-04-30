@@ -141,7 +141,7 @@ coming soon...
 <!-- CONTACT -->
 ## Contact
 
-Twitter - [@BrianSchneeDev](https://twitter.com/brianschneedev)
+Twitter - [@BrianSchneeDev](https://twitter.com/fullstackbrian)
 
 Email - [Contact Me](https://www.brianschnee.com/#contact)
 
