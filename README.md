@@ -140,6 +140,6 @@ coming soon...
 
 Twitter - [@schneedotdev](https://twitter.com/schneedotdev)
 
-Email - [Contact Me](https://www.schneedotdev.com/#contact)
+Email - [Contact Me](https://www.brianschnee.com/#contact)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
