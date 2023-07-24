@@ -6,13 +6,11 @@
     <br />
     <a href="https://climbersconnect.up.railway.app/">Website</a>
     ·
-    <a href="https://github.com/brianschnee/climbers-connect/issues">Report Bug</a>
+    <a href="https://github.com/schneedotdev/climbers-connect/issues">Report Bug</a>
     ·
-    <a href="https://github.com/brianschnee/climbers-connect/issues">Request Feature</a>
+    <a href="https://github.com/schneedotdev/climbers-connect/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -37,9 +35,8 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
 
 <div align="center">
@@ -66,6 +63,7 @@ Interact with other climbers, share the climbs you've completed, rate the climbs
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 ### Installation
@@ -75,12 +73,12 @@ _In order to clone a local copy of this repository, please follow the steps belo
 1. Navigate to the folder you would like to store the project
 2. Clone the repo
    ```sh
-   git clone https://github.com/brianschnee/climbers-connect.git
+   git clone https://github.com/schneedotdev/climbers-connect.git
    ```
 3. Switch into the directory that was just created
-    ```sh
-    cd climbers-connect
-    ```
+   ```sh
+   cd climbers-connect
+   ```
 4. Install NPM packages
    ```sh
    npm install
@@ -92,57 +90,56 @@ _In order to clone a local copy of this repository, please follow the steps belo
    DB_STRING="<Replace everything in quotes with MongoDB Connection String>"
    ```
 8. Create a session secret for express sessions called `SESSION_SECRET`
-    ```sh
-    SESSION_SECRET="<any string value>"
-    ```
+   ```sh
+   SESSION_SECRET="<any string value>"
+   ```
 9. Connect to your cloudinary db with the following 3 environment variables `CLOUD_NAME`, `API_KEY`, `API_SECRET`
-    ```sh
-    CLOUD_NAME="<cloud name here>"
-    API_KEY="<api key here>"
-    API_SECRET="<api secret here>"
-    ```
+   ```sh
+   CLOUD_NAME="<cloud name here>"
+   API_KEY="<api key here>"
+   API_SECRET="<api secret here>"
+   ```
 10. To run the application, use `npm run start` to run the app in a development environment
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
+
 ## Usage
 
 Coming soon...
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
-- [ ] Create Comment Schema 
+- [ ] Create Comment Schema
 - [ ] Add Comment Routes/Controllers
 - [ ] Add Comments to posts
 - [ ] Update FAQ
 - [ ] Add Pagination to for rendered user posts
 - [ ] Add area based chat rooms using socket.io
 
-See the [open issues](https://github.com/brianschnee/climbers-connect/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/schneedotdev/climbers-connect/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- Lessons Learned -->
+
 ## Lessons Learned
 
 coming soon...
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- CONTACT -->
+
 ## Contact
 
-Twitter - [@BrianSchneeDev](https://twitter.com/brianschneedev)
+Twitter - [@schneedotdev](https://twitter.com/schneedotdev)
 
-Email - [Contact Me](https://www.brianschnee.com/#contact)
+Email - [Contact Me](https://www.schneedotdev.com/#contact)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
